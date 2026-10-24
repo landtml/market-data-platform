@@ -1,0 +1,22 @@
+{
+ "binance_um/klines/1m/SYNTHCUSDT/2024-02.parquet": {
+  "dupe": [
+   1706751600000000000
+  ],
+  "gap": [
+   {
+    "after_ts": 1706775540000000000,
+    "missing_minutes": 7
+   }
+  ],
+  "ohlc_bad": [
+   1706799600000000000
+  ],
+  "stuck": [
+   {
+    "start_ts": 1706835540000000000,
+    "run": 41
+   }
+  ]
+ }
+}

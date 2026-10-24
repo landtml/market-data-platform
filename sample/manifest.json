@@ -1,0 +1,141 @@
+{
+ "format": "parquet-lake-manifest/1",
+ "generated_utc": "2026-10-24T16:50:19Z",
+ "generator": "tools/build_manifest.py",
+ "method": "parquet footers only (num_rows, schema, row-group min/max statistics); no data pages read",
+ "pyarrow": "26.0.0",
+ "totals": {
+  "all_parquet": {
+   "files": 14,
+   "rows": 20190,
+   "bytes": 1767437
+  },
+  "primary": {
+   "files": 14,
+   "rows": 20190,
+   "bytes": 1767437
+  },
+  "market_data": {
+   "files": 14,
+   "rows": 20190,
+   "bytes": 1767437
+  },
+  "table": {
+   "files": 0,
+   "rows": 0,
+   "bytes": 0
+  },
+  "auxiliary": {
+   "files": 0,
+   "rows": 0,
+   "bytes": 0
+  }
+ },
+ "by_source": {
+  "binance_um": {
+   "all_parquet": {
+    "files": 14,
+    "rows": 20190,
+    "bytes": 1767437
+   },
+   "market_data": {
+    "files": 14,
+    "rows": 20190,
+    "bytes": 1767437
+   },
+   "table": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   },
+   "auxiliary": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   }
+  }
+ },
+ "excluded_dirs": [],
+ "lake_listing_sha256": "8f66a6ebe69a8f72711053adaca7faa7abf4c2819b91bc89546b8f14c4081c2c",
+ "partitions": {
+  "binance_um/funding": {
+   "category": "market_data",
+   "files": 3,
+   "rows": 36,
+   "bytes": 4932,
+   "keys": 3,
+   "schema_hashes": {
+    "54c442ee62662e8e": 3
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-02-02T16:00:00Z",
+   "listing_sha256": "df61cb5a597ddcaf198fe1718c0d8012efed9e051116ccb7cfc4e48b530bbc27"
+  },
+  "binance_um/klines/1m": {
+   "category": "market_data",
+   "files": 6,
+   "rows": 17274,
+   "bytes": 1518197,
+   "keys": 3,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 6
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-02-02T23:59:00Z",
+   "listing_sha256": "00e936a2ec210a960e910dbfe39f63fb214106358d310dcc26cf9a1430d4e87c"
+  },
+  "binance_um/klines/5m": {
+   "category": "market_data",
+   "files": 5,
+   "rows": 2880,
+   "bytes": 244308,
+   "keys": 3,
+   "schema_hashes": {
+    "9c0861642663c480": 5
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-02-02T23:55:00Z",
+   "listing_sha256": "848e5c62a362ad729bdfe82094617a7c433d70e72bf5132991fc29f196ed0b5e"
+  }
+ },
+ "schemas": {
+  "54c442ee62662e8e": [
+   "ts:int64",
+   "funding_interval_hours:int64",
+   "last_funding_rate:double",
+   "flags:uint32"
+  ],
+  "96a34fbedb7a1578": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double",
+   "close_ts:int64",
+   "quote_volume:double",
+   "count:int64",
+   "taker_buy_volume:double",
+   "taker_buy_quote_volume:double",
+   "flags:uint32"
+  ],
+  "9c0861642663c480": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double",
+   "quote_volume:double",
+   "count:int64",
+   "taker_buy_volume:double",
+   "taker_buy_quote_volume:double",
+   "n_src:int64",
+   "complete:bool",
+   "filled:bool"
+  ]
+ }
+}
