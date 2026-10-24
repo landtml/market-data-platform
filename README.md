@@ -164,5 +164,5 @@ docs/                   design, pre-registration, licences, quality proofs, time
 
 ## Licence
 
-No licence has been chosen yet, and there is no LICENSE file. No market data is included. Data credit for the private lake: "Data: Binance Vision (data.binance.vision),
+The code and documents are released under the MIT licence ([LICENSE](LICENSE)). No market data is included. Data credit for the private lake: "Data: Binance Vision (data.binance.vision),
 CC BY-NC-SA 4.0."
