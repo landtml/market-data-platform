@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="market-data-platform" width="100%">
+  <img src="assets/header.svg" alt="market-data-platform" width="100%">
 </p>
 
 <p align="center">
