@@ -1,0 +1,6 @@
+# internal, never published
+BUILD_REPORT.md
+# environments and caches
+.venv/
+__pycache__/
+*.pyc
