@@ -1,0 +1,210 @@
+{
+ "format": "parquet-lake-manifest/1",
+ "generated_utc": "2026-10-24T16:51:13Z",
+ "generator": "tools/build_manifest.py",
+ "method": "parquet footers only (num_rows, schema, row-group min/max statistics); no data pages read",
+ "pyarrow": "26.0.0",
+ "totals": {
+  "all_parquet": {
+   "files": 11,
+   "rows": 173628168,
+   "bytes": 12678339507
+  },
+  "primary": {
+   "files": 11,
+   "rows": 173628168,
+   "bytes": 12678339507
+  },
+  "market_data": {
+   "files": 7,
+   "rows": 170259866,
+   "bytes": 12650383610
+  },
+  "table": {
+   "files": 4,
+   "rows": 3368302,
+   "bytes": 27955897
+  },
+  "auxiliary": {
+   "files": 0,
+   "rows": 0,
+   "bytes": 0
+  }
+ },
+ "by_source": {
+  "aux": {
+   "all_parquet": {
+    "files": 3,
+    "rows": 2776016,
+    "bytes": 23373998
+   },
+   "market_data": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   },
+   "table": {
+    "files": 3,
+    "rows": 2776016,
+    "bytes": 23373998
+   },
+   "auxiliary": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   }
+  }
+ },
+ "excluded_dirs": [],
+ "lake_listing_sha256": "21f8cef9cca253db36ef0ebca485bfd1004069e9658d26100e2b5777219b5808",
+ "partitions": {
+  "aux/announcements": {
+   "category": "table",
+   "files": 1,
+   "rows": 2725,
+   "bytes": 349992,
+   "keys": 0,
+   "schema_hashes": {
+    "baad0e89fe1c1c15": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "8aa9ababb5db811e44ec89ec5108efdd6fc5a1a1f14b49d37955dc88a205d831"
+  },
+  "aux/context_ext_daily": {
+   "category": "table",
+   "files": 1,
+   "rows": 2766901,
+   "bytes": 22985138,
+   "keys": 0,
+   "schema_hashes": {
+    "549675e9954d2764": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "a60c7234f95b599f007937b6e77c23d22f41aae8622f6733c3ecb04a82923d55"
+  },
+  "aux/tick_history": {
+   "category": "table",
+   "files": 1,
+   "rows": 6390,
+   "bytes": 38868,
+   "keys": 0,
+   "schema_hashes": {
+    "8440cd96c120931d": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "8defc717b2e4f8f36642ffd99f5db92228dde294457c380d15043db166ab6aef"
+  },
+  "bars_5m": {
+   "category": "market_data",
+   "files": 7,
+   "rows": 170259866,
+   "bytes": 12650383610,
+   "keys": 7,
+   "schema_hashes": {
+    "2ef9beabc151fb90": 7
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "5145606b38f7104c634a7fc0dd200ac8b046092eb9042866c3313b2d852b50bb"
+  },
+  "universe_pit": {
+   "category": "table",
+   "files": 1,
+   "rows": 592286,
+   "bytes": 4581899,
+   "keys": 0,
+   "schema_hashes": {
+    "eec6997413771678": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "eb43cf2993675d4914031ebac664a5d6991e105162aae067ca4d7ce27a24b5aa"
+  }
+ },
+ "schemas": {
+  "2ef9beabc151fb90": [
+   "ts:int64",
+   "instrument_id:string",
+   "symbol:string",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double",
+   "quote_volume:double",
+   "taker_buy_quote_volume:double",
+   "trades:int64",
+   "mark_close:double",
+   "premium_close:double",
+   "funding_rate:double",
+   "funding_interval_h:int8",
+   "filled:bool",
+   "tradable:bool",
+   "issue_flags:uint32",
+   "oi_sum_open_interest:double",
+   "oi_sum_open_interest_value:double",
+   "index_close:double",
+   "spot_close:double",
+   "bybit_funding_rate:double",
+   "bybit_oi_1h:double",
+   "delist_announced:bool"
+  ],
+  "549675e9954d2764": [
+   "series:string",
+   "source:string",
+   "obs_date:date32[day]",
+   "usable_from:timestamp[us, tz=UTC]",
+   "value:double",
+   "status:string"
+  ],
+  "8440cd96c120931d": [
+   "symbol:large_string",
+   "capture_ts:int64",
+   "source:large_string",
+   "wayback_ts:large_string",
+   "tickSize:double",
+   "stepSize:double",
+   "minNotional:double",
+   "contract_type:large_string",
+   "status:large_string",
+   "base:large_string",
+   "quote:large_string",
+   "capture_utc:timestamp[ns, tz=UTC]"
+  ],
+  "baad0e89fe1c1c15": [
+   "catalog_id:int64",
+   "catalog:large_string",
+   "article_code:large_string",
+   "article_id:int64",
+   "title:large_string",
+   "action:large_string",
+   "market:large_string",
+   "release_ts:int64",
+   "release_utc:timestamp[ns, tz=UTC]",
+   "symbols:large_string",
+   "symbol_source:large_string",
+   "effective_ts:double",
+   "effective_precision:large_string",
+   "parse_confidence:large_string",
+   "instrument_ids:large_string",
+   "instrument_map_status:large_string",
+   "url:large_string"
+  ],
+  "eec6997413771678": [
+   "date:date32[day]",
+   "instrument_id:string",
+   "days_listed:int32",
+   "median_qv_30d:double",
+   "rank:int32",
+   "eligible:bool"
+  ]
+ }
+}

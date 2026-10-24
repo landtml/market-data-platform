@@ -1,0 +1,1340 @@
+{
+ "format": "parquet-lake-manifest/1",
+ "generated_utc": "2026-10-24T16:48:36Z",
+ "generator": "tools/build_manifest.py",
+ "method": "parquet footers only (num_rows, schema, row-group min/max statistics); no data pages read",
+ "pyarrow": "26.0.0",
+ "totals": {
+  "all_parquet": {
+   "files": 154690,
+   "rows": 2157688483,
+   "bytes": 55205450478
+  },
+  "primary": {
+   "files": 150689,
+   "rows": 2139150678,
+   "bytes": 54916995581
+  },
+  "market_data": {
+   "files": 150678,
+   "rows": 2122404687,
+   "bytes": 54766219413
+  },
+  "table": {
+   "files": 11,
+   "rows": 16745991,
+   "bytes": 150776168
+  },
+  "auxiliary": {
+   "files": 4001,
+   "rows": 18537805,
+   "bytes": 288454897
+  }
+ },
+ "by_source": {
+  "binance_spot": {
+   "all_parquet": {
+    "files": 17133,
+    "rows": 148399355,
+    "bytes": 4427091624
+   },
+   "market_data": {
+    "files": 17132,
+    "rows": 148382223,
+    "bytes": 4426962383
+   },
+   "table": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   },
+   "auxiliary": {
+    "files": 1,
+    "rows": 17132,
+    "bytes": 129241
+   }
+  },
+  "binance_um": {
+   "all_parquet": {
+    "files": 119908,
+    "rows": 1970998048,
+    "bytes": 50130888848
+   },
+   "market_data": {
+    "files": 119209,
+    "rows": 1969893408,
+    "bytes": 50123297511
+   },
+   "table": {
+    "files": 1,
+    "rows": 1065,
+    "bytes": 19984
+   },
+   "auxiliary": {
+    "files": 698,
+    "rows": 1103575,
+    "bytes": 7571353
+   }
+  },
+  "bybit": {
+   "all_parquet": {
+    "files": 1401,
+    "rows": 1143771,
+    "bytes": 62013526
+   },
+   "market_data": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   },
+   "table": {
+    "files": 4,
+    "rows": 572369,
+    "bytes": 11202477
+   },
+   "auxiliary": {
+    "files": 1397,
+    "rows": 571402,
+    "bytes": 50811049
+   }
+  },
+  "bybit_deriv": {
+   "all_parquet": {
+    "files": 1263,
+    "rows": 31175246,
+    "bytes": 299243651
+   },
+   "market_data": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   },
+   "table": {
+    "files": 3,
+    "rows": 15587938,
+    "bytes": 126392878
+   },
+   "auxiliary": {
+    "files": 1260,
+    "rows": 15587308,
+    "bytes": 172850773
+   }
+  },
+  "kraken": {
+   "all_parquet": {
+    "files": 7,
+    "rows": 1136322,
+    "bytes": 24295262
+   },
+   "market_data": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   },
+   "table": {
+    "files": 2,
+    "rows": 290276,
+    "bytes": 4662238
+   },
+   "auxiliary": {
+    "files": 5,
+    "rows": 846046,
+    "bytes": 19633024
+   }
+  },
+  "okx": {
+   "all_parquet": {
+    "files": 14977,
+    "rows": 4541398,
+    "bytes": 253418976
+   },
+   "market_data": {
+    "files": 14337,
+    "rows": 4129056,
+    "bytes": 215959519
+   },
+   "table": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   },
+   "auxiliary": {
+    "files": 640,
+    "rows": 412342,
+    "bytes": 37459457
+   }
+  }
+ },
+ "excluded_dirs": [],
+ "lake_listing_sha256": "58a72a8ca40f39dcff0219ed235ef344949c0dbe5f5176a5369332d1cdeb774c",
+ "partitions": {
+  "binance_spot/_issues/spot_klines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 17132,
+   "bytes": 129241,
+   "keys": 0,
+   "schema_hashes": {
+    "41d6498691008496": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "5771ae29f47f22f17b9a2b028711ac3c77c943197b34ba914e272f29fa722b53"
+  },
+  "binance_spot/klines_5m": {
+   "category": "market_data",
+   "files": 17132,
+   "rows": 148382223,
+   "bytes": 4426962383,
+   "keys": 353,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 17132
+   },
+   "time_column": "ts",
+   "ts_min": "2019-09-01T00:00:00Z",
+   "ts_max": "2026-09-30T23:55:00Z",
+   "listing_sha256": "afc3e7c88de63a8a01c71a70dee4180b72fcd684c22e9022a8cf0f6c7e0f75d6"
+  },
+  "binance_um/_issues/funding": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 987,
+   "bytes": 18399,
+   "keys": 0,
+   "schema_hashes": {
+    "4b24e2a69c5a7ef9": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "b18d136abd8e6c70373c8bb153f1e687c2621db29ac0b79ba239af5913cc548f"
+  },
+  "binance_um/_issues/gapfill_daily_indexPriceKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 1443,
+   "bytes": 10325,
+   "keys": 0,
+   "schema_hashes": {
+    "6f60f7ad6e16c0ce": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "d11c198efafa19ddec1feba519912035ca7c5a1129313677750b4460d401a5a2"
+  },
+  "binance_um/_issues/gapfill_daily_klines_1m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 380,
+   "bytes": 6555,
+   "keys": 0,
+   "schema_hashes": {
+    "6f60f7ad6e16c0ce": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "5fc4feb885f01dcb0fa01521468ca72de1d2ab2c8d13d847bc5568357ed41465"
+  },
+  "binance_um/_issues/gapfill_daily_markPriceKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 1431,
+   "bytes": 9868,
+   "keys": 0,
+   "schema_hashes": {
+    "6f60f7ad6e16c0ce": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "ccabe63f35a078c8d4887c5cd9ee2d9f746f5e5f57440796a62850ea89323bee"
+  },
+  "binance_um/_issues/gapfill_daily_premiumIndexKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 1430,
+   "bytes": 11056,
+   "keys": 0,
+   "schema_hashes": {
+    "6f60f7ad6e16c0ce": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "c17bcc2fb6c6bb5e0cbff00f42d2071031d53dc7e51ab145b56e7aa676934c82"
+  },
+  "binance_um/_issues/indexPriceKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 20866,
+   "bytes": 49006,
+   "keys": 0,
+   "schema_hashes": {
+    "08ff415a41715f3c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "b797389e76f27ae6ee14271a2078110bfbfc9588bd14b1f92c32979c2b4d5a16"
+  },
+  "binance_um/_issues/klines_1m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 25370,
+   "bytes": 260264,
+   "keys": 0,
+   "schema_hashes": {
+    "41d6498691008496": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "848ad4462218f938b42281e5a79e36c921d078e43af749fdc220521f1c7a2e40"
+  },
+  "binance_um/_issues/markPriceKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 21572,
+   "bytes": 43751,
+   "keys": 0,
+   "schema_hashes": {
+    "08ff415a41715f3c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "ae1ca96e0906071e2cde832a2e9eaeece8df9554cedd71bdfc9731aaa15b75cc"
+  },
+  "binance_um/_issues/metrics": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 683,
+   "bytes": 22918,
+   "keys": 0,
+   "schema_hashes": {
+    "61fbb05e0e488c74": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "e8e62c09aa10d68c5d932a49d4a907d05e11361c51062e408eb9b78a16df28a3"
+  },
+  "binance_um/_issues/premiumIndexKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 20148,
+   "bytes": 160760,
+   "keys": 0,
+   "schema_hashes": {
+    "08ff415a41715f3c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "733449b63774c5e322440ea8de2b9b069a6bb2baff54b7fbaf55c6e4bdc4cda4"
+  },
+  "binance_um/ever_liquid": {
+   "category": "table",
+   "files": 1,
+   "rows": 1065,
+   "bytes": 19984,
+   "keys": 0,
+   "schema_hashes": {
+    "5eec20533ddf10a7": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "905ddca5318ed02c18d271b8b4ecb2cc5cf8fb6144075b402f20d82eb5b5b7b5"
+  },
+  "binance_um/funding": {
+   "category": "market_data",
+   "files": 987,
+   "rows": 2944074,
+   "bytes": 14927203,
+   "keys": 987,
+   "schema_hashes": {
+    "54c442ee62662e8e": 987
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-09-30T23:00:00Z",
+   "listing_sha256": "ae4cd23affee4c6a5eb613a8c205ad5bd2490e5a21b04abbcf440d086ae0fdca"
+  },
+  "binance_um/indexPriceKlines/5m": {
+   "category": "market_data",
+   "files": 21670,
+   "rows": 184681414,
+   "bytes": 5007186024,
+   "keys": 948,
+   "schema_hashes": {
+    "675095d6f9917f25": 21670
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "6bc0a31aa72755da422e31c897fb36b6a51ad0d1d6f06fcc76e7af75ca895396"
+  },
+  "binance_um/klines/1m": {
+   "category": "market_data",
+   "files": 24558,
+   "rows": 1042219227,
+   "bytes": 25398167676,
+   "keys": 1041,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 24558
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:59:00Z",
+   "listing_sha256": "f1beffe0671cca979390788958961e0b241c45af0582d1b758b8c6968f28797c"
+  },
+  "binance_um/klines/5m": {
+   "category": "market_data",
+   "files": 25371,
+   "rows": 214735551,
+   "bytes": 6466491462,
+   "keys": 1065,
+   "schema_hashes": {
+    "9c0861642663c480": 25371
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "fa31de40858407e410cbbb50df83b6e25e6a43356760c51e15a325c9bf74a515"
+  },
+  "binance_um/markPriceKlines/5m": {
+   "category": "market_data",
+   "files": 22505,
+   "rows": 191459127,
+   "bytes": 4166859111,
+   "keys": 963,
+   "schema_hashes": {
+    "675095d6f9917f25": 22505
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "229d29a53b4f597f3bcb5ab03765c92b87f41c06c2f6c60c61bcf10f14195432"
+  },
+  "binance_um/metrics": {
+   "category": "market_data",
+   "files": 2158,
+   "rows": 155696735,
+   "bytes": 5584961089,
+   "keys": 683,
+   "schema_hashes": {
+    "4086bed7a5936d29": 2158
+   },
+   "time_column": "ts",
+   "ts_min": "2020-09-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "fd33f1aa1b8488ba7f05acdae0e708c05c2a08fa0376572d96d92227260e2053"
+  },
+  "binance_um/metrics/completeness": {
+   "category": "auxiliary",
+   "files": 683,
+   "rows": 576994,
+   "bytes": 4304676,
+   "keys": 683,
+   "schema_hashes": {
+    "0a2526888610e486": 683
+   },
+   "time_column": "day_ns",
+   "ts_min": "2020-09-01T00:00:00Z",
+   "ts_max": "2026-10-21T00:00:00Z",
+   "listing_sha256": "8ac15b93cfc294c0fd89a818cb51546fec3aac884cbe4abe36cc912e76cacdc2"
+  },
+  "binance_um/premiumIndexKlines/5m": {
+   "category": "market_data",
+   "files": 20949,
+   "rows": 177332582,
+   "bytes": 3456450952,
+   "keys": 953,
+   "schema_hashes": {
+    "675095d6f9917f25": 20949
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "737e3783cf409f7d2ac2452abc9aebd3aad64e90f3134e940f08964c149a5f8b"
+  },
+  "binance_um/rest/_missing/funding": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 4524,
+   "bytes": 34578,
+   "keys": 0,
+   "schema_hashes": {
+    "519e1f7c3380b7de": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2021-04-27T16:00:00Z",
+   "ts_max": "2026-07-23T07:00:00Z",
+   "listing_sha256": "18a5e01b9bf97e66dfb2d6b6a0b048d3d4a0930870a152b9987c27ece358c4a1"
+  },
+  "binance_um/rest/_missing/indexPriceKlines": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 57495,
+   "bytes": 484401,
+   "keys": 0,
+   "schema_hashes": {
+    "519e1f7c3380b7de": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-19T13:10:00Z",
+   "ts_max": "2026-01-15T15:00:00Z",
+   "listing_sha256": "006310cf00e174ffae9ce4e61092ab939a7afed72a7cb08a2209e94325c9c1ab"
+  },
+  "binance_um/rest/_missing/klines_1m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 15290,
+   "bytes": 92772,
+   "keys": 0,
+   "schema_hashes": {
+    "519e1f7c3380b7de": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-06T08:20:00Z",
+   "ts_max": "2026-09-25T08:12:00Z",
+   "listing_sha256": "453dc8287bd260c8a8c4fb31e5d42ba82a34d8e5d3e91b94ad128428974d8f67"
+  },
+  "binance_um/rest/_missing/markPriceKlines": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 2448,
+   "bytes": 8296,
+   "keys": 0,
+   "schema_hashes": {
+    "519e1f7c3380b7de": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-19T13:10:00Z",
+   "ts_max": "2025-12-23T16:10:00Z",
+   "listing_sha256": "b97d3c5b7eb0aa8c1e0e9f732244ca2c2e9512678c0d42ff2c67d4a009e435c7"
+  },
+  "binance_um/rest/_missing/premiumIndexKlines": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 352514,
+   "bytes": 2053728,
+   "keys": 0,
+   "schema_hashes": {
+    "519e1f7c3380b7de": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-19T13:10:00Z",
+   "ts_max": "2026-01-20T11:10:00Z",
+   "listing_sha256": "e5996bf48bb9c797410785fc322249c32158b3f95c16f5eccf773b70ea41d94c"
+  },
+  "binance_um/rest/funding": {
+   "category": "market_data",
+   "files": 786,
+   "rows": 79370,
+   "bytes": 1948844,
+   "keys": 786,
+   "schema_hashes": {
+    "5a6074c84f4f5730": 786
+   },
+   "time_column": "ts",
+   "ts_min": "2026-10-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:00:00Z",
+   "listing_sha256": "5b292bc462424dcb600d1bc135f4ad9d3e908fbf1844a2b8f42d9a3fbdaaf239"
+  },
+  "binance_um/rest/klines/1m": {
+   "category": "market_data",
+   "files": 47,
+   "rows": 491758,
+   "bytes": 15604349,
+   "keys": 35,
+   "schema_hashes": {
+    "85542c5dd63c8cdf": 47
+   },
+   "time_column": "ts",
+   "ts_min": "2021-01-05T08:06:00Z",
+   "ts_max": "2026-09-25T08:14:00Z",
+   "listing_sha256": "cd80298dd34d86b05f85b714070d8723f566932684abedb8af9ac437c7444086"
+  },
+  "binance_um/rest/markPriceKlines/5m": {
+   "category": "market_data",
+   "files": 22,
+   "rows": 6336,
+   "bytes": 240288,
+   "keys": 22,
+   "schema_hashes": {
+    "dbf32487e40a0591": 22
+   },
+   "time_column": "ts",
+   "ts_min": "2026-10-07T00:00:00Z",
+   "ts_max": "2026-10-18T23:55:00Z",
+   "listing_sha256": "ea6392d664c8e26c0701b19760c59c9c1a3b30191f09cc5d203930a80c4ce6ac"
+  },
+  "binance_um/rest/metrics": {
+   "category": "market_data",
+   "files": 76,
+   "rows": 706,
+   "bytes": 89492,
+   "keys": 76,
+   "schema_hashes": {
+    "8db9dd6823d80bdc": 76
+   },
+   "time_column": "ts",
+   "ts_min": "2026-09-24T00:00:00Z",
+   "ts_max": "2026-10-15T11:00:00Z",
+   "listing_sha256": "1b0a96238ac991217ea1caf451fb4cfca949b6fec2b2f17ba3f3a987a42b2041"
+  },
+  "binance_um/rest/premiumIndexKlines/5m": {
+   "category": "market_data",
+   "files": 80,
+   "rows": 246528,
+   "bytes": 10371021,
+   "keys": 40,
+   "schema_hashes": {
+    "dbf32487e40a0591": 80
+   },
+   "time_column": "ts",
+   "ts_min": "2021-01-25T00:00:00Z",
+   "ts_max": "2026-10-18T23:55:00Z",
+   "listing_sha256": "d28edc1ba5e2c0ac3b6eaae54a2c4eee253e37a56ca01d11971919cc2e84668d"
+  },
+  "bybit/_parts": {
+   "category": "auxiliary",
+   "files": 1396,
+   "rows": 285701,
+   "bytes": 31461327,
+   "keys": 1396,
+   "schema_hashes": {
+    "f4e459e88e68c816": 1396
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T17:19:00Z",
+   "listing_sha256": "f29753666570c85faaf52cefb61527f28c7ab7c2ea96ad1120355f04dd184388"
+  },
+  "bybit/bybit_full_dev": {
+   "category": "table",
+   "files": 1,
+   "rows": 212093,
+   "bytes": 4090073,
+   "keys": 0,
+   "schema_hashes": {
+    "a2f42ac537b2a098": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2025-09-30T20:05:00Z",
+   "listing_sha256": "41cbc0655fb9e1cd78a177654b91cf221e89896817a534ab2dda9056af976504"
+  },
+  "bybit/bybit_full_holdout": {
+   "category": "table",
+   "files": 1,
+   "rows": 68066,
+   "bytes": 1437022,
+   "keys": 0,
+   "schema_hashes": {
+    "a2f42ac537b2a098": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2025-10-01T04:15:00Z",
+   "ts_max": "2026-09-30T12:45:00Z",
+   "listing_sha256": "3a079ca0cd6cccedf6cafe0292e1fbd151ff9463d04b3a7c710fe9f182700b70"
+  },
+  "bybit/bybit_subset": {
+   "category": "table",
+   "files": 1,
+   "rows": 2060,
+   "bytes": 57265,
+   "keys": 0,
+   "schema_hashes": {
+    "a2f42ac537b2a098": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-19T11:03:00Z",
+   "ts_max": "2026-09-14T12:00:00Z",
+   "listing_sha256": "aab9c224f2f845d9c98fb24cefbf614565eedfb8071fdf3643c8b515a5e3b765"
+  },
+  "bybit/eligible_windows": {
+   "category": "table",
+   "files": 1,
+   "rows": 290150,
+   "bytes": 5618117,
+   "keys": 0,
+   "schema_hashes": {
+    "a2f42ac537b2a098": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T12:45:00Z",
+   "listing_sha256": "c6f700d296d0c1e47380b15be346cbf2061c7a5e54ee7755790a75199274e273"
+  },
+  "bybit/verify/verdicts": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 285701,
+   "bytes": 19349722,
+   "keys": 0,
+   "schema_hashes": {
+    "f4e459e88e68c816": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T17:19:00Z",
+   "listing_sha256": "41f5c361c7bf87a4ecbcc6f55186ebc5b05a9359fc94e53875cd0ce41b0f6f81"
+  },
+  "bybit_deriv/_parts/funding": {
+   "category": "auxiliary",
+   "files": 630,
+   "rows": 2535742,
+   "bytes": 19316676,
+   "keys": 630,
+   "schema_hashes": {
+    "8c8719f31bcb3035": 630
+   },
+   "time_column": "ts_ms",
+   "ts_min": "2020-06-01T00:00:00Z",
+   "ts_max": "2026-10-21T10:00:00Z",
+   "listing_sha256": "d4059b32dc5bcf95faa49737c3158f7da92697bf13b91643aa29767c4c55368f"
+  },
+  "bybit_deriv/_parts/oi": {
+   "category": "auxiliary",
+   "files": 630,
+   "rows": 13051566,
+   "bytes": 153534097,
+   "keys": 630,
+   "schema_hashes": {
+    "8c8719f31bcb3035": 630
+   },
+   "time_column": "ts_ms",
+   "ts_min": "2020-09-01T00:00:00Z",
+   "ts_max": "2026-10-21T10:00:00Z",
+   "listing_sha256": "afbfed234afcc3b08427a99996a5784f7f175bea2eaafba5d72a4b9729a114df"
+  },
+  "bybit_deriv/funding": {
+   "category": "table",
+   "files": 1,
+   "rows": 2535742,
+   "bytes": 14386232,
+   "keys": 0,
+   "schema_hashes": {
+    "02c80bd2c16fa714": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-06-01T00:00:00Z",
+   "ts_max": "2026-10-21T10:00:00Z",
+   "listing_sha256": "b2978234ec90edbc1f1156a72cc157bd59fb72134a7064aa8c084ce84dcc12bc"
+  },
+  "bybit_deriv/oi_1h": {
+   "category": "table",
+   "files": 1,
+   "rows": 13051566,
+   "bytes": 111988977,
+   "keys": 0,
+   "schema_hashes": {
+    "02c80bd2c16fa714": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-09-01T00:00:00Z",
+   "ts_max": "2026-10-21T10:00:00Z",
+   "listing_sha256": "549df17c8d4db8c647eb4a5cd27fa2b895a6361a10eb431d7c116c74cd70efea"
+  },
+  "bybit_deriv/symbol_map": {
+   "category": "table",
+   "files": 1,
+   "rows": 630,
+   "bytes": 17669,
+   "keys": 0,
+   "schema_hashes": {
+    "2153a2bc4d8ce4fe": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "1a96c2108422d739def1173b6c59da69b7ca541f30f5b7119ab0129de724a832"
+  },
+  "kraken/_logs/queue_v2": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 416878,
+   "bytes": 11259906,
+   "keys": 0,
+   "schema_hashes": {
+    "8d2f31a6cd740635": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-02T17:25:00Z",
+   "ts_max": "2026-09-30T23:30:00Z",
+   "listing_sha256": "61d028061c2582a733365d80cd3a549462108988740d1d507fb17f444ecd9933"
+  },
+  "kraken/_logs/queue_v3": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 416878,
+   "bytes": 7296990,
+   "keys": 0,
+   "schema_hashes": {
+    "bbc976bc3b92cb09": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-02T17:25:00Z",
+   "ts_max": "2026-09-30T23:30:00Z",
+   "listing_sha256": "1c67bc9f4e7215fecf03fb6f089b79e591d0496734f0721833b584f989b1e59b"
+  },
+  "kraken/_logs/sample_v3": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 1500,
+   "bytes": 42671,
+   "keys": 0,
+   "schema_hashes": {
+    "bbc976bc3b92cb09": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-20T15:05:00Z",
+   "ts_max": "2025-09-21T07:40:00Z",
+   "listing_sha256": "1aa2832f52e79136ede0b2a1d3675d20c7dab22f48fc7b5a2ec04baa17fe1a2b"
+  },
+  "kraken/_logs/verdicts_run1_superseded": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 207,
+   "bytes": 35090,
+   "keys": 0,
+   "schema_hashes": {
+    "d1a4a40acf308ce7": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-03-12T10:46:00Z",
+   "ts_max": "2026-09-30T17:19:00Z",
+   "listing_sha256": "95001b932431cc62a81f2943bd1d7111f3f19ca039a9d90d19f1f29e32e5db5e"
+  },
+  "kraken/asset_map": {
+   "category": "table",
+   "files": 1,
+   "rows": 534,
+   "bytes": 23531,
+   "keys": 0,
+   "schema_hashes": {
+    "46ffe7ad6b483560": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "d61f23424a06741f563885224444988aa77cfe8084fb2318d43a91c5d6beeed8"
+  },
+  "kraken/unverified_eligible": {
+   "category": "table",
+   "files": 1,
+   "rows": 289742,
+   "bytes": 4638707,
+   "keys": 0,
+   "schema_hashes": {
+    "5e3c039a1bdf165d": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T12:45:00Z",
+   "listing_sha256": "aaccbf0aeb30be60cc05c8d8af08ba4bbd90fe0c69a3a435a985f23b9c1d37ab"
+  },
+  "kraken/verify/verdicts": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 10583,
+   "bytes": 998367,
+   "keys": 0,
+   "schema_hashes": {
+    "81937fe29cf12dc9": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-06T09:50:00Z",
+   "ts_max": "2026-09-30T21:40:00Z",
+   "listing_sha256": "324300ba94858428c1770299157c3dafc531e7b705c2e167d8294bc643920026"
+  },
+  "okx/_done": {
+   "category": "auxiliary",
+   "files": 303,
+   "rows": 199724,
+   "bytes": 18255215,
+   "keys": 303,
+   "schema_hashes": {
+    "c02f830d44cdf420": 303
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-29T23:52:00Z",
+   "listing_sha256": "cddd88bb95949a4f4a212c3e9570b578b140d8a260414245a8b19dfe42fd891e"
+  },
+  "okx/bars_5m": {
+   "category": "market_data",
+   "files": 14337,
+   "rows": 4129056,
+   "bytes": 215959519,
+   "keys": 335,
+   "schema_hashes": {
+    "7eda4bb08d0c52c7": 14337
+   },
+   "time_column": "ts",
+   "ts_min": "2021-10-01T00:00:00Z",
+   "ts_max": "2026-09-30T23:55:00Z",
+   "listing_sha256": "f2002b97a55f9430e74c9c92206ecf7633f9beec4ad56de674357840cd297b9e"
+  },
+  "okx/verify/_parts": {
+   "category": "auxiliary",
+   "files": 335,
+   "rows": 4286,
+   "bytes": 3138151,
+   "keys": 335,
+   "schema_hashes": {
+    "c02f830d44cdf420": 335
+   },
+   "time_column": "start_ts",
+   "ts_min": "2021-10-04T15:02:00Z",
+   "ts_max": "2026-09-26T20:56:00Z",
+   "listing_sha256": "fd90730005ebbb7e83079321a01261c369c00ae295cd5d60979e97a9886ea59b"
+  },
+  "okx/verify/eligible_verdicts": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 199724,
+   "bytes": 15410512,
+   "keys": 0,
+   "schema_hashes": {
+    "c02f830d44cdf420": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-29T23:52:00Z",
+   "listing_sha256": "3d86c7ebc1d77085d70122e47b0b8b63e3e9898e6f873d88f478bca548f985de"
+  },
+  "okx/verify/verdicts": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 8608,
+   "bytes": 655579,
+   "keys": 0,
+   "schema_hashes": {
+    "c02f830d44cdf420": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2021-10-04T15:02:00Z",
+   "ts_max": "2026-09-30T21:40:00Z",
+   "listing_sha256": "ef01b44b39ab53aca0cc24620732eea4ecd21d7238882a77db0ea4fd557919f5"
+  },
+  "verify_consensus": {
+   "category": "table",
+   "files": 1,
+   "rows": 294343,
+   "bytes": 8498591,
+   "keys": 0,
+   "schema_hashes": {
+    "fc55bec004448c21": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T21:40:00Z",
+   "listing_sha256": "3554d74b8b32702f44445507d0bc8e8db7467076c73b13bbd9f03dfe2b4479ca"
+  }
+ },
+ "schemas": {
+  "02c80bd2c16fa714": [
+   "binance_instrument_id:string",
+   "bybit_symbol:string",
+   "ts:int64",
+   "value:double",
+   "usable_from_ts:int64"
+  ],
+  "08ff415a41715f3c": [
+   "symbol:string",
+   "month:string",
+   "rows_convert:int64",
+   "rows_out:int64",
+   "unsorted_pairs:int64",
+   "dupes_removed:int64",
+   "dupes_conflict:int64",
+   "missing:int64",
+   "dupes_after:int64",
+   "ohlc_bad:int64",
+   "stuck_runs:int64",
+   "max_gap_ns:int64",
+   "rules:string"
+  ],
+  "0a2526888610e486": [
+   "day:string",
+   "day_ns:int64",
+   "observed:int64",
+   "expected:int64",
+   "completeness:double"
+  ],
+  "2153a2bc4d8ce4fe": [
+   "bybit_symbol:string",
+   "binance_symbol:string",
+   "bybit_contract:string",
+   "bybit_status:string",
+   "launch_ms:int64",
+   "binance_instrument_ids:string"
+  ],
+  "4086bed7a5936d29": [
+   "ts:int64",
+   "sum_open_interest:double",
+   "sum_open_interest_value:double",
+   "count_toptrader_long_short_ratio:double",
+   "sum_toptrader_long_short_ratio:double",
+   "count_long_short_ratio:double",
+   "sum_taker_long_short_vol_ratio:double",
+   "flags:uint32"
+  ],
+  "41d6498691008496": [
+   "symbol:string",
+   "month:string",
+   "rows_convert:int64",
+   "rows_out:int64",
+   "unsorted_pairs:int64",
+   "dupes_removed:int64",
+   "dupes_conflict:int64",
+   "missing:int64",
+   "dupes_after:int64",
+   "ohlc_bad:int64",
+   "zero_vol:int64",
+   "nonpositive:int64",
+   "stuck_runs:int64",
+   "spikes:int64",
+   "max_gap_ns:int64",
+   "rules:string"
+  ],
+  "46ffe7ad6b483560": [
+   "binance_symbol:string",
+   "kraken_pair:string",
+   "quote:string",
+   "multiplier:double",
+   "first_seen:int64",
+   "binance_base:string",
+   "binance_quote:string",
+   "kraken_key:string",
+   "kraken_wsname:string",
+   "note:string"
+  ],
+  "4b24e2a69c5a7ef9": [
+   "symbol:string",
+   "month:string",
+   "rows_convert:int64",
+   "rows_out:int64",
+   "unsorted_pairs:int64",
+   "dupes_removed:int64",
+   "dupes_conflict:int64",
+   "nan:int64",
+   "stuck_runs:int64",
+   "max_gap_ns:int64",
+   "intervals_h:string",
+   "rules:string"
+  ],
+  "519e1f7c3380b7de": [
+   "symbol:string",
+   "family:string",
+   "ts:int64",
+   "minutes:int64",
+   "reason:string"
+  ],
+  "54c442ee62662e8e": [
+   "ts:int64",
+   "funding_interval_hours:int64",
+   "last_funding_rate:double",
+   "flags:uint32"
+  ],
+  "5a6074c84f4f5730": [
+   "ts:int64",
+   "funding_interval_hours:int64",
+   "last_funding_rate:double",
+   "source:string"
+  ],
+  "5e3c039a1bdf165d": [
+   "instrument_id:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "rule:string"
+  ],
+  "5eec20533ddf10a7": [
+   "symbol:string",
+   "max_30d_median_daily_qv:double",
+   "first_date_over_10M:string",
+   "keep_1m:bool"
+  ],
+  "61fbb05e0e488c74": [
+   "symbol:string",
+   "month:string",
+   "rows_convert:int64",
+   "rows_out:int64",
+   "unsorted_pairs:int64",
+   "dupes_removed:int64",
+   "dupes_conflict:int64",
+   "nan:int64",
+   "stuck_runs:int64",
+   "max_gap_ns:int64",
+   "days:int64",
+   "days_below_90:int64",
+   "days_below_50:int64",
+   "rules:string"
+  ],
+  "675095d6f9917f25": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "close_ts:int64",
+   "flags:uint32"
+  ],
+  "6f60f7ad6e16c0ce": [
+   "symbol:string",
+   "month:string",
+   "family:string",
+   "days_missing:int64",
+   "minutes_missing_before:int64",
+   "minutes_filled:int64",
+   "minutes_missing_after:int64",
+   "days_fetched:int64",
+   "days_unavailable:int64",
+   "dupes_conflict:int64"
+  ],
+  "7eda4bb08d0c52c7": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume_base:double",
+   "count:int64",
+   "okx_inst_id:string",
+   "scale_to_binance:double"
+  ],
+  "81937fe29cf12dc9": [
+   "window_id:string",
+   "symbol:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "magnitude_bps:double",
+   "kraken_pair:string",
+   "quote:string",
+   "verdict:string",
+   "strength:string",
+   "kind:string",
+   "detail:string",
+   "dev_bps:double",
+   "dev_close_bps:double",
+   "tol_bps:double",
+   "noise_bps:double",
+   "bmove_bps:double",
+   "kmove_bps:double",
+   "kmove_1m_bps:double",
+   "binance_close:double",
+   "kraken_close:double",
+   "kraken_trades:int64",
+   "valid_bins:int64",
+   "binance_bars:int64",
+   "usdt_usd_bps:double",
+   "mark_dev_bps:double",
+   "aux:string",
+   "requests:int64",
+   "checked_utc:string"
+  ],
+  "85542c5dd63c8cdf": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "close_ts:int64",
+   "volume:double",
+   "quote_volume:double",
+   "count:int64",
+   "taker_buy_volume:double",
+   "taker_buy_quote_volume:double",
+   "source:string"
+  ],
+  "8c8719f31bcb3035": [
+   "bybit_symbol:string",
+   "ts_ms:int64",
+   "value:double"
+  ],
+  "8d2f31a6cd740635": [
+   "symbol:large_string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:large_string",
+   "magnitude_bps:double",
+   "eligible:bool",
+   "traded:bool",
+   "delisted:bool",
+   "instrument_id:large_string",
+   "window_id:large_string",
+   "priority:int64"
+  ],
+  "8db9dd6823d80bdc": [
+   "ts:int64",
+   "sum_open_interest:double",
+   "source:string"
+  ],
+  "96a34fbedb7a1578": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double",
+   "close_ts:int64",
+   "quote_volume:double",
+   "count:int64",
+   "taker_buy_volume:double",
+   "taker_buy_quote_volume:double",
+   "flags:uint32"
+  ],
+  "9c0861642663c480": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double",
+   "quote_volume:double",
+   "count:int64",
+   "taker_buy_volume:double",
+   "taker_buy_quote_volume:double",
+   "n_src:int64",
+   "complete:bool",
+   "filled:bool"
+  ],
+  "a2f42ac537b2a098": [
+   "symbol:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "magnitude_bps:double",
+   "eligible:bool",
+   "instrument_id:string"
+  ],
+  "bbc976bc3b92cb09": [
+   "symbol:large_string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:large_string",
+   "magnitude_bps:double",
+   "eligible:bool",
+   "traded:bool",
+   "delisted:bool",
+   "instrument_id:large_string",
+   "sample_rank:int64"
+  ],
+  "c02f830d44cdf420": [
+   "window_id:string",
+   "symbol:string",
+   "okx_inst_id:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "magnitude_bps:double",
+   "eligible:bool",
+   "instrument_id:string",
+   "verdict:string",
+   "strength:string",
+   "kind:string",
+   "detail:string",
+   "dev_bps:double",
+   "dev_close_bps:double",
+   "tol_bps:double",
+   "noise_bps:double",
+   "bmove_bps:double",
+   "kmove_bps:double",
+   "binance_close:double",
+   "okx_close:double",
+   "okx_trades:int64",
+   "valid_bins:int64",
+   "binance_bars:int64",
+   "days_missing:int64",
+   "bytes:int64",
+   "checked_utc:string"
+  ],
+  "d1a4a40acf308ce7": [
+   "window_id:string",
+   "symbol:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "magnitude_bps:double",
+   "kraken_pair:string",
+   "quote:string",
+   "verdict:string",
+   "kind:string",
+   "detail:string",
+   "dev_bps:double",
+   "dev_close_bps:double",
+   "tol_bps:double",
+   "noise_bps:double",
+   "bmove_bps:double",
+   "kmove_bps:double",
+   "kmove_1m_bps:double",
+   "binance_close:double",
+   "kraken_close:double",
+   "kraken_trades:int64",
+   "valid_bins:int64",
+   "binance_bars:int64",
+   "usdt_usd_bps:double",
+   "mark_dev_bps:double",
+   "aux:string",
+   "requests:int64",
+   "checked_utc:string"
+  ],
+  "dbf32487e40a0591": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "close_ts:int64",
+   "source:string"
+  ],
+  "f4e459e88e68c816": [
+   "window_id:string",
+   "symbol:string",
+   "bybit_symbol:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "magnitude_bps:double",
+   "eligible:bool",
+   "instrument_id:string",
+   "verdict:string",
+   "strength:string",
+   "kind:string",
+   "detail:string",
+   "dev_bps:double",
+   "dev_close_bps:double",
+   "tol_bps:double",
+   "noise_bps:double",
+   "bmove_bps:double",
+   "kmove_bps:double",
+   "binance_close:double",
+   "bybit_close:double",
+   "bybit_trades:int64",
+   "valid_bins:int64",
+   "binance_bars:int64",
+   "days_missing:int64",
+   "bytes:int64",
+   "checked_utc:string"
+  ],
+  "fc55bec004448c21": [
+   "window_id:string",
+   "symbol:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "kraken:string",
+   "bybit:string",
+   "okx:string",
+   "consensus:string"
+  ]
+ }
+}

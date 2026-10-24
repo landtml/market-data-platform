@@ -1,0 +1,4063 @@
+{
+ "format": "parquet-lake-manifest/1",
+ "generated_utc": "2026-10-24T16:51:13Z",
+ "generator": "tools/build_manifest.py",
+ "method": "parquet footers only (num_rows, schema, row-group min/max statistics); no data pages read",
+ "pyarrow": "26.0.0",
+ "totals": {
+  "all_parquet": {
+   "files": 160770,
+   "rows": 2537964196,
+   "bytes": 82344297317
+  },
+  "primary": {
+   "files": 156762,
+   "rows": 2519426106,
+   "bytes": 82055809016
+  },
+  "market_data": {
+   "files": 156628,
+   "rows": 2482899275,
+   "bytes": 81541116149
+  },
+  "table": {
+   "files": 134,
+   "rows": 36526831,
+   "bytes": 514692867
+  },
+  "auxiliary": {
+   "files": 4008,
+   "rows": 18538090,
+   "bytes": 288488301
+  }
+ },
+ "by_source": {
+  "curated": {
+   "all_parquet": {
+    "files": 32,
+    "rows": 351300181,
+    "bytes": 25409514194
+   },
+   "market_data": {
+    "files": 14,
+    "rows": 340519732,
+    "bytes": 25300749109
+   },
+   "table": {
+    "files": 18,
+    "rows": 10780449,
+    "bytes": 108765085
+   },
+   "auxiliary": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   }
+  },
+  "lake": {
+   "all_parquet": {
+    "files": 154690,
+    "rows": 2157688483,
+    "bytes": 55205450478
+   },
+   "market_data": {
+    "files": 150678,
+    "rows": 2122404687,
+    "bytes": 54766219413
+   },
+   "table": {
+    "files": 11,
+    "rows": 16745991,
+    "bytes": 150776168
+   },
+   "auxiliary": {
+    "files": 4001,
+    "rows": 18537805,
+    "bytes": 288454897
+   }
+  },
+  "quarantine": {
+   "all_parquet": {
+    "files": 2,
+    "rows": 112189,
+    "bytes": 4636051
+   },
+   "market_data": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   },
+   "table": {
+    "files": 2,
+    "rows": 112189,
+    "bytes": 4636051
+   },
+   "auxiliary": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   }
+  },
+  "raw": {
+   "all_parquet": {
+    "files": 2778,
+    "rows": 1254665,
+    "bytes": 44675162
+   },
+   "market_data": {
+    "files": 2778,
+    "rows": 1254665,
+    "bytes": 44675162
+   },
+   "table": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   },
+   "auxiliary": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   }
+  },
+  "research": {
+   "all_parquet": {
+    "files": 5,
+    "rows": 701202,
+    "bytes": 27451843
+   },
+   "market_data": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   },
+   "table": {
+    "files": 5,
+    "rows": 701202,
+    "bytes": 27451843
+   },
+   "auxiliary": {
+    "files": 0,
+    "rows": 0,
+    "bytes": 0
+   }
+  },
+  "samples": {
+   "all_parquet": {
+    "files": 3263,
+    "rows": 26907476,
+    "bytes": 1652569589
+   },
+   "market_data": {
+    "files": 3158,
+    "rows": 18720191,
+    "bytes": 1429472465
+   },
+   "table": {
+    "files": 98,
+    "rows": 8187000,
+    "bytes": 223063720
+   },
+   "auxiliary": {
+    "files": 7,
+    "rows": 285,
+    "bytes": 33404
+   }
+  }
+ },
+ "excluded_dirs": [
+  "research/sealed"
+ ],
+ "lake_listing_sha256": "56d3f2ae7dd0362dcaaaf228e51edc5910126b160cb4705a528fbdb08b373ad4",
+ "partitions": {
+  "curated/announcements": {
+   "category": "table",
+   "files": 1,
+   "rows": 2725,
+   "bytes": 349992,
+   "keys": 0,
+   "schema_hashes": {
+    "baad0e89fe1c1c15": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "c976d91f19dc96da8e456d3fea3c198c068f45e1b9448a2aafdc317e9c6048ab"
+  },
+  "curated/context_daily": {
+   "category": "table",
+   "files": 1,
+   "rows": 9789,
+   "bytes": 613819,
+   "keys": 0,
+   "schema_hashes": {
+    "631fa24e4f66856e": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "1aa801b0931bdb47b12cb76a6341530e8043ab0080c1994e1bf776f02593a1d3"
+  },
+  "curated/context_ext_daily": {
+   "category": "table",
+   "files": 1,
+   "rows": 2766901,
+   "bytes": 22985138,
+   "keys": 0,
+   "schema_hashes": {
+    "549675e9954d2764": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "e18feab68a31e517a3afae52e75ea08619a77b79f40905c8f9540f1cbf4e4e33"
+  },
+  "curated/fee_schedule": {
+   "category": "table",
+   "files": 1,
+   "rows": 8,
+   "bytes": 7435,
+   "keys": 0,
+   "schema_hashes": {
+    "83d093db1eb54bcc": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "5316a88c14d493973b4b23f4acb6e77d3d2dc71d95ea28899d334fd927b6d191"
+  },
+  "curated/instrument_events": {
+   "category": "table",
+   "files": 1,
+   "rows": 280,
+   "bytes": 23489,
+   "keys": 0,
+   "schema_hashes": {
+    "1733f2191efa756b": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "b515dad41287a587115413709a9b3bef709a26d31c83b5187963260c18193447"
+  },
+  "curated/instruments": {
+   "category": "table",
+   "files": 1,
+   "rows": 1087,
+   "bytes": 56674,
+   "keys": 0,
+   "schema_hashes": {
+    "67b568aeba7d00c2": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "2ee60ffaef2a15a885e6db08292c3e53edeb5ff3ef28d4a5409ee4f1cc445faf"
+  },
+  "curated/quality/suspicious_windows": {
+   "category": "table",
+   "files": 1,
+   "rows": 2000,
+   "bytes": 37425,
+   "keys": 0,
+   "schema_hashes": {
+    "157261732f8efa63": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-03-12T10:47:00Z",
+   "ts_max": "2026-09-26T20:56:00Z",
+   "listing_sha256": "d8ceda492f4285ef0302314719b4d6d04ec6234109f3c49130aac8ec87d967f4"
+  },
+  "curated/spread_eff_5m": {
+   "category": "table",
+   "files": 1,
+   "rows": 779866,
+   "bytes": 7519902,
+   "keys": 0,
+   "schema_hashes": {
+    "d071edc7849598e1": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "e428d0eb0853d0d9e0346662c8fcaa2bfdfa62a511f12cb90b67509639f0c94d"
+  },
+  "curated/spread_obs_5m": {
+   "category": "table",
+   "files": 1,
+   "rows": 474799,
+   "bytes": 21220549,
+   "keys": 0,
+   "schema_hashes": {
+    "1c4d8a01601dfacd": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "aef662c954889e9297af412181586df5417de5fa4a0c2e7493632ab76330da00"
+  },
+  "curated/tick_history": {
+   "category": "table",
+   "files": 1,
+   "rows": 6390,
+   "bytes": 38868,
+   "keys": 0,
+   "schema_hashes": {
+    "8440cd96c120931d": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "dbbf2fec11788a95ef94f7087b50457e06f44d3a3f7e1ac995b2ee7f69919ae6"
+  },
+  "curated/versions/20261022T165605281796Z": {
+   "category": "market_data",
+   "files": 7,
+   "rows": 170259866,
+   "bytes": 12650365499,
+   "keys": 1,
+   "schema_hashes": {
+    "2ef9beabc151fb90": 7
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "9345c0dc3d7c71981450716ecbb569c9c5eafbf3cd85e15f20f0703d5d3501aa"
+  },
+  "curated/versions/20261022T165605281796Z/aux/announcements": {
+   "category": "table",
+   "files": 1,
+   "rows": 2725,
+   "bytes": 349992,
+   "keys": 0,
+   "schema_hashes": {
+    "baad0e89fe1c1c15": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "b9a168d2aa498d5df8bd45a342509b66a7f446d1483ee9a2993b4d4ad579c96f"
+  },
+  "curated/versions/20261022T165605281796Z/aux/context_ext_daily": {
+   "category": "table",
+   "files": 1,
+   "rows": 2766901,
+   "bytes": 22985138,
+   "keys": 0,
+   "schema_hashes": {
+    "549675e9954d2764": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "da7a86d74cae25c098dff9affd9861c83fe6665334a657dd33184aad8b3325d7"
+  },
+  "curated/versions/20261022T165605281796Z/aux/tick_history": {
+   "category": "table",
+   "files": 1,
+   "rows": 6390,
+   "bytes": 38868,
+   "keys": 0,
+   "schema_hashes": {
+    "8440cd96c120931d": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "51279274d0643754aab5ada163e73d54900fa7732b811200c78081e475fee0b6"
+  },
+  "curated/versions/20261022T165605281796Z/universe_pit": {
+   "category": "table",
+   "files": 1,
+   "rows": 592286,
+   "bytes": 4581899,
+   "keys": 0,
+   "schema_hashes": {
+    "eec6997413771678": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "da9a50e362c932d85be78c7cd95caa03859459f66a5c93d5a2fd290c55724baa"
+  },
+  "curated/versions/20261022T174452075435Z": {
+   "category": "market_data",
+   "files": 7,
+   "rows": 170259866,
+   "bytes": 12650383610,
+   "keys": 1,
+   "schema_hashes": {
+    "2ef9beabc151fb90": 7
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "5c71f2c6bd5917ea4084f4f76e5d3284b077dcdda511a8dc866a4baa179092c3"
+  },
+  "curated/versions/20261022T174452075435Z/aux/announcements": {
+   "category": "table",
+   "files": 1,
+   "rows": 2725,
+   "bytes": 349992,
+   "keys": 0,
+   "schema_hashes": {
+    "baad0e89fe1c1c15": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "a6b199d488949e8dbf0497e80f4ad71c672588bde1457ed47bb5e698844d2a57"
+  },
+  "curated/versions/20261022T174452075435Z/aux/context_ext_daily": {
+   "category": "table",
+   "files": 1,
+   "rows": 2766901,
+   "bytes": 22985138,
+   "keys": 0,
+   "schema_hashes": {
+    "549675e9954d2764": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "9e1a126ba8b5775a205eb5ac7bef67d6036fd4ae1e6336892ba653cf86786527"
+  },
+  "curated/versions/20261022T174452075435Z/aux/tick_history": {
+   "category": "table",
+   "files": 1,
+   "rows": 6390,
+   "bytes": 38868,
+   "keys": 0,
+   "schema_hashes": {
+    "8440cd96c120931d": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "fc39b3b3098652f6571869100bac949c186c02068b3620927fb04f8989b0533b"
+  },
+  "curated/versions/20261022T174452075435Z/universe_pit": {
+   "category": "table",
+   "files": 1,
+   "rows": 592286,
+   "bytes": 4581899,
+   "keys": 0,
+   "schema_hashes": {
+    "eec6997413771678": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "a7cd2b323a7a07f80fb48876e8826a6777edf826078a0fd6a6cea3d305a4d44b"
+  },
+  "lake/binance_spot/_issues/spot_klines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 17132,
+   "bytes": 129241,
+   "keys": 0,
+   "schema_hashes": {
+    "41d6498691008496": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "9bfc644a771b04ce4f214391e7ec3d2a1031d13720ceb4f88ebeb11e91e7ea7c"
+  },
+  "lake/binance_spot/klines_5m": {
+   "category": "market_data",
+   "files": 17132,
+   "rows": 148382223,
+   "bytes": 4426962383,
+   "keys": 353,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 17132
+   },
+   "time_column": "ts",
+   "ts_min": "2019-09-01T00:00:00Z",
+   "ts_max": "2026-09-30T23:55:00Z",
+   "listing_sha256": "4266f197ca5fb2bf7694e711b25cb6534310c8149fec92bee19bc3533294eb06"
+  },
+  "lake/binance_um/_issues/funding": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 987,
+   "bytes": 18399,
+   "keys": 0,
+   "schema_hashes": {
+    "4b24e2a69c5a7ef9": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "450f2ae2c03a04de5239c7a63b6a870a51846b5ccc72c48a317f549ecd40e4b4"
+  },
+  "lake/binance_um/_issues/gapfill_daily_indexPriceKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 1443,
+   "bytes": 10325,
+   "keys": 0,
+   "schema_hashes": {
+    "6f60f7ad6e16c0ce": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "1fa9cc8cca1d71479c1335d7972a341a74642f230347d8bd03f30e6b4746f3c0"
+  },
+  "lake/binance_um/_issues/gapfill_daily_klines_1m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 380,
+   "bytes": 6555,
+   "keys": 0,
+   "schema_hashes": {
+    "6f60f7ad6e16c0ce": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "34cbf6613386910616c0ebeb1b0d07f2851d2c6208f2ae8bc569a1339528bf66"
+  },
+  "lake/binance_um/_issues/gapfill_daily_markPriceKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 1431,
+   "bytes": 9868,
+   "keys": 0,
+   "schema_hashes": {
+    "6f60f7ad6e16c0ce": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "9844f0ef63c5812b7b1a3785d3b6487f8dcd1251f8e79baf11a92dc87734e8cf"
+  },
+  "lake/binance_um/_issues/gapfill_daily_premiumIndexKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 1430,
+   "bytes": 11056,
+   "keys": 0,
+   "schema_hashes": {
+    "6f60f7ad6e16c0ce": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "ecc15c4476efbf195b763d7cde6daa9d368f19d2c70c07a1ee8d166e41853e73"
+  },
+  "lake/binance_um/_issues/indexPriceKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 20866,
+   "bytes": 49006,
+   "keys": 0,
+   "schema_hashes": {
+    "08ff415a41715f3c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "087dae80dc37cbe210c93b79502e2300b8057add7c7c4d26c275b193f5837fd0"
+  },
+  "lake/binance_um/_issues/klines_1m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 25370,
+   "bytes": 260264,
+   "keys": 0,
+   "schema_hashes": {
+    "41d6498691008496": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "d82c0fd8fc212a62e6d00d484d7685d4ada84c46a4908b1690fa0ae03cc70630"
+  },
+  "lake/binance_um/_issues/markPriceKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 21572,
+   "bytes": 43751,
+   "keys": 0,
+   "schema_hashes": {
+    "08ff415a41715f3c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "6e9611a7e37876387d1752e9a6b7cedcfe88bb10c14fffee70c080954467f83d"
+  },
+  "lake/binance_um/_issues/metrics": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 683,
+   "bytes": 22918,
+   "keys": 0,
+   "schema_hashes": {
+    "61fbb05e0e488c74": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "afa7cb108f3d415cd5e7e1b669d13f63ee8b83b239ba654b248c2854fc6712dc"
+  },
+  "lake/binance_um/_issues/premiumIndexKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 20148,
+   "bytes": 160760,
+   "keys": 0,
+   "schema_hashes": {
+    "08ff415a41715f3c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "a1f51d69582181625e587897793bee1789e975372e62f9230b78f35193938e2e"
+  },
+  "lake/binance_um/ever_liquid": {
+   "category": "table",
+   "files": 1,
+   "rows": 1065,
+   "bytes": 19984,
+   "keys": 0,
+   "schema_hashes": {
+    "5eec20533ddf10a7": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "66786127e4ce957d0101e0fc4e8db11d5fd703b62ee931f8624c6d451499caf2"
+  },
+  "lake/binance_um/funding": {
+   "category": "market_data",
+   "files": 987,
+   "rows": 2944074,
+   "bytes": 14927203,
+   "keys": 987,
+   "schema_hashes": {
+    "54c442ee62662e8e": 987
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-09-30T23:00:00Z",
+   "listing_sha256": "aad5c55d31c3ad8bf97a91a4c357acfbb2e92b1160c475053f19c0d3cf6548fd"
+  },
+  "lake/binance_um/indexPriceKlines/5m": {
+   "category": "market_data",
+   "files": 21670,
+   "rows": 184681414,
+   "bytes": 5007186024,
+   "keys": 948,
+   "schema_hashes": {
+    "675095d6f9917f25": 21670
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "73de84b1753476fc4fcc2c96eee2b9e7bebdd2c6dc2443fff707e44c94ec23e8"
+  },
+  "lake/binance_um/klines/1m": {
+   "category": "market_data",
+   "files": 24558,
+   "rows": 1042219227,
+   "bytes": 25398167676,
+   "keys": 1041,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 24558
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:59:00Z",
+   "listing_sha256": "32f2039f4807d6b7507432c401f805161db27188e50061baaad6f85ee49ccd9f"
+  },
+  "lake/binance_um/klines/5m": {
+   "category": "market_data",
+   "files": 25371,
+   "rows": 214735551,
+   "bytes": 6466491462,
+   "keys": 1065,
+   "schema_hashes": {
+    "9c0861642663c480": 25371
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "798506d52d987d58942b0df33c963eb5b1a456868ea821b3da3bf16e500b46f6"
+  },
+  "lake/binance_um/markPriceKlines/5m": {
+   "category": "market_data",
+   "files": 22505,
+   "rows": 191459127,
+   "bytes": 4166859111,
+   "keys": 963,
+   "schema_hashes": {
+    "675095d6f9917f25": 22505
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "4a4432ca559d0c9a0b35eb7832109ca1e6019c1267e74aafc354da5d871a67c0"
+  },
+  "lake/binance_um/metrics": {
+   "category": "market_data",
+   "files": 2158,
+   "rows": 155696735,
+   "bytes": 5584961089,
+   "keys": 683,
+   "schema_hashes": {
+    "4086bed7a5936d29": 2158
+   },
+   "time_column": "ts",
+   "ts_min": "2020-09-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "29ce4d248f56b44ebf6a89cb4615a56fdd4d329f5ea0efe8ca75fc2e2664a59e"
+  },
+  "lake/binance_um/metrics/completeness": {
+   "category": "auxiliary",
+   "files": 683,
+   "rows": 576994,
+   "bytes": 4304676,
+   "keys": 683,
+   "schema_hashes": {
+    "0a2526888610e486": 683
+   },
+   "time_column": "day_ns",
+   "ts_min": "2020-09-01T00:00:00Z",
+   "ts_max": "2026-10-21T00:00:00Z",
+   "listing_sha256": "c0fdc5872dc1b14b49aaa0a9ad4483f069abbb0f6fb0a5145a26e55f1a95aa35"
+  },
+  "lake/binance_um/premiumIndexKlines/5m": {
+   "category": "market_data",
+   "files": 20949,
+   "rows": 177332582,
+   "bytes": 3456450952,
+   "keys": 953,
+   "schema_hashes": {
+    "675095d6f9917f25": 20949
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:55:00Z",
+   "listing_sha256": "f53ca49c311ec7a43914c246da3d320624bb683aae0aad142e318fee993930d8"
+  },
+  "lake/binance_um/rest/_missing/funding": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 4524,
+   "bytes": 34578,
+   "keys": 0,
+   "schema_hashes": {
+    "519e1f7c3380b7de": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2021-04-27T16:00:00Z",
+   "ts_max": "2026-07-23T07:00:00Z",
+   "listing_sha256": "91bf854cd2b5691cc6284606fb27af0be3b6dc358fa3188584b59235ff382b42"
+  },
+  "lake/binance_um/rest/_missing/indexPriceKlines": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 57495,
+   "bytes": 484401,
+   "keys": 0,
+   "schema_hashes": {
+    "519e1f7c3380b7de": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-19T13:10:00Z",
+   "ts_max": "2026-01-15T15:00:00Z",
+   "listing_sha256": "96ce33de8b9194e7834454e915da603d27cf75e4db9d43cd96058b1506ca5f42"
+  },
+  "lake/binance_um/rest/_missing/klines_1m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 15290,
+   "bytes": 92772,
+   "keys": 0,
+   "schema_hashes": {
+    "519e1f7c3380b7de": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-06T08:20:00Z",
+   "ts_max": "2026-09-25T08:12:00Z",
+   "listing_sha256": "085765b61fc499aa8e2418b8c35d934c1c0f961560a4bf3fca30aa03854168d6"
+  },
+  "lake/binance_um/rest/_missing/markPriceKlines": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 2448,
+   "bytes": 8296,
+   "keys": 0,
+   "schema_hashes": {
+    "519e1f7c3380b7de": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-19T13:10:00Z",
+   "ts_max": "2025-12-23T16:10:00Z",
+   "listing_sha256": "93e1c8d71d699b94d8cbb76ac8f2db7544bb5f5fdf488c70dd85ec5f37e0b759"
+  },
+  "lake/binance_um/rest/_missing/premiumIndexKlines": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 352514,
+   "bytes": 2053728,
+   "keys": 0,
+   "schema_hashes": {
+    "519e1f7c3380b7de": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-19T13:10:00Z",
+   "ts_max": "2026-01-20T11:10:00Z",
+   "listing_sha256": "70da2333c459db17c4b2caa056219be4249564c7caaf5d534695a6e2722c313c"
+  },
+  "lake/binance_um/rest/funding": {
+   "category": "market_data",
+   "files": 786,
+   "rows": 79370,
+   "bytes": 1948844,
+   "keys": 786,
+   "schema_hashes": {
+    "5a6074c84f4f5730": 786
+   },
+   "time_column": "ts",
+   "ts_min": "2026-10-01T00:00:00Z",
+   "ts_max": "2026-10-21T23:00:00Z",
+   "listing_sha256": "e10dc13d18c21cf8de7d19cd97ea5aee5d7ca6cc01cbf6bc4e06bcfed6a83525"
+  },
+  "lake/binance_um/rest/klines/1m": {
+   "category": "market_data",
+   "files": 47,
+   "rows": 491758,
+   "bytes": 15604349,
+   "keys": 35,
+   "schema_hashes": {
+    "85542c5dd63c8cdf": 47
+   },
+   "time_column": "ts",
+   "ts_min": "2021-01-05T08:06:00Z",
+   "ts_max": "2026-09-25T08:14:00Z",
+   "listing_sha256": "9a8115cff9c126e3a3ebb1c56768892dd28c82ab1abe8e5c003d46be61a04525"
+  },
+  "lake/binance_um/rest/markPriceKlines/5m": {
+   "category": "market_data",
+   "files": 22,
+   "rows": 6336,
+   "bytes": 240288,
+   "keys": 22,
+   "schema_hashes": {
+    "dbf32487e40a0591": 22
+   },
+   "time_column": "ts",
+   "ts_min": "2026-10-07T00:00:00Z",
+   "ts_max": "2026-10-18T23:55:00Z",
+   "listing_sha256": "9c1d44cee5d08a57bacf9b8f2e741e6135d21d33c74febe3b69b21c9950adc11"
+  },
+  "lake/binance_um/rest/metrics": {
+   "category": "market_data",
+   "files": 76,
+   "rows": 706,
+   "bytes": 89492,
+   "keys": 76,
+   "schema_hashes": {
+    "8db9dd6823d80bdc": 76
+   },
+   "time_column": "ts",
+   "ts_min": "2026-09-24T00:00:00Z",
+   "ts_max": "2026-10-15T11:00:00Z",
+   "listing_sha256": "469bf5019712b2b1e0382aa0ad7d0159e7a695d45c20fc0c68984382a4e304c9"
+  },
+  "lake/binance_um/rest/premiumIndexKlines/5m": {
+   "category": "market_data",
+   "files": 80,
+   "rows": 246528,
+   "bytes": 10371021,
+   "keys": 40,
+   "schema_hashes": {
+    "dbf32487e40a0591": 80
+   },
+   "time_column": "ts",
+   "ts_min": "2021-01-25T00:00:00Z",
+   "ts_max": "2026-10-18T23:55:00Z",
+   "listing_sha256": "234255bba400bf5a08ddb9f5648a51986b522d3a8d5708fae166349a8bff9291"
+  },
+  "lake/bybit/_parts": {
+   "category": "auxiliary",
+   "files": 1396,
+   "rows": 285701,
+   "bytes": 31461327,
+   "keys": 1396,
+   "schema_hashes": {
+    "f4e459e88e68c816": 1396
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T17:19:00Z",
+   "listing_sha256": "fe9672ba8cfe9ad4c4a934528d01110d1ca741765c6ca1e578468cff7d0a9d8e"
+  },
+  "lake/bybit/bybit_full_dev": {
+   "category": "table",
+   "files": 1,
+   "rows": 212093,
+   "bytes": 4090073,
+   "keys": 0,
+   "schema_hashes": {
+    "a2f42ac537b2a098": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2025-09-30T20:05:00Z",
+   "listing_sha256": "5b2d8095bef6959e2e6665895c3c9ba40f90b37519c4bc411cbcb79cd6a4df8a"
+  },
+  "lake/bybit/bybit_full_holdout": {
+   "category": "table",
+   "files": 1,
+   "rows": 68066,
+   "bytes": 1437022,
+   "keys": 0,
+   "schema_hashes": {
+    "a2f42ac537b2a098": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2025-10-01T04:15:00Z",
+   "ts_max": "2026-09-30T12:45:00Z",
+   "listing_sha256": "f105dd758e6a6c55fd383f3e3bae317f2e748fc06e933abf3bfe38b2fbbb3ef4"
+  },
+  "lake/bybit/bybit_subset": {
+   "category": "table",
+   "files": 1,
+   "rows": 2060,
+   "bytes": 57265,
+   "keys": 0,
+   "schema_hashes": {
+    "a2f42ac537b2a098": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-19T11:03:00Z",
+   "ts_max": "2026-09-14T12:00:00Z",
+   "listing_sha256": "09050cb4e7406ff9b77220303053f6e32c590c3a5783221a45012a841c58d397"
+  },
+  "lake/bybit/eligible_windows": {
+   "category": "table",
+   "files": 1,
+   "rows": 290150,
+   "bytes": 5618117,
+   "keys": 0,
+   "schema_hashes": {
+    "a2f42ac537b2a098": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T12:45:00Z",
+   "listing_sha256": "fa6325dd60cb26f84517bf71d4f3bc6a992100a6df89a975b9f6ef3135125666"
+  },
+  "lake/bybit/verify/verdicts": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 285701,
+   "bytes": 19349722,
+   "keys": 0,
+   "schema_hashes": {
+    "f4e459e88e68c816": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T17:19:00Z",
+   "listing_sha256": "40d1e8b8ce750d301ffdea5b46772857fa769ac4651f8899e577b0f010b55dcd"
+  },
+  "lake/bybit_deriv/_parts/funding": {
+   "category": "auxiliary",
+   "files": 630,
+   "rows": 2535742,
+   "bytes": 19316676,
+   "keys": 630,
+   "schema_hashes": {
+    "8c8719f31bcb3035": 630
+   },
+   "time_column": "ts_ms",
+   "ts_min": "2020-06-01T00:00:00Z",
+   "ts_max": "2026-10-21T10:00:00Z",
+   "listing_sha256": "1ba63dced458ab16e4dd89ef59bc59651cb93a1ad3c48cadbc876028d0e168fa"
+  },
+  "lake/bybit_deriv/_parts/oi": {
+   "category": "auxiliary",
+   "files": 630,
+   "rows": 13051566,
+   "bytes": 153534097,
+   "keys": 630,
+   "schema_hashes": {
+    "8c8719f31bcb3035": 630
+   },
+   "time_column": "ts_ms",
+   "ts_min": "2020-09-01T00:00:00Z",
+   "ts_max": "2026-10-21T10:00:00Z",
+   "listing_sha256": "1ebbd08c4a6a6668fd4b6767c0506d37dd5d869b8d321b65ad75b001c83ec791"
+  },
+  "lake/bybit_deriv/funding": {
+   "category": "table",
+   "files": 1,
+   "rows": 2535742,
+   "bytes": 14386232,
+   "keys": 0,
+   "schema_hashes": {
+    "02c80bd2c16fa714": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-06-01T00:00:00Z",
+   "ts_max": "2026-10-21T10:00:00Z",
+   "listing_sha256": "3d724e0f1a98edcecec0bbf052e9a225cde5e1ccfaea1877363205622a96397f"
+  },
+  "lake/bybit_deriv/oi_1h": {
+   "category": "table",
+   "files": 1,
+   "rows": 13051566,
+   "bytes": 111988977,
+   "keys": 0,
+   "schema_hashes": {
+    "02c80bd2c16fa714": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-09-01T00:00:00Z",
+   "ts_max": "2026-10-21T10:00:00Z",
+   "listing_sha256": "700212064b397599eaef23ec39061900e1867c5954fe0b2e24136736b6646f96"
+  },
+  "lake/bybit_deriv/symbol_map": {
+   "category": "table",
+   "files": 1,
+   "rows": 630,
+   "bytes": 17669,
+   "keys": 0,
+   "schema_hashes": {
+    "2153a2bc4d8ce4fe": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "a901f128b20df6831f5b869911d4c0fb182ce3d46f1d22c1f07cf0761346b006"
+  },
+  "lake/kraken/_logs/queue_v2": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 416878,
+   "bytes": 11259906,
+   "keys": 0,
+   "schema_hashes": {
+    "8d2f31a6cd740635": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-02T17:25:00Z",
+   "ts_max": "2026-09-30T23:30:00Z",
+   "listing_sha256": "79b9fccc02bd29fbb7f99e08c507928d2cba0e1319f1b2163ef08374e477d4d4"
+  },
+  "lake/kraken/_logs/queue_v3": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 416878,
+   "bytes": 7296990,
+   "keys": 0,
+   "schema_hashes": {
+    "bbc976bc3b92cb09": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-02T17:25:00Z",
+   "ts_max": "2026-09-30T23:30:00Z",
+   "listing_sha256": "49c8eb5dd0411e4bd6df764779d5b9734ed23ab308e6884d2ecaa53bf068d58d"
+  },
+  "lake/kraken/_logs/sample_v3": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 1500,
+   "bytes": 42671,
+   "keys": 0,
+   "schema_hashes": {
+    "bbc976bc3b92cb09": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-20T15:05:00Z",
+   "ts_max": "2025-09-21T07:40:00Z",
+   "listing_sha256": "d6139ccd38486d3124fa1e3460508ffa7b426dce363e23c19d603a53cd5f3a28"
+  },
+  "lake/kraken/_logs/verdicts_run1_superseded": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 207,
+   "bytes": 35090,
+   "keys": 0,
+   "schema_hashes": {
+    "d1a4a40acf308ce7": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-03-12T10:46:00Z",
+   "ts_max": "2026-09-30T17:19:00Z",
+   "listing_sha256": "07451bcd2e0f78e34c48c7531e54ad95b453ec85194a988b8ed8b1e818d601ee"
+  },
+  "lake/kraken/asset_map": {
+   "category": "table",
+   "files": 1,
+   "rows": 534,
+   "bytes": 23531,
+   "keys": 0,
+   "schema_hashes": {
+    "46ffe7ad6b483560": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "99d0c13c30d222229e620d0753fab94437cb8db342e042868c0485e3f7d64918"
+  },
+  "lake/kraken/unverified_eligible": {
+   "category": "table",
+   "files": 1,
+   "rows": 289742,
+   "bytes": 4638707,
+   "keys": 0,
+   "schema_hashes": {
+    "5e3c039a1bdf165d": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T12:45:00Z",
+   "listing_sha256": "6356acc27a1f1801f60ac9c1c3d6b9803f629ca3f4a9b7802b23633e91db80ff"
+  },
+  "lake/kraken/verify/verdicts": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 10583,
+   "bytes": 998367,
+   "keys": 0,
+   "schema_hashes": {
+    "81937fe29cf12dc9": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-06T09:50:00Z",
+   "ts_max": "2026-09-30T21:40:00Z",
+   "listing_sha256": "9da58d809545d1c68ff71ca0d6bedf625923613cea345e19ee6f45c02ced0190"
+  },
+  "lake/okx/_done": {
+   "category": "auxiliary",
+   "files": 303,
+   "rows": 199724,
+   "bytes": 18255215,
+   "keys": 303,
+   "schema_hashes": {
+    "c02f830d44cdf420": 303
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-29T23:52:00Z",
+   "listing_sha256": "c9fbc5ff94e6ee30f51318766008e181ba77258734a3c7b89e6492063c79d85c"
+  },
+  "lake/okx/bars_5m": {
+   "category": "market_data",
+   "files": 14337,
+   "rows": 4129056,
+   "bytes": 215959519,
+   "keys": 335,
+   "schema_hashes": {
+    "7eda4bb08d0c52c7": 14337
+   },
+   "time_column": "ts",
+   "ts_min": "2021-10-01T00:00:00Z",
+   "ts_max": "2026-09-30T23:55:00Z",
+   "listing_sha256": "347bf870c4cfd0915765b61be7208a8a08c764fdcc1d133c9f903522e5eb369d"
+  },
+  "lake/okx/verify/_parts": {
+   "category": "auxiliary",
+   "files": 335,
+   "rows": 4286,
+   "bytes": 3138151,
+   "keys": 335,
+   "schema_hashes": {
+    "c02f830d44cdf420": 335
+   },
+   "time_column": "start_ts",
+   "ts_min": "2021-10-04T15:02:00Z",
+   "ts_max": "2026-09-26T20:56:00Z",
+   "listing_sha256": "90f4c4507a5ca690d3b85e6497f270e067b5522d78f3133fc87b4b6165643cf5"
+  },
+  "lake/okx/verify/eligible_verdicts": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 199724,
+   "bytes": 15410512,
+   "keys": 0,
+   "schema_hashes": {
+    "c02f830d44cdf420": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-29T23:52:00Z",
+   "listing_sha256": "4d4081d332f061296600a9c4827527c82eef244d29575c0f81a57f959b8efe3b"
+  },
+  "lake/okx/verify/verdicts": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 8608,
+   "bytes": 655579,
+   "keys": 0,
+   "schema_hashes": {
+    "c02f830d44cdf420": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2021-10-04T15:02:00Z",
+   "ts_max": "2026-09-30T21:40:00Z",
+   "listing_sha256": "a5bcf67625d2f998deb7243522dbc8c35bfcce5e94cd67726fd46bb28fdd953f"
+  },
+  "lake/verify_consensus": {
+   "category": "table",
+   "files": 1,
+   "rows": 294343,
+   "bytes": 8498591,
+   "keys": 0,
+   "schema_hashes": {
+    "fc55bec004448c21": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T21:40:00Z",
+   "listing_sha256": "a056dbb415c9994f5bbe07faefff3eb83825ea422424ba7c5e3ba9a3e89bff6b"
+  },
+  "quarantine/cmc/mcap_rank_weekly": {
+   "category": "table",
+   "files": 1,
+   "rows": 102400,
+   "bytes": 4004678,
+   "keys": 0,
+   "schema_hashes": {
+    "f1a0ae7e44e06f10": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "0a3896496b5f0f0e36dbfefd7f7dce32d30ae54a7984416258273520f47f7929"
+  },
+  "quarantine/deribit/pre_rebuild/context_daily": {
+   "category": "table",
+   "files": 1,
+   "rows": 9789,
+   "bytes": 631373,
+   "keys": 0,
+   "schema_hashes": {
+    "058d359962ec3042": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "43009552f086e30db7ac8ccb7e494ed50d46db76f3e35e9925331420ace2dd36"
+  },
+  "raw/spreads/eff_parts": {
+   "category": "market_data",
+   "files": 2719,
+   "rows": 779866,
+   "bytes": 17669219,
+   "keys": 2719,
+   "schema_hashes": {
+    "d071edc7849598e1": 2719
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "9b1cefad3ad0f9bc259423a9312ed9e1ff195720a5c09a3e3c026a2e5df9c4f2"
+  },
+  "raw/spreads/parts": {
+   "category": "market_data",
+   "files": 59,
+   "rows": 474799,
+   "bytes": 27005943,
+   "keys": 59,
+   "schema_hashes": {
+    "1c4d8a01601dfacd": 59
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "ed21fa980e3e536a152eec7f5cc506071a85e4a05409e8aba22cb26dc37d5116"
+  },
+  "research/mini_conviction_trend/daily": {
+   "category": "table",
+   "files": 1,
+   "rows": 347451,
+   "bytes": 8437021,
+   "keys": 0,
+   "schema_hashes": {
+    "b480e6880b3dc52f": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "6bac76069e3b21a2a74deb459779ff2d24cb862ca7b7fa52277dd5f52afa68fe"
+  },
+  "research/mini_conviction_trend/daily_returns": {
+   "category": "table",
+   "files": 1,
+   "rows": 2100,
+   "bytes": 260516,
+   "keys": 0,
+   "schema_hashes": {
+    "718c177860da9ffd": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "a19c2dedf1f18f504bb6b93e6fbf4a48dad8647ce3d65acd52c45dbb4cdf6e9b"
+  },
+  "research/mini_funding_carry/daily": {
+   "category": "table",
+   "files": 1,
+   "rows": 347451,
+   "bytes": 18607001,
+   "keys": 0,
+   "schema_hashes": {
+    "986664e71ece877c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "b7fe850cb55634564c5e383917e40cde442f407b9769ad3ca646ec9d7e80e6fe"
+  },
+  "research/mini_funding_carry/index_hedge/returns": {
+   "category": "table",
+   "files": 1,
+   "rows": 2100,
+   "bytes": 72571,
+   "keys": 0,
+   "schema_hashes": {
+    "30264bce4a7b9721": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "2d627c3b7eb9eb84441e93c38622ee86ee64fe336ebac85c5ff9be3a564623d6"
+  },
+  "research/mini_funding_carry/returns": {
+   "category": "table",
+   "files": 1,
+   "rows": 2100,
+   "bytes": 74734,
+   "keys": 0,
+   "schema_hashes": {
+    "30264bce4a7b9721": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "1330b8da0fd83e0c7623361f4d2e52372cdab77f8e9257bcf7b681e72525f4db"
+  },
+  "samples/a-schema/out/instrument_grid": {
+   "category": "table",
+   "files": 1,
+   "rows": 685,
+   "bytes": 22389,
+   "keys": 0,
+   "schema_hashes": {
+    "09cf0adc74144357": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "688a2df4e7882a170e225456b92d0ee3fc42f53c3f7d38b9b4913d52d50bda00"
+  },
+  "samples/a-schema/out/instrument_ref_join": {
+   "category": "table",
+   "files": 1,
+   "rows": 685,
+   "bytes": 50199,
+   "keys": 0,
+   "schema_hashes": {
+    "139fec011173dfa4": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "f6d411084a62e6bb234181489f4833953d66684c3602b816435b0fd56a47de8a"
+  },
+  "samples/a-schema/out/scan_20261021T165653796074Z_2020_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 80,
+   "bytes": 6465,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "aac17a297eaba44f7058907c908676d06626b29dd19451270282e4d9a1b5caee"
+  },
+  "samples/a-schema/out/scan_20261021T165653796074Z_2021_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 137,
+   "bytes": 6904,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "a42674bb9d56916607a8d44149d51e56c2ef8e67e3f09f6bfc96dbe1c3ef4621"
+  },
+  "samples/a-schema/out/scan_20261021T165653796074Z_2022_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 160,
+   "bytes": 6961,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "382c6b2ae015ac760c04c4cadef6c15eeb4094e3ca05260b1135656cc7d24874"
+  },
+  "samples/a-schema/out/scan_20261021T165653796074Z_2023_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 244,
+   "bytes": 9175,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "dc0d7f3fbec3348d5e798d5e7a7e69551f3c0e79f56c9a8b9de49bdd320dc2fd"
+  },
+  "samples/a-schema/out/scan_20261021T165653796074Z_2024_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 372,
+   "bytes": 11899,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "aca5b361c2b913863416aad8d810b347fd841cb85c5c9d561d55b8c6949bb1ea"
+  },
+  "samples/a-schema/out/scan_20261021T165653796074Z_2025_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 582,
+   "bytes": 16763,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "38d50bd76cffb5e2abc452bb0a672067bf0ee513e9ba0eebe75852a5552a2641"
+  },
+  "samples/a-schema/out/scan_20261021T165653796074Z_2026_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 588,
+   "bytes": 13692,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "8120001c05cdc17ccdd67f5fedd465a3a5858351a7773f490998623136363176"
+  },
+  "samples/a-schema/out/scan_20261021T223831078115Z_2020_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 80,
+   "bytes": 6476,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "f9b5690a848fec82f90cd0672f86c7149220e5a847013cfc21d1458be0c4207f"
+  },
+  "samples/a-schema/out/scan_20261021T223831078115Z_2021_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 137,
+   "bytes": 6954,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "8596c0ab6f7b67d263ba1658f9b677f774c9088199aed2c3f9ed2c13d4df5324"
+  },
+  "samples/a-schema/out/scan_20261021T223831078115Z_2022_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 160,
+   "bytes": 7194,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "d7bfb69cdaf1790e3e2a50b57085510fdb18054b02a45c9af3685ce63f5b6163"
+  },
+  "samples/a-schema/out/scan_20261021T223831078115Z_2023_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 244,
+   "bytes": 9278,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "15886de95a9509aa6fefb4cc6d2876bf7a66932528bbafe2f536b69e7b85efc5"
+  },
+  "samples/a-schema/out/scan_20261021T223831078115Z_2024_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 372,
+   "bytes": 12060,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "5cec10821ec31700df5fcf7b3d75e20c2d3adc0e820059c3e37b3c282caf7beb"
+  },
+  "samples/a-schema/out/scan_20261021T223831078115Z_2025_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 582,
+   "bytes": 17143,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "339eca17cd20b8b65968f1b8ea1fdb106f61c531912c95eeadf06ce9d1f4951d"
+  },
+  "samples/a-schema/out/scan_20261021T223831078115Z_2026_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 588,
+   "bytes": 14421,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "266be20e04f9e5a6f5462f9fcc1dadd2342f901708ae5f24d77f8dd1b4ef6763"
+  },
+  "samples/b-convert/lake/agg_spot": {
+   "category": "table",
+   "files": 1,
+   "rows": 2,
+   "bytes": 2683,
+   "keys": 0,
+   "schema_hashes": {
+    "fe5d22091f6a8a1e": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:00:00Z",
+   "listing_sha256": "a618bdc48c766f1739094d3471cd716647d37237e2c50936badb748efa1741d4"
+  },
+  "samples/b-convert/lake/btc_aggtrades_throughput": {
+   "category": "table",
+   "files": 1,
+   "rows": 1177222,
+   "bytes": 11490985,
+   "keys": 0,
+   "schema_hashes": {
+    "bb3583cc1d37d147": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2025-03-01T00:00:04Z",
+   "ts_max": "2025-03-01T23:59:59Z",
+   "listing_sha256": "b8efee27c374ffd6a8a184ccab438401c00dbda445e052958785c74da273a859"
+  },
+  "samples/b-convert/lake/gil_probe": {
+   "category": "table",
+   "files": 1,
+   "rows": 504953,
+   "bytes": 5677708,
+   "keys": 0,
+   "schema_hashes": {
+    "bb3583cc1d37d147": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:03Z",
+   "ts_max": "2024-01-01T23:59:59Z",
+   "listing_sha256": "e43bcb04c8bc51a9d4fbf29ef2bfe8812a1d999121e7b6569b0224939629fa44"
+  },
+  "samples/b-convert/lake/klines_header": {
+   "category": "table",
+   "files": 1,
+   "rows": 1,
+   "bytes": 3696,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:00:00Z",
+   "listing_sha256": "38ad71fadd3a0693f3f503d9339230009d73922754f009fe290244b8691d79e9"
+  },
+  "samples/b-convert/lake/klines_plain": {
+   "category": "table",
+   "files": 1,
+   "rows": 1,
+   "bytes": 3696,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:00:00Z",
+   "listing_sha256": "1635f11e1d26166f6de24dfdd59bb6eb83edee1d88322ea2a466276531ee714d"
+  },
+  "samples/b-convert/lake/metrics_small": {
+   "category": "table",
+   "files": 1,
+   "rows": 2,
+   "bytes": 3084,
+   "keys": 0,
+   "schema_hashes": {
+    "3f0207e52ab8ab8b": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2023-01-01T00:05:00Z",
+   "ts_max": "2023-01-01T00:10:00Z",
+   "listing_sha256": "9cce9508141fb531d02e9ae45b2eec1bbcdd4210f8612aa26f97653e0765754f"
+  },
+  "samples/b-convert/lake/spot_klines_2025_03_01": {
+   "category": "table",
+   "files": 1,
+   "rows": 1440,
+   "bytes": 99543,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2025-03-01T00:00:00Z",
+   "ts_max": "2025-03-01T23:59:00Z",
+   "listing_sha256": "a8b2cbf5acd6a42cb0ca16e1e2f67d4ebfaee3a1a4ff109806826e404909184a"
+  },
+  "samples/b-convert/lake/um_aggtrades_btc_2025_03_01": {
+   "category": "table",
+   "files": 1,
+   "rows": 1177222,
+   "bytes": 11490985,
+   "keys": 0,
+   "schema_hashes": {
+    "bb3583cc1d37d147": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2025-03-01T00:00:04Z",
+   "ts_max": "2025-03-01T23:59:59Z",
+   "listing_sha256": "f0a4ab9c6b30dd5c9d44450092b2ad42c73617d618f609ce2e99897aef1c2bea"
+  },
+  "samples/b-convert/lake/um_aggtrades_eth_2024_01_01": {
+   "category": "table",
+   "files": 1,
+   "rows": 504953,
+   "bytes": 5677708,
+   "keys": 0,
+   "schema_hashes": {
+    "bb3583cc1d37d147": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:03Z",
+   "ts_max": "2024-01-01T23:59:59Z",
+   "listing_sha256": "5c32a9d1970c738d1db2f7d7a5d57cee93179ab63972cbd397752f8bb739c6f6"
+  },
+  "samples/b-convert/lake/um_funding_2024_01": {
+   "category": "table",
+   "files": 1,
+   "rows": 93,
+   "bytes": 1998,
+   "keys": 0,
+   "schema_hashes": {
+    "83d46fcf4d40f017": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-31T16:00:00Z",
+   "listing_sha256": "ce7369c88a39369d00ae9707f58253f5c4929ce3c59c1c16107e0458129986c1"
+  },
+  "samples/b-convert/lake/um_klines_2020_01_01": {
+   "category": "table",
+   "files": 1,
+   "rows": 1440,
+   "bytes": 84211,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2020-01-01T23:59:00Z",
+   "listing_sha256": "a628293542ef6515b9ee3a810e75d3519c209546c9aa96ea0ab1334814bb5484"
+  },
+  "samples/b-convert/lake/um_klines_2025_03_01": {
+   "category": "table",
+   "files": 1,
+   "rows": 1440,
+   "bytes": 85145,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2025-03-01T00:00:00Z",
+   "ts_max": "2025-03-01T23:59:00Z",
+   "listing_sha256": "530123760f341617c86ebcd7b9c1ba2de26e21e02fef0edeafcee003d17676bc"
+  },
+  "samples/b-convert/lake/um_metrics_2024_01_01": {
+   "category": "table",
+   "files": 1,
+   "rows": 288,
+   "bytes": 18969,
+   "keys": 0,
+   "schema_hashes": {
+    "3f0207e52ab8ab8b": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T23:55:00Z",
+   "listing_sha256": "ce5b566d88babdf3cdfdeed8d366f013e7f67aeff09f9bc24779e99955559bd1"
+  },
+  "samples/b-convert/lake/unit_ms": {
+   "category": "table",
+   "files": 1,
+   "rows": 2,
+   "bytes": 3714,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:01:00Z",
+   "listing_sha256": "7dedc46272db5a9f454b96896d544464b96573c87ff50cf6b47db67520fadbc8"
+  },
+  "samples/b-convert/lake/unit_ns": {
+   "category": "table",
+   "files": 1,
+   "rows": 2,
+   "bytes": 3714,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:01:00Z",
+   "listing_sha256": "cd2050f7ae540716c880eda46ed4a86173145eb90467c294e1c160911ecc187a"
+  },
+  "samples/b-convert/lake/unit_s": {
+   "category": "table",
+   "files": 1,
+   "rows": 2,
+   "bytes": 3714,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:01:00Z",
+   "listing_sha256": "8f13a3f6e942fe8b24de3f723cf50af0d59fcef590ebf45eb2f2f87cabe9d5f9"
+  },
+  "samples/b-convert/lake/unit_us": {
+   "category": "table",
+   "files": 1,
+   "rows": 2,
+   "bytes": 3714,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:01:00Z",
+   "listing_sha256": "d45db253a3b71875ca2ddbf7bdfbd04db284b1ac3b164e876cbf8c650a476e16"
+  },
+  "samples/b-convert/qcore/target/convert-tests/agg_fut": {
+   "category": "table",
+   "files": 1,
+   "rows": 3,
+   "bytes": 2494,
+   "keys": 0,
+   "schema_hashes": {
+    "bb3583cc1d37d147": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:00:00Z",
+   "listing_sha256": "6a278579f2b11c0e16bb0764d716f6676ed673825580bb87c139007faaf9d178"
+  },
+  "samples/b-convert/qcore/target/convert-tests/agg_spot": {
+   "category": "table",
+   "files": 1,
+   "rows": 3,
+   "bytes": 2725,
+   "keys": 0,
+   "schema_hashes": {
+    "fe5d22091f6a8a1e": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:00:00Z",
+   "listing_sha256": "7dbacb631d0555f559d91fb6e423e5f4a70ff608882c1e93906357cba857e2e2"
+  },
+  "samples/b-convert/qcore/target/convert-tests/bookticker": {
+   "category": "table",
+   "files": 1,
+   "rows": 3,
+   "bytes": 2596,
+   "keys": 0,
+   "schema_hashes": {
+    "9df1710f39a320f5": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:00:00Z",
+   "listing_sha256": "0180906f6fdf6e1fb69f8b633e6b8f42a56c52537f0ae6bfa33e9508fa08cf30"
+  },
+  "samples/b-convert/qcore/target/convert-tests/funding": {
+   "category": "table",
+   "files": 1,
+   "rows": 3,
+   "bytes": 1282,
+   "keys": 0,
+   "schema_hashes": {
+    "83d46fcf4d40f017": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T16:00:00Z",
+   "listing_sha256": "a9b1b6ead5efcc8a3aacc8a69c8e5666b880b457f63b67c779bb3cd9e30c30d7"
+  },
+  "samples/b-convert/qcore/target/convert-tests/klines": {
+   "category": "table",
+   "files": 1,
+   "rows": 3,
+   "bytes": 3902,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:02:00Z",
+   "listing_sha256": "79f7dc483f4450100befec5ec102cb4389f8dd02be537ff2e0a24344c3fa92f0"
+  },
+  "samples/b-convert/qcore/target/convert-tests/klines_header": {
+   "category": "table",
+   "files": 1,
+   "rows": 1,
+   "bytes": 3696,
+   "keys": 0,
+   "schema_hashes": {
+    "620312e2f9965409": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:00:00Z",
+   "listing_sha256": "5558e229eb39510c34012abb47f12e28e03749039410104f662565917a52b96c"
+  },
+  "samples/b-convert/qcore/target/convert-tests/metrics": {
+   "category": "table",
+   "files": 1,
+   "rows": 3,
+   "bytes": 3147,
+   "keys": 0,
+   "schema_hashes": {
+    "3f0207e52ab8ab8b": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2023-01-01T00:05:00Z",
+   "ts_max": "2023-01-01T00:15:00Z",
+   "listing_sha256": "8503dd106451c142291f95c0d65fc0cec7f7c7a690c76f2806d78f9a3f26ca61"
+  },
+  "samples/b-convert/qcore/target/convert-tests/ohlc_binance_index_klines": {
+   "category": "table",
+   "files": 1,
+   "rows": 3,
+   "bytes": 2167,
+   "keys": 0,
+   "schema_hashes": {
+    "e72b58b0478c439a": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:02:00Z",
+   "listing_sha256": "fd0b8beeeec0a31156c60240f787cc404562dbdd533c777fad3745993fed43e4"
+  },
+  "samples/b-convert/qcore/target/convert-tests/ohlc_binance_mark_klines": {
+   "category": "table",
+   "files": 1,
+   "rows": 3,
+   "bytes": 2167,
+   "keys": 0,
+   "schema_hashes": {
+    "e72b58b0478c439a": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:02:00Z",
+   "listing_sha256": "0b4ac4a1ed4c7ac16df14e9211c388c738a78640c2c41de8c24855206de92b9f"
+  },
+  "samples/b-convert/qcore/target/convert-tests/ohlc_binance_premium_klines": {
+   "category": "table",
+   "files": 1,
+   "rows": 3,
+   "bytes": 2167,
+   "keys": 0,
+   "schema_hashes": {
+    "e72b58b0478c439a": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:02:00Z",
+   "listing_sha256": "1c373ee2ec3c58752ec0350589a653590bfd5a0e9721dd2219c2e2c1fce34cb3"
+  },
+  "samples/b-convert/qcore/target/convert-tests/trades": {
+   "category": "table",
+   "files": 1,
+   "rows": 3,
+   "bytes": 2072,
+   "keys": 0,
+   "schema_hashes": {
+    "80725886e2313953": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-01T00:00:00Z",
+   "listing_sha256": "e06bd7c90bfdcfa3f93325eb1cfb33c95d58009d54861ef1a3c508d0272f4261"
+  },
+  "samples/b-costfit/depth/out": {
+   "category": "market_data",
+   "files": 2063,
+   "rows": 591430,
+   "bytes": 396723333,
+   "keys": 2063,
+   "schema_hashes": {
+    "f3040cfd4f8b8921": 2063
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "808cf4fa07751d9234ded2b07783859947d74105f740c18d82a8ad9dc1d7092c"
+  },
+  "samples/b-costfit/depth/out_holdout": {
+   "category": "market_data",
+   "files": 803,
+   "rows": 231264,
+   "bytes": 159821411,
+   "keys": 803,
+   "schema_hashes": {
+    "f3040cfd4f8b8921": 803
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "df530dc9765d65393dc4ca60061d6e907eac8c456dff37dfaeed46f3bd02a5ae"
+  },
+  "samples/b-decay/bench_cpu_small": {
+   "category": "table",
+   "files": 1,
+   "rows": 180,
+   "bytes": 17427,
+   "keys": 0,
+   "schema_hashes": {
+    "19bb2a04a19becd8": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "3f1e4f5be59a2c8728685570b3d8cadbb954f4a2a74879a28994d8aa6c3176ed"
+  },
+  "samples/b-decay/bench_gpu_f64": {
+   "category": "table",
+   "files": 1,
+   "rows": 180,
+   "bytes": 17427,
+   "keys": 0,
+   "schema_hashes": {
+    "19bb2a04a19becd8": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "fd555c83e6c2309d0c3ea21a21796fa2843e46541990bd257ceaa9c7fcc647f5"
+  },
+  "samples/b-decay/bench_gpu_full": {
+   "category": "table",
+   "files": 1,
+   "rows": 180,
+   "bytes": 17427,
+   "keys": 0,
+   "schema_hashes": {
+    "19bb2a04a19becd8": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "2b83342fed4f53e3716d531cb177cc7fb87d953d4dcb7b4d1948cfb1282fb21f"
+  },
+  "samples/b-harness/tmp/active_counts_5m_final": {
+   "category": "table",
+   "files": 1,
+   "rows": 604800,
+   "bytes": 4540027,
+   "keys": 0,
+   "schema_hashes": {
+    "d41f0efffd788fd9": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "e79b76455856d8b0bf74b9489aac1d53339fe4459ba398af0d45e5c90eed3dc2"
+  },
+  "samples/b-panel/subset": {
+   "category": "market_data",
+   "files": 7,
+   "rows": 2421919,
+   "bytes": 113835499,
+   "keys": 1,
+   "schema_hashes": {
+    "aaed539a632dc77f": 7
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-18T23:55:00Z",
+   "listing_sha256": "3bd493e17017db8551fb4ee99ac3cefa5ea97c149b79944a2fde30138533bcdf"
+  },
+  "samples/b-panel/subset/universe_pit": {
+   "category": "table",
+   "files": 1,
+   "rows": 8419,
+   "bytes": 77259,
+   "keys": 0,
+   "schema_hashes": {
+    "eec6997413771678": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "13e03649acf11f46786ff31b1200f87420cbc270f5fbf8b6855d2897043af531"
+  },
+  "samples/b-pipe/scratch/enc_A_current_zstd3_delta": {
+   "category": "table",
+   "files": 1,
+   "rows": 44640,
+   "bytes": 1529250,
+   "keys": 0,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-31T23:59:00Z",
+   "listing_sha256": "f972ca69cda56b241b235497dc64bac66e786e28d46723faf492e21222fa93ce"
+  },
+  "samples/b-pipe/scratch/enc_B_bss_floats_zstd3": {
+   "category": "table",
+   "files": 1,
+   "rows": 44640,
+   "bytes": 1786852,
+   "keys": 0,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-31T23:59:00Z",
+   "listing_sha256": "4cf2cbed83651e87fcbc38415ad6da12f693ef9ce1742bdf5454c6ddda790d33"
+  },
+  "samples/b-pipe/scratch/enc_C_bss_floats_zstd9": {
+   "category": "table",
+   "files": 1,
+   "rows": 44640,
+   "bytes": 1781735,
+   "keys": 0,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-31T23:59:00Z",
+   "listing_sha256": "2ef3f0d05bfd764ea98d18c090d7e7ca7391bb92e99a4743f70fe2c155d5c270"
+  },
+  "samples/b-pipe/scratch/enc_D_default_zstd9_nodict": {
+   "category": "table",
+   "files": 1,
+   "rows": 44640,
+   "bytes": 1769323,
+   "keys": 0,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-31T23:59:00Z",
+   "listing_sha256": "e54b8e0b216f2aadb129220f60e7b91af1c8941e2308eaa6c383460f0e462127"
+  },
+  "samples/b-pipe/scratch/enc_E_bss_floats_zstd3_dict_on": {
+   "category": "table",
+   "files": 1,
+   "rows": 44640,
+   "bytes": 1807826,
+   "keys": 0,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-31T23:59:00Z",
+   "listing_sha256": "2cae669c8ca9b659f39ca513042a89c6a03cf0d63589c7789d96dfd991d926a8"
+  },
+  "samples/b-pipe/scratch/idx/_issues/indexPriceKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 81,
+   "bytes": 4988,
+   "keys": 0,
+   "schema_hashes": {
+    "08ff415a41715f3c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "ea07bfc6fd608bd4dabeeead8cbe52244a8dfc997abc90e6d7db046f98561f09"
+  },
+  "samples/b-pipe/scratch/idx/indexPriceKlines/5m": {
+   "category": "market_data",
+   "files": 81,
+   "rows": 706451,
+   "bytes": 17651758,
+   "keys": 1,
+   "schema_hashes": {
+    "675095d6f9917f25": 81
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-09-30T23:55:00Z",
+   "listing_sha256": "e7f8f59aff50b159b4582c91e09f3f3ac3b443c090809dfc5f6bad31fd219797"
+  },
+  "samples/b-pipe/scratch/lake_smoke/lake/_issues/funding": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 1,
+   "bytes": 3749,
+   "keys": 0,
+   "schema_hashes": {
+    "4b24e2a69c5a7ef9": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "e374df30e4a5d20e5037a3a2956af274b279eccc975b0daf63318c4cd8caca1b"
+  },
+  "samples/b-pipe/scratch/lake_smoke/lake/_issues/klines_1m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 2,
+   "bytes": 5334,
+   "keys": 0,
+   "schema_hashes": {
+    "41d6498691008496": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "f3067329b52593e6620f8c29902c763f1149c2e7247e05fe32fc095745e14953"
+  },
+  "samples/b-pipe/scratch/lake_smoke/lake/_issues/metrics": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 1,
+   "bytes": 4470,
+   "keys": 0,
+   "schema_hashes": {
+    "61fbb05e0e488c74": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "5c6e050285a080950b441a486718f566aebba3aee613caa6acee576bbc4d577c"
+  },
+  "samples/b-pipe/scratch/lake_smoke/lake/_issues/premiumIndexKlines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 81,
+   "bytes": 6481,
+   "keys": 0,
+   "schema_hashes": {
+    "08ff415a41715f3c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "391309576b5b902cead671d4d346741dd04e6d86add9ce710ed55feb77c0b9ac"
+  },
+  "samples/b-pipe/scratch/lake_smoke/lake/funding": {
+   "category": "market_data",
+   "files": 1,
+   "rows": 180,
+   "bytes": 2051,
+   "keys": 1,
+   "schema_hashes": {
+    "54c442ee62662e8e": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-02-29T16:00:00Z",
+   "listing_sha256": "5a120608882005aa5d0893f1b8ac9c9b0ee72c55556ac2d9190a3b3760a0380a"
+  },
+  "samples/b-pipe/scratch/lake_smoke/lake/klines/1m": {
+   "category": "market_data",
+   "files": 2,
+   "rows": 86400,
+   "bytes": 2946167,
+   "keys": 1,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 2
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-02-29T23:59:00Z",
+   "listing_sha256": "fc231b580a1ec29b60698d6408ccaf37c31c6714606d4ce1f93400e81e5b5692"
+  },
+  "samples/b-pipe/scratch/lake_smoke/lake/klines/5m": {
+   "category": "market_data",
+   "files": 2,
+   "rows": 17280,
+   "bytes": 657295,
+   "keys": 1,
+   "schema_hashes": {
+    "9c0861642663c480": 2
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-02-29T23:55:00Z",
+   "listing_sha256": "3192d07c448a7e7a3458a0935a971608c15f721919213a0eb6709bd97c8e902a"
+  },
+  "samples/b-pipe/scratch/lake_smoke/lake/metrics": {
+   "category": "market_data",
+   "files": 1,
+   "rows": 2592,
+   "bytes": 109085,
+   "keys": 1,
+   "schema_hashes": {
+    "4086bed7a5936d29": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-09T23:55:00Z",
+   "listing_sha256": "72b7f75703b3dfc7ed9675296f958f461d6852da4798ced5ee5595a967090e81"
+  },
+  "samples/b-pipe/scratch/lake_smoke/lake/metrics/completeness": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 9,
+   "bytes": 1658,
+   "keys": 1,
+   "schema_hashes": {
+    "0a2526888610e486": 1
+   },
+   "time_column": "day_ns",
+   "ts_min": "2024-01-01T00:00:00Z",
+   "ts_max": "2024-01-09T00:00:00Z",
+   "listing_sha256": "c70bbc80ca4740adc8eaa28ffb4e8ee1766190ea595506946d6ddd97353676bb"
+  },
+  "samples/b-pipe/scratch/lake_smoke/lake/premiumIndexKlines/5m": {
+   "category": "market_data",
+   "files": 81,
+   "rows": 707582,
+   "bytes": 20338637,
+   "keys": 1,
+   "schema_hashes": {
+    "675095d6f9917f25": 81
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-09-30T23:55:00Z",
+   "listing_sha256": "8ae78282e33a043d452c6c698eed14489e165c81a02fa215782842345225fc41"
+  },
+  "samples/b-pipe/scratch/spot/_issues/spot_klines_5m": {
+   "category": "auxiliary",
+   "files": 1,
+   "rows": 110,
+   "bytes": 6724,
+   "keys": 0,
+   "schema_hashes": {
+    "41d6498691008496": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "e05df0ea7bb3e1b3a2c71ab70cd85342f439b94b8156c95218492560b5c749d3"
+  },
+  "samples/b-pipe/scratch/spot/klines_5m": {
+   "category": "market_data",
+   "files": 110,
+   "rows": 957865,
+   "bytes": 41927172,
+   "keys": 1,
+   "schema_hashes": {
+    "96a34fbedb7a1578": 110
+   },
+   "time_column": "ts",
+   "ts_min": "2017-08-17T04:00:00Z",
+   "ts_max": "2026-09-30T23:55:00Z",
+   "listing_sha256": "8a443e17963583539d1c771151658aef4408a8b1101541f2494b6fc9ea21faec"
+  },
+  "samples/b-smoke/panel": {
+   "category": "market_data",
+   "files": 7,
+   "rows": 12997228,
+   "bytes": 675460057,
+   "keys": 1,
+   "schema_hashes": {
+    "aaed539a632dc77f": 7
+   },
+   "time_column": "ts",
+   "ts_min": "2020-01-01T00:00:00Z",
+   "ts_max": "2026-10-18T23:55:00Z",
+   "listing_sha256": "1d53599504a7baeefdac970953bd41accd6741c5348ac31cf60ddcaca61d53f9"
+  },
+  "samples/b-smoke/panel/universe_pit": {
+   "category": "table",
+   "files": 1,
+   "rows": 45156,
+   "bytes": 345107,
+   "keys": 0,
+   "schema_hashes": {
+    "eec6997413771678": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "7094a90dd15f1ff1530dfe4ebf168b65d6604bdbaecf5f51eaaeea18f77adb46"
+  },
+  "samples/b-smoke/sealed/decay_map": {
+   "category": "table",
+   "files": 1,
+   "rows": 180,
+   "bytes": 17755,
+   "keys": 0,
+   "schema_hashes": {
+    "19bb2a04a19becd8": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "546291ed93ddd599d6b191a0915d5f8396f627d67ae73cd1bcf3d61c1063b930"
+  },
+  "samples/b-smoke/sealed/events_series": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 2943409,
+   "keys": 0,
+   "schema_hashes": {
+    "6281b9f21fb22298": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "ae19a2496d018ab19e8ecfdacf265a849efccdf91b455766d37ec04230408773"
+  },
+  "samples/b-smoke/sealed/trial_diag_ridge48_2024_cap1000000000000": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10510990,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "8ee9f45e642a7a252cae918384b05fcf4edb051818d597a6699f3e3f6162fd87"
+  },
+  "samples/b-smoke/sealed/trial_diag_ridge48b_2024_cap10000": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10510989,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "0b48ea4671c9b1a4546f8e071501e468f4117e828d5c471d9e6eb6c3e2fa5aff"
+  },
+  "samples/b-smoke/sealed/trial_lgbm48_2024_cap1000000": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10510990,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "a9eba7fb6f79809ad454441d6d76fa43905a3b069644dfae26cea0c5713708f7"
+  },
+  "samples/b-smoke/sealed/trial_lgbm48c4_2024_cap10000": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10510992,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "6a864a3e9a1f079e8cae2a62f9aa0c26629a4a15175b86511d28541b3c3ef090"
+  },
+  "samples/b-smoke/sealed/trial_m_2024_cap10000": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10510988,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "105642368b36398b8db601a2c7eab60872d302d312922eeaa00ea531699b79cf"
+  },
+  "samples/b-smoke/sealed/trial_mlp48_2024_cap1000000": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10510989,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "988dd77cdec01d489711941d9033c75589eb8a1ddbef2d9a775f6273d8b9ae42"
+  },
+  "samples/b-smoke/sealed/trial_r_2024_cap100000": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10510989,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "76ff0a59d1efb9c83ee2159c4aaf5b1751280df3433bb6394a05409ad1d18291"
+  },
+  "samples/b-smoke/sealed/trial_ridge288_2024_cap1000000": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10341412,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "1293efe61fe1f4ab0db8afb83c2e57b7c5e6add5438226e593b6bdfa497bc0da"
+  },
+  "samples/b-smoke/sealed/trial_ridge288c4_2024_cap10000": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10341408,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "437a051c21ac247f23fb5f62a337af74a86012e384fee9b9c41819510dfc801d"
+  },
+  "samples/b-smoke/sealed/trial_ridge48_2024": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10510989,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "f5059ef8b637e78827dbab8b95bb96ac2243cfae931309bff2ffee97c3f55a63"
+  },
+  "samples/b-smoke/sealed/trial_ridge48c4_2024_cap10000": {
+   "category": "table",
+   "files": 1,
+   "rows": 183744,
+   "bytes": 10510989,
+   "keys": 0,
+   "schema_hashes": {
+    "fddc7d871cd9b23c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "e6fa12fcc5b31dbafb2cdb4b696ed8b25936976745ad72f7ada13c29b70776e8"
+  },
+  "samples/lead/backup_cat_1654/instrument_events": {
+   "category": "table",
+   "files": 1,
+   "rows": 272,
+   "bytes": 23032,
+   "keys": 0,
+   "schema_hashes": {
+    "1733f2191efa756b": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "1585a2d5b2b5b022bbb91546a27d63db8eaddb543d5df07e0a1d5db94c09eba1"
+  },
+  "samples/lead/backup_cat_1654/instruments": {
+   "category": "table",
+   "files": 1,
+   "rows": 1083,
+   "bytes": 56518,
+   "keys": 0,
+   "schema_hashes": {
+    "67b568aeba7d00c2": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "0f339b2e24bdeccf0a8a2972e464cd2f8652eef7e15572b757001f15649fde7c"
+  },
+  "samples/lead/instrument_events": {
+   "category": "table",
+   "files": 1,
+   "rows": 273,
+   "bytes": 23077,
+   "keys": 0,
+   "schema_hashes": {
+    "1733f2191efa756b": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "587ff6eca1ef1b5e236e1b55a7c5dd06f39162cc6bb7ddb2bd39b5eafad9c379"
+  },
+  "samples/lead/instruments": {
+   "category": "table",
+   "files": 1,
+   "rows": 1087,
+   "bytes": 56698,
+   "keys": 0,
+   "schema_hashes": {
+    "67b568aeba7d00c2": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "29205807809065d9d18bf4185e77a1bb420111e12fe85befee82522bb1c73fad"
+  },
+  "samples/lead/instruments.before_m10": {
+   "category": "table",
+   "files": 1,
+   "rows": 1087,
+   "bytes": 56698,
+   "keys": 0,
+   "schema_hashes": {
+    "67b568aeba7d00c2": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "b850e17451466438e8e3b907ef5b0cd84c01e891fe8788b613f12667a118f525"
+  },
+  "samples/lead/suspicious_windows.round5": {
+   "category": "table",
+   "files": 1,
+   "rows": 2000,
+   "bytes": 37425,
+   "keys": 0,
+   "schema_hashes": {
+    "157261732f8efa63": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-03-12T10:47:00Z",
+   "ts_max": "2026-09-26T20:56:00Z",
+   "listing_sha256": "c7b0341b069fbab34c2f75beeffbd66c199ca1adbe11c433cad0c09390fb7f80"
+  },
+  "samples/r-files/out/scan_20261022T165605281796Z_2020_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 80,
+   "bytes": 6471,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "d30a01ece67a1b090ea67d91fd5063bf6b0a49a61af16dad7104791969e43b32"
+  },
+  "samples/r-files/out/scan_20261022T165605281796Z_2021_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 137,
+   "bytes": 6909,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "29b897cdc4e60772f68c8fa998d0d3cb9e79d79b18ffebaa0a12747c32bc7c11"
+  },
+  "samples/r-files/out/scan_20261022T165605281796Z_2022_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 161,
+   "bytes": 7303,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "39d1fc1722a601b56238be99dedbc3fbc44b296b82ad9dd40fa13a462ec7342e"
+  },
+  "samples/r-files/out/scan_20261022T165605281796Z_2023_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 244,
+   "bytes": 9289,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "00fc88c0ef2ada71aafcf0d0c8ea869fe031e278e90dffad1256880740701c57"
+  },
+  "samples/r-files/out/scan_20261022T165605281796Z_2024_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 371,
+   "bytes": 12158,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "a971ee571e4ae42e3f2a4e357ee788c35fdfa2a9f9865736482099aaf941c951"
+  },
+  "samples/r-files/out/scan_20261022T165605281796Z_2025_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 584,
+   "bytes": 17223,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "1a78ba37d331c0f91c1b5e6b7635fdfbb6ea21f04f6df4b5dea20ca0a86649fb"
+  },
+  "samples/r-files/out/scan_20261022T165605281796Z_2026_inst": {
+   "category": "table",
+   "files": 1,
+   "rows": 588,
+   "bytes": 14533,
+   "keys": 0,
+   "schema_hashes": {
+    "effb5b1b7a75fd26": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "447356679484910398d3b14f820ba15b6c29d4db0e75fb378b386da47e6654b5"
+  },
+  "samples/u-m9/class2_zip_counts": {
+   "category": "table",
+   "files": 1,
+   "rows": 1615,
+   "bytes": 19328,
+   "keys": 0,
+   "schema_hashes": {
+    "8efbecc83ad3d1b7": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "7df1bbaa2a8f215a76a36eb58289f56182c8026b0e7e1bdc84878135a8601ebb"
+  },
+  "samples/u-m9/fix5_counts": {
+   "category": "table",
+   "files": 1,
+   "rows": 5,
+   "bytes": 2209,
+   "keys": 0,
+   "schema_hashes": {
+    "0cd92514c649d2db": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "7bbd54d714c7b892a4129a81d3fa5ab8125046dd08f6c6f0d38c09cafff2bf08"
+  },
+  "samples/u-m9/head_set": {
+   "category": "table",
+   "files": 1,
+   "rows": 3644,
+   "bytes": 19685,
+   "keys": 0,
+   "schema_hashes": {
+    "c1877c4ea4af5aac": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "798599364145cdace8346c943e146d7d9a95b1fec12d35b841600ffd299046fe"
+  },
+  "samples/u-m9/low_days": {
+   "category": "table",
+   "files": 1,
+   "rows": 37036,
+   "bytes": 60766,
+   "keys": 0,
+   "schema_hashes": {
+    "bb05c373f2613f9c": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "9561389008b8cffde7603b6502c818d6824ce802099f39f4504d2a43ada9b895"
+  },
+  "samples/u-m9/low_days_classified": {
+   "category": "table",
+   "files": 1,
+   "rows": 37036,
+   "bytes": 80551,
+   "keys": 0,
+   "schema_hashes": {
+    "11a4860d5bf0f1a3": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "30851985c4cf81bfa038628e45ae65130d9cb41ef6e00a41f47815dfa8e5f899"
+  },
+  "samples/w-cat/backup/instrument_events": {
+   "category": "table",
+   "files": 1,
+   "rows": 272,
+   "bytes": 23032,
+   "keys": 0,
+   "schema_hashes": {
+    "1733f2191efa756b": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "9fd13f5a2b8eda4ed699c15d6235f0a2211decee3a607b7f720aa8fda425f0f9"
+  },
+  "samples/w-cat/backup/instruments": {
+   "category": "table",
+   "files": 1,
+   "rows": 1072,
+   "bytes": 55567,
+   "keys": 0,
+   "schema_hashes": {
+    "67b568aeba7d00c2": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "4913a3a191e8138e4d798ac5b75b88c11649fef3ad1e3b0660332528e38397b8"
+  },
+  "samples/w-cost/backup/fee_schedule": {
+   "category": "table",
+   "files": 1,
+   "rows": 8,
+   "bytes": 6944,
+   "keys": 0,
+   "schema_hashes": {
+    "83d093db1eb54bcc": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "8281a5e3cc551f6aab74e137ccf0ebde3350df5abb037b6e2318b40c4f9d1766"
+  },
+  "samples/w-meta/backup/announcements": {
+   "category": "table",
+   "files": 1,
+   "rows": 2725,
+   "bytes": 350532,
+   "keys": 0,
+   "schema_hashes": {
+    "baad0e89fe1c1c15": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "729cbe15f70932d54086c2b5a7d0f0e70ce7e20f773160e050debe4c54b6ac65"
+  },
+  "samples/w-meta/backup/announcements_after_wmeta": {
+   "category": "table",
+   "files": 1,
+   "rows": 2725,
+   "bytes": 350002,
+   "keys": 0,
+   "schema_hashes": {
+    "baad0e89fe1c1c15": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "2bad6f21e1645fa7a5d828d31162ec0b6a8ea50ce77983cd7f4444c9cdd0b858"
+  },
+  "samples/w-okx/backup/verify_consensus": {
+   "category": "table",
+   "files": 1,
+   "rows": 294343,
+   "bytes": 8498760,
+   "keys": 0,
+   "schema_hashes": {
+    "fc55bec004448c21": 1
+   },
+   "time_column": "start_ts",
+   "ts_min": "2020-01-03T04:46:00Z",
+   "ts_max": "2026-09-30T21:40:00Z",
+   "listing_sha256": "7100044b21666374ed3a2aa27589a4df813b33c64acf5f6492baf08cd73a9290"
+  },
+  "samples/w-r5a/aergo_alias_rest_0401_0416": {
+   "category": "table",
+   "files": 1,
+   "rows": 22231,
+   "bytes": 63043,
+   "keys": 0,
+   "schema_hashes": {
+    "7b8c3a7e892cf09d": 1
+   },
+   "time_column": "ts_ms",
+   "ts_min": "2025-04-01T00:00:00Z",
+   "ts_max": "2025-04-16T10:30:00Z",
+   "listing_sha256": "8bafa6e6e9d565830850d41a8c66da190d1d0c9e49a0d71227bc61864711687f"
+  },
+  "samples/w-r5a/m8_raw_missing": {
+   "category": "table",
+   "files": 1,
+   "rows": 4524,
+   "bytes": 43392,
+   "keys": 0,
+   "schema_hashes": {
+    "2f20875bb8243a9b": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2021-04-27T16:00:00Z",
+   "ts_max": "2026-07-23T07:00:00Z",
+   "listing_sha256": "bd25ecd39f1b45be1d431ce78b19361e247b5b82d5ce7e7c402fe29b481a2ac0"
+  },
+  "samples/w-r5a/m9_low_days_classified": {
+   "category": "table",
+   "files": 1,
+   "rows": 37022,
+   "bytes": 50382,
+   "keys": 0,
+   "schema_hashes": {
+    "a84c1052f54c95b8": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "977a66635df59df3c752665acca4df7389431d3125472c373506488f5e0b0045"
+  },
+  "samples/w-r5a/oi_pairs": {
+   "category": "table",
+   "files": 1,
+   "rows": 1930,
+   "bytes": 4385,
+   "keys": 0,
+   "schema_hashes": {
+    "c4e51c600b2096fb": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "759668c7332e8e07aff8d9d1b492566d86bfe97928ecf3dedbd88846d9e3668b"
+  },
+  "samples/w-r5c/alt_windows": {
+   "category": "table",
+   "files": 1,
+   "rows": 98706,
+   "bytes": 1216414,
+   "keys": 0,
+   "schema_hashes": {
+    "6413b06ae4bf0a2e": 1
+   },
+   "time_column": null,
+   "ts_min": null,
+   "ts_max": null,
+   "listing_sha256": "97b0d5a04f309f8c5d5267eab27afbf8ad5a73c5b1c94a2ad3859b82d5d6bf4e"
+  },
+  "samples/w-refit-ay/rows": {
+   "category": "table",
+   "files": 1,
+   "rows": 1172124,
+   "bytes": 45057190,
+   "keys": 0,
+   "schema_hashes": {
+    "aa4903756234b774": 1
+   },
+   "time_column": "ts",
+   "ts_min": "2020-03-10T00:00:00Z",
+   "ts_max": "2025-09-11T23:55:00Z",
+   "listing_sha256": "92828a7bc34166a51cedcd2412cbf00190dcef316c58a44a8afcd2e13d89e142"
+  }
+ },
+ "schemas": {
+  "02c80bd2c16fa714": [
+   "binance_instrument_id:string",
+   "bybit_symbol:string",
+   "ts:int64",
+   "value:double",
+   "usable_from_ts:int64"
+  ],
+  "058d359962ec3042": [
+   "date:date32[day]",
+   "fred_dgs2:double",
+   "fred_dgs2__age_days:double",
+   "fred_dgs10:double",
+   "fred_dgs10__age_days:double",
+   "fred_t10y2y:double",
+   "fred_t10y2y__age_days:double",
+   "fred_dtwexbgs:double",
+   "fred_dtwexbgs__age_days:double",
+   "fred_vixcls:double",
+   "fred_vixcls__age_days:double",
+   "fred_sp500:double",
+   "fred_sp500__age_days:double",
+   "fred_nasdaqcom:double",
+   "fred_nasdaqcom__age_days:double",
+   "fred_rrpontsyd:double",
+   "fred_rrpontsyd__age_days:double",
+   "fred_bamlh0a0hym2:double",
+   "fred_bamlh0a0hym2__age_days:double",
+   "fred_walcl:double",
+   "fred_walcl__age_days:double",
+   "dvol_btc:double",
+   "dvol_btc__age_days:double",
+   "dvol_eth:double",
+   "dvol_eth__age_days:double",
+   "fng_value:double",
+   "fng_value__age_days:double",
+   "stable_usdt:double",
+   "stable_usdt__age_days:double",
+   "stable_usdc:double",
+   "stable_usdc__age_days:double",
+   "stable_total:double",
+   "stable_total__age_days:double",
+   "cm_btc_adractcnt:double",
+   "cm_btc_adractcnt__age_days:double",
+   "cm_btc_splycur:double",
+   "cm_btc_splycur__age_days:double",
+   "cm_btc_flowinexusd:double",
+   "cm_btc_flowinexusd__age_days:double",
+   "cm_btc_flowoutexusd:double",
+   "cm_btc_flowoutexusd__age_days:double",
+   "cm_eth_adractcnt:double",
+   "cm_eth_adractcnt__age_days:double",
+   "cm_eth_splycur:double",
+   "cm_eth_splycur__age_days:double",
+   "cm_eth_flowinexusd:double",
+   "cm_eth_flowinexusd__age_days:double",
+   "cm_eth_flowoutexusd:double",
+   "cm_eth_flowoutexusd__age_days:double"
+  ],
+  "08ff415a41715f3c": [
+   "symbol:string",
+   "month:string",
+   "rows_convert:int64",
+   "rows_out:int64",
+   "unsorted_pairs:int64",
+   "dupes_removed:int64",
+   "dupes_conflict:int64",
+   "missing:int64",
+   "dupes_after:int64",
+   "ohlc_bad:int64",
+   "stuck_runs:int64",
+   "max_gap_ns:int64",
+   "rules:string"
+  ],
+  "09cf0adc74144357": [
+   "instrument_id:large_string",
+   "first_ts:int64",
+   "last_ts:int64",
+   "rows:uint32",
+   "filled_rows:uint32",
+   "symbol:large_string",
+   "years_present:uint32",
+   "expected_slots:int64",
+   "missing_slots:int64"
+  ],
+  "0a2526888610e486": [
+   "day:string",
+   "day_ns:int64",
+   "observed:int64",
+   "expected:int64",
+   "completeness:double"
+  ],
+  "0cd92514c649d2db": [
+   "sym:large_string",
+   "day:large_string",
+   "observed:int64",
+   "zip_rows:int64",
+   "zip_unique_ts:int64"
+  ],
+  "11a4860d5bf0f1a3": [
+   "sym:large_string",
+   "day:large_string",
+   "observed_raw:int64",
+   "expected:int64",
+   "observed:int64",
+   "completeness_post:double",
+   "completeness_raw:double",
+   "listing:large_string",
+   "year:large_string",
+   "key_size:int64",
+   "zip_listed:bool",
+   "cls:large_string"
+  ],
+  "139fec011173dfa4": [
+   "instrument_id:large_string",
+   "first_ts:int64",
+   "last_ts:int64",
+   "rows:uint32",
+   "filled_rows:uint32",
+   "symbol:large_string",
+   "years_present:uint32",
+   "expected_slots:int64",
+   "missing_slots:int64",
+   "onboard_ts:int64",
+   "listed_end_ts:int64",
+   "last_ts_right:int64",
+   "status_now:large_string",
+   "delist_announce_ts:int64",
+   "exclude_reason:large_string",
+   "segment_index:int32",
+   "segment_start_ts:int64",
+   "segment_end_ts:int64",
+   "onb5:int64",
+   "exp_first:int64",
+   "first_minus_exp_bars:int64",
+   "_z:int64",
+   "_d:int64"
+  ],
+  "157261732f8efa63": [
+   "symbol:large_string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:large_string",
+   "magnitude_bps:double"
+  ],
+  "1733f2191efa756b": [
+   "event_id:string",
+   "event_type:string",
+   "venue:string",
+   "market:string",
+   "symbols:string",
+   "perp_from:string",
+   "perp_to:string",
+   "ts_utc:int64",
+   "end_ts_utc:int64",
+   "ts_precision:string",
+   "ratio:double",
+   "ratio_note:string",
+   "scope:string",
+   "source_url:string",
+   "confidence:string",
+   "pitfall_id:string",
+   "notes:string",
+   "perp_in_universe:bool"
+  ],
+  "19bb2a04a19becd8": [
+   "feature:large_string",
+   "horizon:int64",
+   "mean_ic:double",
+   "ci_lo:double",
+   "ci_hi:double",
+   "t:double",
+   "gross_bps:double",
+   "turnover:double",
+   "breakeven_bps:double",
+   "n_days:int64"
+  ],
+  "1c4d8a01601dfacd": [
+   "bucket_start:timestamp[ns, tz=UTC]",
+   "n_updates:int64",
+   "n_crossed:int64",
+   "cover_frac:double",
+   "spread_tw_mean_bps:double",
+   "spread_median_bps:double",
+   "spread_p90_bps:double",
+   "bid_notional_tw_mean:double",
+   "ask_notional_tw_mean:double",
+   "mid_tw_mean:double",
+   "symbol:string",
+   "month:string",
+   "group:string",
+   "delisted:bool",
+   "source:string"
+  ],
+  "2153a2bc4d8ce4fe": [
+   "bybit_symbol:string",
+   "binance_symbol:string",
+   "bybit_contract:string",
+   "bybit_status:string",
+   "launch_ms:int64",
+   "binance_instrument_ids:string"
+  ],
+  "2ef9beabc151fb90": [
+   "ts:int64",
+   "instrument_id:string",
+   "symbol:string",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double",
+   "quote_volume:double",
+   "taker_buy_quote_volume:double",
+   "trades:int64",
+   "mark_close:double",
+   "premium_close:double",
+   "funding_rate:double",
+   "funding_interval_h:int8",
+   "filled:bool",
+   "tradable:bool",
+   "issue_flags:uint32",
+   "oi_sum_open_interest:double",
+   "oi_sum_open_interest_value:double",
+   "index_close:double",
+   "spot_close:double",
+   "bybit_funding_rate:double",
+   "bybit_oi_1h:double",
+   "delist_announced:bool"
+  ],
+  "2f20875bb8243a9b": [
+   "symbol:large_string",
+   "ts:int64",
+   "t:timestamp[ns]"
+  ],
+  "30264bce4a7b9721": [
+   "selected:double",
+   "IS_max:double",
+   "always_on:double",
+   "__index_level_0__:timestamp[us]"
+  ],
+  "3f0207e52ab8ab8b": [
+   "ts:int64",
+   "symbol:string",
+   "sum_open_interest:double",
+   "sum_open_interest_value:double",
+   "count_toptrader_long_short_ratio:double",
+   "sum_toptrader_long_short_ratio:double",
+   "count_long_short_ratio:double",
+   "sum_taker_long_short_vol_ratio:double"
+  ],
+  "4086bed7a5936d29": [
+   "ts:int64",
+   "sum_open_interest:double",
+   "sum_open_interest_value:double",
+   "count_toptrader_long_short_ratio:double",
+   "sum_toptrader_long_short_ratio:double",
+   "count_long_short_ratio:double",
+   "sum_taker_long_short_vol_ratio:double",
+   "flags:uint32"
+  ],
+  "41d6498691008496": [
+   "symbol:string",
+   "month:string",
+   "rows_convert:int64",
+   "rows_out:int64",
+   "unsorted_pairs:int64",
+   "dupes_removed:int64",
+   "dupes_conflict:int64",
+   "missing:int64",
+   "dupes_after:int64",
+   "ohlc_bad:int64",
+   "zero_vol:int64",
+   "nonpositive:int64",
+   "stuck_runs:int64",
+   "spikes:int64",
+   "max_gap_ns:int64",
+   "rules:string"
+  ],
+  "46ffe7ad6b483560": [
+   "binance_symbol:string",
+   "kraken_pair:string",
+   "quote:string",
+   "multiplier:double",
+   "first_seen:int64",
+   "binance_base:string",
+   "binance_quote:string",
+   "kraken_key:string",
+   "kraken_wsname:string",
+   "note:string"
+  ],
+  "4b24e2a69c5a7ef9": [
+   "symbol:string",
+   "month:string",
+   "rows_convert:int64",
+   "rows_out:int64",
+   "unsorted_pairs:int64",
+   "dupes_removed:int64",
+   "dupes_conflict:int64",
+   "nan:int64",
+   "stuck_runs:int64",
+   "max_gap_ns:int64",
+   "intervals_h:string",
+   "rules:string"
+  ],
+  "519e1f7c3380b7de": [
+   "symbol:string",
+   "family:string",
+   "ts:int64",
+   "minutes:int64",
+   "reason:string"
+  ],
+  "549675e9954d2764": [
+   "series:string",
+   "source:string",
+   "obs_date:date32[day]",
+   "usable_from:timestamp[us, tz=UTC]",
+   "value:double",
+   "status:string"
+  ],
+  "54c442ee62662e8e": [
+   "ts:int64",
+   "funding_interval_hours:int64",
+   "last_funding_rate:double",
+   "flags:uint32"
+  ],
+  "5a6074c84f4f5730": [
+   "ts:int64",
+   "funding_interval_hours:int64",
+   "last_funding_rate:double",
+   "source:string"
+  ],
+  "5e3c039a1bdf165d": [
+   "instrument_id:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "rule:string"
+  ],
+  "5eec20533ddf10a7": [
+   "symbol:string",
+   "max_30d_median_daily_qv:double",
+   "first_date_over_10M:string",
+   "keep_1m:bool"
+  ],
+  "61fbb05e0e488c74": [
+   "symbol:string",
+   "month:string",
+   "rows_convert:int64",
+   "rows_out:int64",
+   "unsorted_pairs:int64",
+   "dupes_removed:int64",
+   "dupes_conflict:int64",
+   "nan:int64",
+   "stuck_runs:int64",
+   "max_gap_ns:int64",
+   "days:int64",
+   "days_below_90:int64",
+   "days_below_50:int64",
+   "rules:string"
+  ],
+  "620312e2f9965409": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double",
+   "close_ts:int64",
+   "quote_volume:double",
+   "count:int64",
+   "taker_buy_volume:double",
+   "taker_buy_quote_volume:double"
+  ],
+  "6281b9f21fb22298": [
+   "events_net:double",
+   "__index_level_0__:timestamp[ns]"
+  ],
+  "631fa24e4f66856e": [
+   "date:date32[day]",
+   "fred_dgs2:double",
+   "fred_dgs2__age_days:double",
+   "fred_dgs10:double",
+   "fred_dgs10__age_days:double",
+   "fred_t10y2y:double",
+   "fred_t10y2y__age_days:double",
+   "fred_dtwexbgs:double",
+   "fred_dtwexbgs__age_days:double",
+   "fred_vixcls:double",
+   "fred_vixcls__age_days:double",
+   "fred_sp500:double",
+   "fred_sp500__age_days:double",
+   "fred_nasdaqcom:double",
+   "fred_nasdaqcom__age_days:double",
+   "fred_rrpontsyd:double",
+   "fred_rrpontsyd__age_days:double",
+   "fred_bamlh0a0hym2:double",
+   "fred_bamlh0a0hym2__age_days:double",
+   "fred_walcl:double",
+   "fred_walcl__age_days:double",
+   "fng_value:double",
+   "fng_value__age_days:double",
+   "stable_usdt:double",
+   "stable_usdt__age_days:double",
+   "stable_usdc:double",
+   "stable_usdc__age_days:double",
+   "stable_total:double",
+   "stable_total__age_days:double",
+   "cm_btc_adractcnt:double",
+   "cm_btc_adractcnt__age_days:double",
+   "cm_btc_splycur:double",
+   "cm_btc_splycur__age_days:double",
+   "cm_btc_flowinexusd:double",
+   "cm_btc_flowinexusd__age_days:double",
+   "cm_btc_flowoutexusd:double",
+   "cm_btc_flowoutexusd__age_days:double",
+   "cm_eth_adractcnt:double",
+   "cm_eth_adractcnt__age_days:double",
+   "cm_eth_splycur:double",
+   "cm_eth_splycur__age_days:double",
+   "cm_eth_flowinexusd:double",
+   "cm_eth_flowinexusd__age_days:double",
+   "cm_eth_flowoutexusd:double",
+   "cm_eth_flowoutexusd__age_days:double"
+  ],
+  "6413b06ae4bf0a2e": [
+   "window_id:large_string",
+   "alt_conf:bool",
+   "alt_ref:bool",
+   "all_subfloor:bool",
+   "nv:uint32",
+   "alt_class:large_string"
+  ],
+  "675095d6f9917f25": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "close_ts:int64",
+   "flags:uint32"
+  ],
+  "67b568aeba7d00c2": [
+   "instrument_id:string",
+   "venue:string",
+   "symbol:string",
+   "base:string",
+   "quote:string",
+   "contract_type:string",
+   "underlying_type:string",
+   "multiplier:double",
+   "onboard_ts:int64",
+   "onboard_ts_source:string",
+   "first_archive_month:string",
+   "last_archive_month:string",
+   "n_archive_months:int32",
+   "has_archive:bool",
+   "status_now:string",
+   "last_ts:int64",
+   "last_ts_source:string",
+   "listed_end_ts:int64",
+   "delist_announce_ts:int64",
+   "predecessor_id:string",
+   "successor_id:string",
+   "ratio_to_successor:double",
+   "chain_note:string",
+   "exclude_reason:string",
+   "segment_index:int32",
+   "segment_start_ts:int64",
+   "segment_end_ts:int64",
+   "symbol_run:int32",
+   "symbol_reused:bool",
+   "settled_alias:bool",
+   "pitfall_ids:string"
+  ],
+  "6f60f7ad6e16c0ce": [
+   "symbol:string",
+   "month:string",
+   "family:string",
+   "days_missing:int64",
+   "minutes_missing_before:int64",
+   "minutes_filled:int64",
+   "minutes_missing_after:int64",
+   "days_fetched:int64",
+   "days_unavailable:int64",
+   "dupes_conflict:int64"
+  ],
+  "718c177860da9ffd": [
+   "liq20_full:double",
+   "liq20_full@10k:double",
+   "liq20_full@1M:double",
+   "liq20_core:double",
+   "liq20_core@10k:double",
+   "liq20_core@1M:double",
+   "all_full:double",
+   "all_full@10k:double",
+   "all_full@1M:double",
+   "all_core:double",
+   "all_core@10k:double",
+   "all_core@1M:double",
+   "btc_hold:double",
+   "btc_hold@10k:double",
+   "btc_hold@1M:double",
+   "ew_top20:double",
+   "ew_top20@10k:double",
+   "ew_top20@1M:double",
+   "__index_level_0__:timestamp[us]"
+  ],
+  "7b8c3a7e892cf09d": [
+   "ts_ms:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double"
+  ],
+  "7eda4bb08d0c52c7": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume_base:double",
+   "count:int64",
+   "okx_inst_id:string",
+   "scale_to_binance:double"
+  ],
+  "80725886e2313953": [
+   "ts:int64",
+   "id:int64",
+   "price:double",
+   "qty:double",
+   "quote_qty:double",
+   "is_buyer_maker:bool"
+  ],
+  "81937fe29cf12dc9": [
+   "window_id:string",
+   "symbol:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "magnitude_bps:double",
+   "kraken_pair:string",
+   "quote:string",
+   "verdict:string",
+   "strength:string",
+   "kind:string",
+   "detail:string",
+   "dev_bps:double",
+   "dev_close_bps:double",
+   "tol_bps:double",
+   "noise_bps:double",
+   "bmove_bps:double",
+   "kmove_bps:double",
+   "kmove_1m_bps:double",
+   "binance_close:double",
+   "kraken_close:double",
+   "kraken_trades:int64",
+   "valid_bins:int64",
+   "binance_bars:int64",
+   "usdt_usd_bps:double",
+   "mark_dev_bps:double",
+   "aux:string",
+   "requests:int64",
+   "checked_utc:string"
+  ],
+  "83d093db1eb54bcc": [
+   "venue:string",
+   "product:string",
+   "type:string",
+   "tier:string",
+   "pair_scope:string",
+   "effective_from_utc:timestamp[us, tz=UTC]",
+   "effective_to_utc:timestamp[us, tz=UTC]",
+   "maker_bps:double",
+   "taker_bps:double",
+   "bnb_discount_pct:double",
+   "source_url:string",
+   "confidence:string",
+   "date_resolved:bool",
+   "note:string"
+  ],
+  "83d46fcf4d40f017": [
+   "ts:int64",
+   "funding_interval_hours:int64",
+   "last_funding_rate:double"
+  ],
+  "8440cd96c120931d": [
+   "symbol:large_string",
+   "capture_ts:int64",
+   "source:large_string",
+   "wayback_ts:large_string",
+   "tickSize:double",
+   "stepSize:double",
+   "minNotional:double",
+   "contract_type:large_string",
+   "status:large_string",
+   "base:large_string",
+   "quote:large_string",
+   "capture_utc:timestamp[ns, tz=UTC]"
+  ],
+  "85542c5dd63c8cdf": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "close_ts:int64",
+   "volume:double",
+   "quote_volume:double",
+   "count:int64",
+   "taker_buy_volume:double",
+   "taker_buy_quote_volume:double",
+   "source:string"
+  ],
+  "8c8719f31bcb3035": [
+   "bybit_symbol:string",
+   "ts_ms:int64",
+   "value:double"
+  ],
+  "8d2f31a6cd740635": [
+   "symbol:large_string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:large_string",
+   "magnitude_bps:double",
+   "eligible:bool",
+   "traded:bool",
+   "delisted:bool",
+   "instrument_id:large_string",
+   "window_id:large_string",
+   "priority:int64"
+  ],
+  "8db9dd6823d80bdc": [
+   "ts:int64",
+   "sum_open_interest:double",
+   "source:string"
+  ],
+  "8efbecc83ad3d1b7": [
+   "sym:large_string",
+   "day:large_string",
+   "observed:int64",
+   "expected:int64",
+   "cls:large_string",
+   "zip_rows:int64",
+   "zip_unique_ts:int64",
+   "status:large_string",
+   "zip_bytes:int64",
+   "header:large_string"
+  ],
+  "96a34fbedb7a1578": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double",
+   "close_ts:int64",
+   "quote_volume:double",
+   "count:int64",
+   "taker_buy_volume:double",
+   "taker_buy_quote_volume:double",
+   "flags:uint32"
+  ],
+  "986664e71ece877c": [
+   "d:int64",
+   "instrument_id:large_string",
+   "close:double",
+   "high:double",
+   "qv:double",
+   "fund:double",
+   "idx_close:double",
+   "idx_high:double",
+   "mk_high:double",
+   "sp_close:double",
+   "sp_high:double",
+   "sp_qv:double"
+  ],
+  "9c0861642663c480": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double",
+   "quote_volume:double",
+   "count:int64",
+   "taker_buy_volume:double",
+   "taker_buy_quote_volume:double",
+   "n_src:int64",
+   "complete:bool",
+   "filled:bool"
+  ],
+  "9df1710f39a320f5": [
+   "ts:int64",
+   "event_ts:int64",
+   "update_id:int64",
+   "best_bid_price:double",
+   "best_bid_qty:double",
+   "best_ask_price:double",
+   "best_ask_qty:double"
+  ],
+  "a2f42ac537b2a098": [
+   "symbol:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "magnitude_bps:double",
+   "eligible:bool",
+   "instrument_id:string"
+  ],
+  "a84c1052f54c95b8": [
+   "symbol:large_string",
+   "day:large_string",
+   "observed:int64",
+   "zip_bytes:int64",
+   "cls:large_string",
+   "rest:large_string"
+  ],
+  "aa4903756234b774": [
+   "ts:timestamp[ns, tz=UTC]",
+   "symbol:large_string",
+   "band_al:int8",
+   "band_now:int8",
+   "log_qv:double",
+   "log_hl:double",
+   "log_rv48:double",
+   "log_price:double",
+   "is_1000x:double",
+   "hour_sin:double",
+   "hour_cos:double",
+   "cs_log:double",
+   "quoted_full:double",
+   "eff_half:double"
+  ],
+  "aaed539a632dc77f": [
+   "ts:int64",
+   "instrument_id:string",
+   "symbol:string",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "volume:double",
+   "quote_volume:double",
+   "taker_buy_quote_volume:double",
+   "trades:int64",
+   "mark_close:double",
+   "premium_close:double",
+   "funding_rate:double",
+   "funding_interval_h:int8",
+   "filled:bool",
+   "tradable:bool",
+   "issue_flags:uint32"
+  ],
+  "b480e6880b3dc52f": [
+   "d:int64",
+   "instrument_id:large_string",
+   "close:double",
+   "high:double",
+   "low:double",
+   "qv:double",
+   "fund:double"
+  ],
+  "baad0e89fe1c1c15": [
+   "catalog_id:int64",
+   "catalog:large_string",
+   "article_code:large_string",
+   "article_id:int64",
+   "title:large_string",
+   "action:large_string",
+   "market:large_string",
+   "release_ts:int64",
+   "release_utc:timestamp[ns, tz=UTC]",
+   "symbols:large_string",
+   "symbol_source:large_string",
+   "effective_ts:double",
+   "effective_precision:large_string",
+   "parse_confidence:large_string",
+   "instrument_ids:large_string",
+   "instrument_map_status:large_string",
+   "url:large_string"
+  ],
+  "bb05c373f2613f9c": [
+   "sym:large_string",
+   "day:large_string",
+   "observed_raw:int64",
+   "expected:int64",
+   "observed:int64",
+   "completeness_post:double",
+   "completeness_raw:double",
+   "listing:large_string",
+   "year:large_string"
+  ],
+  "bb3583cc1d37d147": [
+   "ts:int64",
+   "agg_trade_id:int64",
+   "price:double",
+   "quantity:double",
+   "first_trade_id:int64",
+   "last_trade_id:int64",
+   "is_buyer_maker:bool"
+  ],
+  "bbc976bc3b92cb09": [
+   "symbol:large_string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:large_string",
+   "magnitude_bps:double",
+   "eligible:bool",
+   "traded:bool",
+   "delisted:bool",
+   "instrument_id:large_string",
+   "sample_rank:int64"
+  ],
+  "c02f830d44cdf420": [
+   "window_id:string",
+   "symbol:string",
+   "okx_inst_id:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "magnitude_bps:double",
+   "eligible:bool",
+   "instrument_id:string",
+   "verdict:string",
+   "strength:string",
+   "kind:string",
+   "detail:string",
+   "dev_bps:double",
+   "dev_close_bps:double",
+   "tol_bps:double",
+   "noise_bps:double",
+   "bmove_bps:double",
+   "kmove_bps:double",
+   "binance_close:double",
+   "okx_close:double",
+   "okx_trades:int64",
+   "valid_bins:int64",
+   "binance_bars:int64",
+   "days_missing:int64",
+   "bytes:int64",
+   "checked_utc:string"
+  ],
+  "c1877c4ea4af5aac": [
+   "sym:large_string",
+   "day:large_string",
+   "listing:large_string",
+   "year:large_string",
+   "completeness_post:double",
+   "observed:int64",
+   "expected:int64"
+  ],
+  "c4e51c600b2096fb": [
+   "symbol:large_string",
+   "day:large_string"
+  ],
+  "d071edc7849598e1": [
+   "symbol:string",
+   "bucket:timestamp[ns, tz=UTC]",
+   "eff_half_spread_bps:double",
+   "n_pairs:int64",
+   "band:int8"
+  ],
+  "d1a4a40acf308ce7": [
+   "window_id:string",
+   "symbol:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "magnitude_bps:double",
+   "kraken_pair:string",
+   "quote:string",
+   "verdict:string",
+   "kind:string",
+   "detail:string",
+   "dev_bps:double",
+   "dev_close_bps:double",
+   "tol_bps:double",
+   "noise_bps:double",
+   "bmove_bps:double",
+   "kmove_bps:double",
+   "kmove_1m_bps:double",
+   "binance_close:double",
+   "kraken_close:double",
+   "kraken_trades:int64",
+   "valid_bins:int64",
+   "binance_bars:int64",
+   "usdt_usd_bps:double",
+   "mark_dev_bps:double",
+   "aux:string",
+   "requests:int64",
+   "checked_utc:string"
+  ],
+  "d41f0efffd788fd9": [
+   "n_active:int64",
+   "__index_level_0__:timestamp[ns]"
+  ],
+  "dbf32487e40a0591": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "close_ts:int64",
+   "source:string"
+  ],
+  "e72b58b0478c439a": [
+   "ts:int64",
+   "open:double",
+   "high:double",
+   "low:double",
+   "close:double",
+   "close_ts:int64"
+  ],
+  "eec6997413771678": [
+   "date:date32[day]",
+   "instrument_id:string",
+   "days_listed:int32",
+   "median_qv_30d:double",
+   "rank:int32",
+   "eligible:bool"
+  ],
+  "effb5b1b7a75fd26": [
+   "instrument_id:large_string",
+   "symbol:large_string",
+   "n_sym:uint32",
+   "ts_min:int64",
+   "ts_max:int64",
+   "rows:uint32",
+   "filled_rows:uint32",
+   "tradable_rows:uint32",
+   "delist_ann_rows:uint32",
+   "fi_max:int8",
+   "fi_min:int8"
+  ],
+  "f1a0ae7e44e06f10": [
+   "snapshot_date:date32[day]",
+   "cmc_id:int64",
+   "symbol:string",
+   "name:string",
+   "slug:string",
+   "rank:int32",
+   "market_cap_usd:double",
+   "price_usd:double",
+   "volume_24h_usd:double",
+   "circulating_supply:double",
+   "available_from_utc:timestamp[us, tz=UTC]"
+  ],
+  "f3040cfd4f8b8921": [
+   "bucket_ns:int64",
+   "n_snap:int32",
+   "ask_cum_1pct_usd:double",
+   "bid_cum_1pct_usd:double",
+   "ask_cum_2pct_usd:double",
+   "bid_cum_2pct_usd:double",
+   "ask_cum_3pct_usd:double",
+   "bid_cum_3pct_usd:double",
+   "ask_cum_4pct_usd:double",
+   "bid_cum_4pct_usd:double",
+   "ask_cum_5pct_usd:double",
+   "bid_cum_5pct_usd:double",
+   "walk_ask_bps_g0:double",
+   "walk_bid_bps_g0:double",
+   "walk_ask_bps_g1:double",
+   "walk_bid_bps_g1:double",
+   "walk_ask_bps_g2:double",
+   "walk_bid_bps_g2:double",
+   "walk_ask_bps_g3:double",
+   "walk_bid_bps_g3:double",
+   "walk_ask_bps_g4:double",
+   "walk_bid_bps_g4:double",
+   "walk_ask_bps_g5:double",
+   "walk_bid_bps_g5:double",
+   "walk_ask_bps_g6:double",
+   "walk_bid_bps_g6:double",
+   "walk_ask_bps_g7:double",
+   "walk_bid_bps_g7:double",
+   "walk_ask_bps_g8:double",
+   "walk_bid_bps_g8:double",
+   "walk_ask_bps_g9:double",
+   "walk_bid_bps_g9:double",
+   "walk_ask_bps_g10:double",
+   "walk_bid_bps_g10:double",
+   "walk_ask_bps_g11:double",
+   "walk_bid_bps_g11:double",
+   "walk_ask_bps_g12:double",
+   "walk_bid_bps_g12:double",
+   "walk_ask_bps_g13:double",
+   "walk_bid_bps_g13:double",
+   "walk_ask_bps_g14:double",
+   "walk_bid_bps_g14:double",
+   "walk_ask_bps_g15:double",
+   "walk_bid_bps_g15:double",
+   "walk_ask_bps_g16:double",
+   "walk_bid_bps_g16:double",
+   "walk_ask_bps_g17:double",
+   "walk_bid_bps_g17:double",
+   "walk_ask_bps_g18:double",
+   "walk_bid_bps_g18:double",
+   "walk_ask_bps_g19:double",
+   "walk_bid_bps_g19:double",
+   "walk_ask_bps_g20:double",
+   "walk_bid_bps_g20:double",
+   "walk_ask_bps_g21:double",
+   "walk_bid_bps_g21:double",
+   "walk_ask_bps_g22:double",
+   "walk_bid_bps_g22:double",
+   "walk_ask_bps_g23:double",
+   "walk_bid_bps_g23:double",
+   "walk_ask_bps_g24:double",
+   "walk_bid_bps_g24:double",
+   "walk_ask_bps_g25:double",
+   "walk_bid_bps_g25:double",
+   "walk_ask_bps_g26:double",
+   "walk_bid_bps_g26:double",
+   "walk_ask_bps_g27:double",
+   "walk_bid_bps_g27:double",
+   "walk_ask_bps_g28:double",
+   "walk_bid_bps_g28:double",
+   "walk_ask_bps_g29:double",
+   "walk_bid_bps_g29:double",
+   "symbol:string",
+   "day:string"
+  ],
+  "f4e459e88e68c816": [
+   "window_id:string",
+   "symbol:string",
+   "bybit_symbol:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "magnitude_bps:double",
+   "eligible:bool",
+   "instrument_id:string",
+   "verdict:string",
+   "strength:string",
+   "kind:string",
+   "detail:string",
+   "dev_bps:double",
+   "dev_close_bps:double",
+   "tol_bps:double",
+   "noise_bps:double",
+   "bmove_bps:double",
+   "kmove_bps:double",
+   "binance_close:double",
+   "bybit_close:double",
+   "bybit_trades:int64",
+   "valid_bins:int64",
+   "binance_bars:int64",
+   "days_missing:int64",
+   "bytes:int64",
+   "checked_utc:string"
+  ],
+  "fc55bec004448c21": [
+   "window_id:string",
+   "symbol:string",
+   "start_ts:int64",
+   "end_ts:int64",
+   "reason:string",
+   "kraken:string",
+   "bybit:string",
+   "okx:string",
+   "consensus:string"
+  ],
+  "fddc7d871cd9b23c": [
+   "net:double",
+   "gross:double",
+   "turnover:double",
+   "gross_exposure:double",
+   "net_exposure:double",
+   "control_cash:double",
+   "control_ew:double",
+   "cost_fee:double",
+   "cost_spread_cost:double",
+   "cost_impact_cost:double",
+   "cost_funding:double",
+   "cost_settle_cost:double",
+   "__index_level_0__:timestamp[ns]"
+  ],
+  "fe5d22091f6a8a1e": [
+   "ts:int64",
+   "agg_trade_id:int64",
+   "price:double",
+   "quantity:double",
+   "first_trade_id:int64",
+   "last_trade_id:int64",
+   "is_buyer_maker:bool",
+   "is_best_match:bool"
+  ]
+ }
+}
