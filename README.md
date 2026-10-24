@@ -1,4 +1,32 @@
+<p align="center">
+  <img src="assets/banner.svg" alt="market-data-platform: point-in-time crypto futures data, with a manifest you can verify" width="100%">
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img alt="Licence: MIT" src="https://img.shields.io/badge/licence-MIT-2dd4bf?style=flat-square"></a>
+  <img alt="Python 3.10+" src="https://img.shields.io/badge/python-3.10%2B-38bdf8?style=flat-square">
+  <img alt="Offline verification: 5 checks" src="https://img.shields.io/badge/offline%20verification-5%20checks-818cf8?style=flat-square">
+  <img alt="Data: 2.16 billion rows" src="https://img.shields.io/badge/data-2.16B%20rows%20%C2%B7%2055%20GB-0f766e?style=flat-square">
+  <img alt="Data not included" src="https://img.shields.io/badge/data-not%20included-64748b?style=flat-square">
+</p>
+
+<p align="center">
+  <a href="#verify-it-yourself-in-60-seconds">Verify</a> &nbsp;·&nbsp;
+  <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
+  <a href="#quality-and-bias-guarantees-and-what-enforces-them">Guarantees</a> &nbsp;·&nbsp;
+  <a href="CONSULTANT_BRIEF.md">One-page brief</a> &nbsp;·&nbsp;
+  <a href="docs/DESIGN.md">Design</a> &nbsp;·&nbsp;
+  <a href="docs/RESEARCH.md">Research</a>
+</p>
+
 # market-data-platform
+
+| | |
+|---|---|
+| **What** | A point-in-time lake of crypto futures market data, and the evidence that it is what it claims to be |
+| **Scale** | 2.16 billion rows in 154,690 parquet files (55 GB), Binance USD-M with cross-venue checks |
+| **Proof** | A manifest generated from file metadata, a verifier that fails on any change, and bias tests that change future data |
+| **Not included** | The data itself (exchange terms limit redistribution); a synthetic sample ships instead |
 
 A private, point-in-time data lake of crypto futures market data (Binance USD-M, cross-checked against OKX, Bybit
 and Kraken): 2.16 billion rows in 154,690 parquet files. It is built so that a backtest reads no value before its

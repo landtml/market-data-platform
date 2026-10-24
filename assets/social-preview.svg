@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="market-data-platform">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14213d"/><stop offset="1" stop-color="#0b1426"/></linearGradient>
+    <linearGradient id="l1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#0ea5a4"/></linearGradient>
+    <linearGradient id="l2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#0284c7"/></linearGradient>
+    <linearGradient id="l3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#818cf8"/><stop offset="1" stop-color="#4f46e5"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04"/></pattern>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#grid)"/>
+  <g transform="translate(60,150) scale(1.7)">
+    <polygon points="128,150 204,128 128,106 52,128" fill="url(#l3)"/>
+    <polygon points="52,128 128,150 128,166 52,144" fill="#3730a3"/>
+    <polygon points="204,128 128,150 128,166 204,144" fill="#4338ca"/>
+    <polygon points="128,122 204,100 128,78 52,100" fill="url(#l2)"/>
+    <polygon points="52,100 128,122 128,138 52,116" fill="#0369a1"/>
+    <polygon points="204,100 128,122 128,138 204,116" fill="#0284c7"/>
+    <polygon points="128,94 204,72 128,50 52,72" fill="url(#l1)"/>
+    <polygon points="52,72 128,94 128,110 52,88" fill="#0f766e"/>
+    <polygon points="204,72 128,94 128,110 204,88" fill="#0d9488"/>
+    <circle cx="190" cy="190" r="30" fill="#0b1426" stroke="#2dd4bf" stroke-width="5"/>
+    <path d="M175 190 l11 11 l21 -23" fill="none" stroke="#2dd4bf" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <text x="540" y="290" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="58" font-weight="700" fill="#f8fafc">market-data-platform</text>
+  <text x="542" y="340" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="22" fill="#94a3b8">Point-in-time crypto futures data, with a manifest you can verify</text>
+  <g font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <g transform="translate(540,400)">
+      <rect width="190" height="54" rx="10" fill="#ffffff" fill-opacity="0.06" stroke="#2dd4bf" stroke-opacity="0.5"/>
+      <text x="16" y="25" font-size="22" font-weight="700" fill="#2dd4bf">2.16 billion</text><text x="16" y="44" font-size="13" fill="#94a3b8">rows</text>
+    </g>
+    <g transform="translate(746,400)">
+      <rect width="190" height="54" rx="10" fill="#ffffff" fill-opacity="0.06" stroke="#38bdf8" stroke-opacity="0.5"/>
+      <text x="16" y="25" font-size="22" font-weight="700" fill="#38bdf8">154,690</text><text x="16" y="44" font-size="13" fill="#94a3b8">parquet files, 55 GB</text>
+    </g>
+    <g transform="translate(952,400)">
+      <rect width="190" height="54" rx="10" fill="#ffffff" fill-opacity="0.06" stroke="#818cf8" stroke-opacity="0.5"/>
+      <text x="16" y="25" font-size="22" font-weight="700" fill="#818cf8">5 checks</text><text x="16" y="44" font-size="13" fill="#94a3b8">verify offline in &lt;1 s</text>
+    </g>
+  </g>
+</svg>
