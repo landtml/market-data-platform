@@ -1,6 +1,5 @@
 {
  "format": "parquet-lake-manifest/1",
- "generated_utc": "2026-10-24T16:51:13Z",
  "generator": "tools/build_manifest.py",
  "method": "parquet footers only (num_rows, schema, row-group min/max statistics); no data pages read",
  "pyarrow": "26.0.0",
@@ -380,7 +379,7 @@
    "ts_max": null,
    "listing_sha256": "da9a50e362c932d85be78c7cd95caa03859459f66a5c93d5a2fd290c55724baa"
   },
-  "curated/versions/20261022T174452075435Z": {
+  "curated/versions/current": {
    "category": "market_data",
    "files": 7,
    "rows": 170259866,
@@ -394,7 +393,7 @@
    "ts_max": "2026-10-21T23:55:00Z",
    "listing_sha256": "5c71f2c6bd5917ea4084f4f76e5d3284b077dcdda511a8dc866a4baa179092c3"
   },
-  "curated/versions/20261022T174452075435Z/aux/announcements": {
+  "curated/versions/current/aux/announcements": {
    "category": "table",
    "files": 1,
    "rows": 2725,
@@ -408,7 +407,7 @@
    "ts_max": null,
    "listing_sha256": "a6b199d488949e8dbf0497e80f4ad71c672588bde1457ed47bb5e698844d2a57"
   },
-  "curated/versions/20261022T174452075435Z/aux/context_ext_daily": {
+  "curated/versions/current/aux/context_ext_daily": {
    "category": "table",
    "files": 1,
    "rows": 2766901,
@@ -422,7 +421,7 @@
    "ts_max": null,
    "listing_sha256": "9e1a126ba8b5775a205eb5ac7bef67d6036fd4ae1e6336892ba653cf86786527"
   },
-  "curated/versions/20261022T174452075435Z/aux/tick_history": {
+  "curated/versions/current/aux/tick_history": {
    "category": "table",
    "files": 1,
    "rows": 6390,
@@ -436,7 +435,7 @@
    "ts_max": null,
    "listing_sha256": "fc39b3b3098652f6571869100bac949c186c02068b3620927fb04f8989b0533b"
   },
-  "curated/versions/20261022T174452075435Z/universe_pit": {
+  "curated/versions/current/universe_pit": {
    "category": "table",
    "files": 1,
    "rows": 592286,

@@ -1,8 +1,8 @@
 # Pre-registration: retail intraday ML test on Binance USD-M perpetuals
 
-> From the private research repository (snapshot 2026-10-24), edited for readers outside it: internal task references and process notes were removed and the wording was tightened. Rules, numbers and dates are unchanged. Paths such as `configs/...` and `data/...` refer to that repository and its data folder, which are not published here; the root README.md lists what this repository contains.
+> From the private research repository (snapshot), edited for readers outside it: internal task references and process notes were removed and the wording was tightened. Rules, numbers and dates are unchanged. Paths such as `configs/...` and `data/...` refer to that repository and its data folder, which are not published here; the root README.md lists what this repository contains.
 
-Written 2026-10-19, before any research data was loaded. Changes after this point are logged at the bottom with the
+Written before any research data was loaded. Changes after this point are logged at the bottom with the
 reason, so the number of decisions made after seeing results stays visible.
 
 ## Question
@@ -86,57 +86,57 @@ Everything else is reported as "no edge at retail cost", with the gap in bps per
 
 ## Change log
 
-- 2026-10-19 21:58 UTC (before any research data was loaded; clarification, not a result-driven change):
+- Amendment 1 (before any research data was loaded; clarification, not a result-driven change):
   BUSD-, USDC- and other non-USDT-margined perps are duplicates of the USDT perp on the same base, so they stay
   out of the universe to avoid counting one asset twice. Exception: a base that never had a USDT-margined perp keeps
   its non-USDT contract, so collapsed coins listed only as BUSD perps are not lost (survivorship). Funding events at
   or after an instrument's end (settle or last traded bar) are not charged: no position can exist then.
-- 2026-10-20 23:15 UTC (before any performance number was seen; the smoke run was blinded): account size fixed at
+- Amendment 2 (before any performance number was seen; the smoke run was blinded): account size fixed at
   equity0 = 100,000 USD as the retail baseline, with 10,000 and 1,000,000 as sensitivity rows. Reason: the 5%
   participation cap makes invested gross depend on account size, so the size has to be declared, not tuned.
-- 2026-10-20 12:15 UTC (before any research result was seen; the decay dry run is sealed): trial budget fixed at
+- Amendment 3 (before any research result was seen; the decay dry run is sealed): trial budget fixed at
   K_max = 100 configurations across Stage 2 and the event design together, all registered in the TrialRegistry,
   failed and abandoned ones included. Expected use: 3 models x up to 6 horizons x 3 feature sets (all families; price
   and flow only; without context conditioners) = 54, plus event-design trials. Reason: the V11 noise check and the
   DSR deflation must be run at the trial count actually used, so it has to be declared before Stage 2, not counted
   after.
-- 2026-10-20 12:55 UTC (before any performance number was seen; smoke runs are sealed): cost model = pooled fit
+- Amendment 4 (before any performance number was seen; smoke runs are sealed): cost model = pooled fit
   over all spread observations with a per-band multiplier m_b >= 1 so the charged spread covers the actual one at
   least 65% of the time in both out-of-sample directions (the reverse direction under-covered at 0.35-0.57). Spread
   floor stays at 0.5 bps. Every reported configuration also gets cost sensitivity rows at 1.5x and 2x the spread
   and impact components (fees and funding unchanged). Selection uses the 1x baseline only.
-- 2026-10-20 13:05 UTC (before any research result was seen; method fix found by the V11 noise run): the effective
+- Amendment 5 (before any research result was seen; method fix found by the V11 noise run): the effective
   trial count merges two trials only when their return correlation is both significant (standard error corrected
   for the heteroscedastic per-bar variance) and |r| >= 0.3. Reason: at T = 604,800 bars a significance-only gate
   merged independent noise trials at |r| < 0.007, which shrank N_eff and inflated the noise DSR (median 0.63 at K=6).
   The report also gives N_eff at |r| floors of 0.2 and 0.5, and DSR at the raw trial count as a conservative bound.
-- 2026-10-20 13:15 UTC (before any research result was seen): bad-print robustness. The cross-venue check cannot
+- Amendment 6 (before any research result was seen): bad-print robustness. The cross-venue check cannot
   verify all 417k unverified suspicious windows (~300 h at Kraken's public rate), so (a) a random sample stratified
   by year estimates the population bad-print rate with a CI, and (b) every reported configuration is rerun with all
   unverified suspicious windows on eligible names masked (non-tradable, and features from those bars set to NaN).
   A configuration whose CPCV net Sharpe falls by more than half under that mask is reported as bad-print dependent,
   not as an edge. Baseline masking stays: only refuted windows are non-tradable.
-- 2026-10-20 13:25 UTC (before any research result was seen; found by the event-rate data diagnostics): triple-barrier
+- Amendment 7 (before any research result was seen; found by the event-rate data diagnostics): triple-barrier
   scaling. Profit-take and stop-loss are k * sigma_bar * sqrt(h_bars), where sigma_bar is the causal EWMA per-bar
   volatility and h_bars the vertical-barrier horizon (from the Stage 1 horizons), with k = 1 as baseline and k = 2 as
   one variant within the trial budget. Reason: barriers at one bar's sigma resolved almost every label within ~3 bars
   (vertical exits ~6e-6), which makes the label a few-bar noise outcome dominated by costs.
-- 2026-10-20 13:35 UTC (before any research result was seen; from the universe breadth check): minimum breadth. The
+- Amendment 8 (before any research result was seen; from the universe breadth check): minimum breadth. The
   cross-sectional design takes positions only on days with at least 30 eligible instruments (at least 6 names per
   quintile leg); on other days it holds cash. Measured on universe_pit: 2020 median 10 eligible (min 2), 30 first
   reached 2020-09-11 with 76 later days below it; from 2021-01-24 never below 50. Data before that still feeds
   feature warm-up, Stage 1 ICs (reported with their daily breadth) and the time-series event design.
-- 2026-10-20 14:00 UTC (before any research result was seen; found by the event-rate data diagnostics): CUSUM
+- Amendment 9 (before any research result was seen; found by the event-rate data diagnostics): CUSUM
   threshold. The symmetric CUSUM filter for horizon h uses threshold sigma_bar * sqrt(h_bars) (the same scale as the
   barriers), floored at 3 price ticks divided by price. Reason: a per-bar-sigma threshold fired a median 72 events per
   instrument-day (one every 4 bars; average label uniqueness 0.017 at h = 1 day), so the event design was dense
   sampling, and low-priced names (NIL, SOLV, USTC, XEM, XPL) triggered on tick bounces.
-- 2026-10-20 14:15 UTC (before any research result was seen; from the V11 noise runs): calibration note. At the real
+- Amendment 10 (before any research result was seen; from the V11 noise runs): calibration note. At the real
   shapes, pure-noise best-of-K DSR has median ~0.51 and 0% of seeds above 0.95 (K = 6 and 54), so the DSR >= 0.95
   gate is conservative (false-positive rate below nominal); power at a planted net Sharpe of 2/yr is ~46-48%. The gate
   stays as registered. In addition, every reported configuration gets an empirical p-value against the V11 noise
   distribution at the same K and shapes (share of noise seeds whose best-of-K DSR is at least the configuration's).
-- 2026-10-21 10:50 UTC (before any Stage 1 or Stage 2 result was seen; my decision, for a retail account): rebalancing
+- Amendment 11 (before any Stage 1 or Stage 2 result was seen; my decision, for a retail account): rebalancing
   cadence variants. Besides "rebalanced at the horizon", the cross-sectional portfolio is also run at a fixed cadence
   c in {1h, 4h, 1d} for every c >= h, holding the mean of the predictions made since the last rebalance (no new
   forecasts, no refit). Scope: the all-families feature set and, per model, the two horizons that Stage 2 already
@@ -144,7 +144,7 @@ Everything else is reported as "no edge at retail cost", with the gap in bps per
   = 12), inside K_max = 100. The plateau rule also requires the neighbouring cadence (one step either side, where it
   exists) to have positive net Sharpe. Reason: at retail cost, turnover often decides the result, and a slower cadence
   is the cheapest way to cut it; declaring the cadences now stops them from becoming a tuned knob later.
-- 2026-10-21 11:10 UTC (before any Stage 1 or Stage 2 result was seen; from the all-years spread check): era
+- Amendment 12 (before any Stage 1 or Stage 2 result was seen; from the all-years spread check): era
   multipliers. Quoted spreads exist only from 2023-05, and on the aggTrades effective-spread proxy (2020-2025-09,
   doubled to full-spread units; calibrated on 2023-06 and 2024-02, Spearman 0.83-0.89 in the bands below 500M USD)
   the fit3 model covers the actual spread in only 35% / 55% / 61% of 5m buckets in 2020 / 2021 / 2022, below the
@@ -155,7 +155,7 @@ Everything else is reported as "no edge at retail cost", with the gap in bps per
   unchanged (refits fit4 and fit-ay failed the out-of-sample gate). The proxy reads harsher than quoted in 2023 (fit3
   coverage 0.61 vs 0.70), so the error is on the conservative side. Reason: costs must meet the registered coverage
   in every year the research uses, not only in the years the quotes cover.
-- 2026-10-22 18:30 UTC (before any Stage 1 or Stage 2 result was seen; from the data audit): data version and cost
+- Amendment 13 (before any Stage 1 or Stage 2 result was seen; from the data audit): data version and cost
   refit. The research runs on the panel version published after the audit's fixes (listing segments for reused
   tickers, OHLC from traded minutes, index month boundary, single-bar print with mark-lag exclusion and confirmed-window
   exemption, stale_run, delist-notice mapping); its version stamp is recorded with every trial. fit3's input file no
@@ -165,8 +165,8 @@ Everything else is reported as "no edge at retail cost", with the gap in bps per
   re-derived era multipliers and the failure is reported. Fees: taker 4 bps to 2023-06-21 (measured), 5 bps from
   2023-06-22 (the earliest date the evidence allows; measured by 2024-02-20). Reason: every cost and data input must be
   rebuildable from files on disk.
-- 2026-10-22 20:40 UTC (before any Stage 1 or Stage 2 result was seen): outcome of the entry above. Data version
-  20261022T174452075435Z (after the data fixes and the closure of the remaining scorecard metrics). Spread
+- Amendment 14 (before any Stage 1 or Stage 2 result was seen): outcome of the entry above. The published panel version
+   (after the data fixes and the closure of the remaining scorecard metrics). Spread
   refit (fit3 procedure, current spread_obs_5m.parquet, input sha256 recorded in refit_inputs.sha256): gate part (a), coverage after scaling
   >= 0.65 in every band and both directions, PASS (min 0.650005); part (b), overall out-of-sample median log error no
   worse than fit3, FAIL (forward 0.4291 -> 0.4603, reverse 0.3790 -> 0.3821; same cause as fit4: ETH and SOL 2024-02

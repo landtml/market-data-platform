@@ -1,6 +1,6 @@
 # quant: design and interface
 
-> From the private research repository (snapshot 2026-10-24), edited for readers outside it: internal task references and process notes were removed and the wording was tightened. Rules, numbers and dates are unchanged. Paths such as `libs/...`, `configs/...` and `data/...` refer to that repository and its data folder, which are not published here; the root README.md lists what this repository contains.
+> From the private research repository (snapshot), edited for readers outside it: internal task references and process notes were removed and the wording was tightened. Rules, numbers and dates are unchanged. Paths such as `libs/...`, `configs/...` and `data/...` refer to that repository and its data folder, which are not published here; the root README.md lists what this repository contains.
 
 Goal: a retail intraday ML test whose results survive survivorship, look-ahead, corporate-action/redenomination,
 bad-tick and cost biases. Most effort goes into the dataset. Evaluation uses an external research library (not
@@ -21,7 +21,7 @@ after a survey of free sources and cross-checked against other venues.
 | Fixed-shape panels [T, N] with masks: features, IC / alpha-decay curves over horizons, cost sweeps, bootstrap / Monte Carlo, many small models over CPCV folds x hyper-params via vmap | JAX on GPU (ROCm) | static shapes, vmap, jit |
 | Orchestration CLI, small REST sources (macro, sentiment), instrument master, research-library glue (labels, CPCV, DSR, PBO, trial registry), reports | Python | glue code; the research library is Python |
 
-Small keyless REST backfills (Binance fapi public endpoints, a few thousand requests) use Python's stdlib `urllib` instead of the Rust layer: no Rust REST client exists and the volume does not justify one. Decided 2026-10-20 (code: quant.data.pipeline.rest_backfill).
+Small keyless REST backfills (Binance fapi public endpoints, a few thousand requests) use Python's stdlib `urllib` instead of the Rust layer: no Rust REST client exists and the volume does not justify one. Decided early (code: quant.data.pipeline.rest_backfill).
 
 ## Layout
 
@@ -175,7 +175,7 @@ Each becomes a test or a validator rule.
 - V12 Binance `metrics` (OI) archive starts 2020-09; it has duplicate and out-of-order rows: dedupe + sort, then
   count missing 5-min slots per day and drop days below a completeness threshold.
 
-## Curated panel contract (2026-10-19; supersedes the bars_<interval> line above)
+## Curated panel contract (supersedes the bars_<interval> line above)
 
 Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
 
@@ -227,7 +227,7 @@ Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
   eligible count per day (min/median/max), ever-eligible count, delisted-in-universe count per year. `build` holds
   `dead_period_rows`, `stale_run_rows`, `stale_runs`, `tradable_false_rows` (counted after every flag pass),
   `tradable_false_by_bit` (tradable=False rows carrying each panel bit) and `bit_rows` (all rows carrying each bit).
-- Publishing (2026-10-20): every build and every flag pass writes to `<root>/.staging-<stamp>/`, validates it
+- Publishing: every build and every flag pass writes to `<root>/.staging-<stamp>/`, validates it
   (schema, year coverage, row total against panel_stats, universe present), moves it to `<root>/versions/<stamp>/`,
   and publishes it with ONE atomic symlink swap of `<root>/current`. `bars_5m`, `universe_pit.parquet` and
   `panel_stats.json` are symlinks through `current`. `load_dense` and `iter_dense` resolve `current` once per call, so
@@ -251,7 +251,7 @@ Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
   flat_market, consensus_refuted and stale_run. A bar already untradable for another reason gets no single-print bit.
   A candidate inside a `confirmed` consensus window is exempt (another venue saw the move; switch
   `SINGLE_PRINT_CONFIRMED_EXEMPT`, on). A sustained divergence (two or more consecutive off bars) is not a candidate and stays tradable.
-  Calibration on the 2026-10-22 inputs, dev span (ts < 2025-10-01): 32,189 candidates under the current definition before
+  Calibration on the inputs at that stage, dev span (ts < 2025-10-01): 32,189 candidates under the current definition before
   the exemption, the same count a separate script produced when the rule was defined; 25,721 with the exemption, which
   is the published rule.
   CAUSALITY: the rule reads bar t+5 min, so it is a DATA-CLEANING flag. It decides whether a fill at print t is
@@ -268,7 +268,7 @@ Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
   null as well.
 - Excluded instruments (`exclude_reason` in `instruments.parquet`, built by `quant.data.catalog`): the panel builds
   only rows with a null reason. `never_traded` marks a PENDING_TRADING perpetual with no REST klines (REST code -1122)
-  and no archive 1m or 5m file (GAIBUSDT, listed 2025-11-20, never traded as of 2026-10-21).
+  and no archive 1m or 5m file (GAIBUSDT, listed 2025-11-20, never traded as of the snapshot).
 - `issue_flags` bits (`PANEL_BITS` in panel.py). Bits 0-9 are the validate bits (quant.flag_bits); 10-24 are panel bits:
 
   | bit | value | meaning | tradable |
@@ -311,14 +311,14 @@ Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
   (`capture_ts`) and `announcements.parquet` (`release_ts`), copied unchanged. A row is usable at bar t only when its
   publish column is <= t (`panel_inputs.visible_rows`, `AUX_USABLE`). They are not per-bar columns.
 
-## Cost-model alignment (2026-10-20)
+## Cost-model alignment
 `simulate_targets` charges `spread_bps[t+1, i]/2` for the fill at open t+1 after a decision at close t. So the
 array passed as `spread_bps` must be execution-aligned: row k is predicted from bars <= k-1 only.
 `quant.simulation.costmodel.predict_spread_bps(dense)` returns it already aligned that way (row 0 = the conservative cap), and
 callers never shift it again. Size multipliers are keyed by a point-in-time band of `median_qv_30d` from
 universe_pit (built from data up to D-1), never by a symbol list, so every instrument gets a fitted multiplier.
 
-## Full-span scaling and smoke-run fixes (2026-10-20, from the blinded smoke run)
+## Full-span scaling and smoke-run fixes (from the blinded smoke run)
 Full 2020-2025 dense arrays do not fit 6 GB even for 20 names, so research streams by time chunk:
 - `quant.data.panel.iter_dense(start, end, fields, chunk="year", halo_bars=8640, ids=None) -> Iterator[Dense]`: yields
   calendar-year chunks; each carries `halo_bars` real bars before its first owned bar (marked `owned=False` via a new

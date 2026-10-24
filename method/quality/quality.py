@@ -11,7 +11,7 @@ with the reason. Thresholds are provisional; each metric carries the rule it was
 
 The 3-venue consensus table (M7) is data/lake/verify_consensus.parquet, one row per suspicious window, with the
 consensus in {confirmed, refuted, disputed, undecided}. Licence and compliance (M14) is waived by decision
-(2026-10-20): the evidence is still computed and kept in the detail, the status is "waived".
+(project rule): the evidence is still computed and kept in the detail, the status is "waived".
 """
 
 from __future__ import annotations
@@ -59,7 +59,7 @@ TARGETS = {
     "M12": "cost calibration: every (year, size band) cell of 2020-2025 with eff data has charged spread coverage "
            ">= 0.65 on the eff proxy (coverage after era multipliers); green when all cells meet it, amber otherwise",
     "M13": "context cells older than the source cadence: green <= 1%, amber <= 5%, red > 5%",
-    "M14": "compliance: waived by project rule 2026-10-20 (terms and licences are not weighed for local research); "
+    "M14": "compliance: waived by project rule (terms and licences are not weighed for local research); "
            "the feed-by-feed evidence is kept in the detail and does not enter the counts or the worst items",
     "M15": "mark 5m coverage: internal holes / grid slots (leading and trailing reported, not scored): "
            "green = 0, amber <= 0.1%, red > 0.1%",
@@ -103,7 +103,7 @@ STATUS_ORDER = {"red": 0, "not_measured": 1, "amber": 2, "green": 3, "proven": 4
 WAIVED = "waived"
 # proven: red/amber, but shown unfixable from free sources by evidence on disk (configs/quality_proofs.json). A proof
 # holds only while the value stays at or below the proven max_value and its evidence file exists; a regression or a
-# missing evidence file reopens the metric (ultra-premium definition, ledger 2026-10-21).
+# missing evidence file reopens the metric (ultra-premium definition, ledger).
 PROVEN = "proven"
 
 
@@ -1534,7 +1534,7 @@ def m11_pit(src: Sources) -> Metric:
 
 # ---------------------------------------------------------------- M12 cost calibration coverage
 
-M12_COVERAGE = 0.65  # registered coverage target (RESEARCH.md 2026-10-21 11:10 UTC)
+M12_COVERAGE = 0.65  # registered coverage target (RESEARCH.md amendments)
 
 
 def m12_spread(src: Sources) -> Metric:
@@ -1722,11 +1722,11 @@ def _m14_evidence(src: Sources) -> Metric:
 
 
 def m14_compliance(src: Sources) -> Metric:
-    """Waived by project rule (2026-10-20): terms and licences are not weighed for this local research. The evidence
+    """Waived by project rule: terms and licences are not weighed for this local research. The evidence
     is computed as before and kept in the detail; the status is "waived" and it is outside the counts and the
     worst items."""
     m = _m14_evidence(src)
-    return replace(m, status=WAIVED, reason="waived by project rule 2026-10-20: terms and licences are not weighed "
+    return replace(m, status=WAIVED, reason="waived by project rule: terms and licences are not weighed "
                                             "for local research",
                    detail={**m.detail, "computed_status": m.status, "computed_fix": m.fix})
 
@@ -1778,7 +1778,7 @@ def ohlc_coverage(src: Sources, families: tuple, syms: list[str]) -> dict:
 
 def _listed_slots(grid: pl.DataFrame, src: Sources, code_of: dict[str, int]) -> pl.DataFrame:
     """Grid slots inside some listing of the symbol: [onboard_ts, listed_end_ts) of any instruments.parquet row, any
-    exclude_reason. Drops the dead period between the listings of a reused ticker (MDTUSDT 2024-05-16..2026-10-21) and
+    exclude_reason. Drops the dead period between the listings of a reused ticker (MDTUSDT 2024-05-16..end of data) and
     bars before the first onboard. A symbol with no instruments row keeps every slot."""
     if not src.instruments.exists() or grid.height == 0:
         return grid

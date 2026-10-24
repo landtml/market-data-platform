@@ -1,6 +1,5 @@
 {
  "format": "parquet-lake-manifest/1",
- "generated_utc": "2026-10-24T16:50:19Z",
  "generator": "tools/build_manifest.py",
  "method": "parquet footers only (num_rows, schema, row-group min/max statistics); no data pages read",
  "pyarrow": "26.0.0",

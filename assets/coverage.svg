@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 314" width="1000" height="314" role="img" aria-label="Time coverage per partition">
+<rect width="1000" height="314" fill="#ffffff"/><rect x="0.5" y="0.5" width="999" height="313" fill="none" stroke="#d0d7de"/>
+<text x="24" y="34" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">Time coverage per partition (UTC)</text>
+<text x="24" y="54" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#57606a">Source: manifest/manifest.json, first and last month in each partition.</text>
+<line x1="290.0" y1="68" x2="290.0" y2="274" stroke="#d0d7de"/>
+<text x="290.0" y="292" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#57606a">2019</text>
+<line x1="373.8" y1="68" x2="373.8" y2="274" stroke="#d0d7de"/>
+<text x="373.8" y="292" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#57606a">2020</text>
+<line x1="457.5" y1="68" x2="457.5" y2="274" stroke="#d0d7de"/>
+<text x="457.5" y="292" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#57606a">2021</text>
+<line x1="541.2" y1="68" x2="541.2" y2="274" stroke="#d0d7de"/>
+<text x="541.2" y="292" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#57606a">2022</text>
+<line x1="625.0" y1="68" x2="625.0" y2="274" stroke="#d0d7de"/>
+<text x="625.0" y="292" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#57606a">2023</text>
+<line x1="708.8" y1="68" x2="708.8" y2="274" stroke="#d0d7de"/>
+<text x="708.8" y="292" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#57606a">2024</text>
+<line x1="792.5" y1="68" x2="792.5" y2="274" stroke="#d0d7de"/>
+<text x="792.5" y="292" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#57606a">2025</text>
+<line x1="876.2" y1="68" x2="876.2" y2="274" stroke="#d0d7de"/>
+<text x="876.2" y="292" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#57606a">2026</text>
+<line x1="960.0" y1="68" x2="960.0" y2="274" stroke="#d0d7de"/>
+<text x="960.0" y="292" text-anchor="middle" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#57606a">2027</text>
+<text x="278" y="89.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_spot/klines_5m</text>
+<rect x="345.8" y="76" width="593.2" height="18" fill="#0b6e99"/>
+<text x="278" y="121.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_um/funding</text>
+<rect x="373.8" y="108" width="565.3" height="18" fill="#0b6e99"/>
+<text x="278" y="153.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_um/klines (1m, 5m)</text>
+<rect x="373.8" y="140" width="572.3" height="18" fill="#0b6e99"/>
+<text x="278" y="185.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_um/mark,index,premium 5m</text>
+<rect x="373.8" y="172" width="572.3" height="18" fill="#0b6e99"/>
+<text x="278" y="217.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_um/metrics</text>
+<rect x="429.6" y="204" width="516.5" height="18" fill="#0b6e99"/>
+<text x="278" y="249.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">okx/bars_5m</text>
+<rect x="520.3" y="236" width="418.8" height="18" fill="#0b6e99"/>
+</svg>

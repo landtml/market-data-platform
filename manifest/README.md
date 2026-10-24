@@ -2,20 +2,20 @@
 
 Machine-generated descriptions of the private data, built by `tools/build_manifest.py` from parquet file footers
 only (row counts, schemas, row-group min/max statistics). No data page was read and no market data is stored here.
-Generated 2026-10-24 with pyarrow 26.0.0.
+Generated with pyarrow 26.0.0.
 
 | File | Scope | What it pins |
 |---|---|---|
 | `manifest.json` | the lake (`data/lake`): normalised per-venue parquet | per partition: files, rows, bytes, symbol count, schema hashes, time range, sha256 of the sorted (path, size) listing; whole-lake listing sha256 `58a72a8c...` |
 | `manifest_files.tsv.gz` | the lake | one line per file: relative path, bytes, rows (154,690 lines) |
-| `curated_panel_manifest.json` | the published research panel version `20261022T174452075435Z` | the 5-minute panel (170,259,866 rows, 7 yearly files), universe and auxiliary tables |
+| `curated_panel_manifest.json` | the published research panel version (current) | the 5-minute panel (170,259,866 rows, 7 yearly files), universe and auxiliary tables |
 | `data_folder_manifest.json` | the whole private `data/` folder, sealed research results excluded | used only to reconcile the headline figure (see below) |
 
 ## How it was produced
 
 ```bash
 python tools/build_manifest.py <private>/data/lake --out manifest/manifest.json
-python tools/build_manifest.py <private>/data/curated/versions/20261022T174452075435Z \
+python tools/build_manifest.py <private>/data/curated/versions/<version> \
     --out manifest/curated_panel_manifest.json --no-listing
 python tools/build_manifest.py <private>/data --exclude research/sealed \
     --out manifest/data_folder_manifest.json --no-listing

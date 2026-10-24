@@ -1,6 +1,12 @@
 {
- "M3a": {"max_value": 29, "evidence": "docs/quality_proofs.md", "date": "2026-10-22",
-         "finding": "29 AERGOUSDT 2025-04-16 minutes absent from the archive, the REST endpoint (-1121 Invalid symbol) and AERGOUSDTSETTLED; inside an untradable stale_run"},
- "M3b": {"max_value": 9800, "evidence": "docs/quality_proofs.md", "date": "2026-10-22",
-         "finding": "soft-rule rates count market states in the exchange's own 1m archive ; handled by panel bits, not data defects"}
+ "M3a": {
+  "max_value": 29,
+  "evidence": "docs/quality_proofs.md",
+  "finding": "29 AERGOUSDT 2025-04-16 minutes absent from the archive, the REST endpoint (-1121 Invalid symbol) and AERGOUSDTSETTLED; inside an untradable stale_run"
+ },
+ "M3b": {
+  "max_value": 9800,
+  "evidence": "docs/quality_proofs.md",
+  "finding": "soft-rule rates count market states in the exchange's own 1m archive ; handled by panel bits, not data defects"
+ }
 }

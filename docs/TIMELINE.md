@@ -1,9 +1,9 @@
-# Timeline (2026-10-19 to 2026-10-24)
+# Timeline
 
 Milestones and measured results, condensed from the private repository's append-only work log. Every number is
 copied from that log.
 
-## 2026-10-19: survey, licences, Rust core, bulk download
+## Stage 1: survey, licences, Rust core, bulk download
 
 - Survey of free data sources. Binance archive chosen as primary (free, includes delisted contracts, exact fees and
   funding); Bybit, OKX and Kraken as cross-checks; US equities rejected (no free survivorship-free daily data).
@@ -17,7 +17,7 @@ copied from that log.
   from the daily archive where the monthly zips were short.
 - First data-quality scorecard (M1-M14) and a queue of suspicious price windows, verified against Kraken trades.
 
-## 2026-10-20: panel, cost model, overfitting controls
+## Stage 2: panel, cost model, overfitting controls
 
 - Curated 5-minute panel built: 170.7M rows, 684 instruments, published by staged build and atomic symlink swap.
 - Point-in-time universe (top 100 by trailing 30-day median volume, data up to the previous day only).
@@ -29,7 +29,7 @@ copied from that log.
   out-of-sample -0.12 to -0.91, PBO 0.94. No edge. The older result (Sharpe 1.44) is explained by a static survivor
   list, no funding costs and a reused holdout.
 
-## 2026-10-21: cross-venue checks, cost eras, Rust ports
+## Stage 3: cross-venue checks, cost eras, Rust ports
 
 - Exploratory mini test 2, delta-neutral funding carry (short perpetual, long Binance spot): out-of-sample Sharpe
   9.33 inside its own 198-configuration grid, max drawdown -0.1%, CAGR 4.8%. Net funding minus costs by year:
@@ -43,14 +43,14 @@ copied from that log.
 - Internal holes in the lake re-filled from the archive and then the public REST API (klines 1m: 506,964 missing
   minutes down to 15,921, the rest absent from both sources).
 
-## 2026-10-22: data checks and fixes
+## Stage 4: data checks and fixes
 
 - Compared the panel with the exchange's own files and fixed the defects found. The worst: tickers Binance reused for
   a new coin carried the old coin's history under one id (survivorship error and fake price jumps). Fixed by one
   instrument per listing.
 - Known limitation: the panel's last bar does not carry the funding settlement at its close.
 
-## 2026-10-24: design work, not yet run
+## Stage 5: design work, not yet run
 
 - Design of a cost-aware portfolio learner and a screen of 33 older strategies under a declared trial budget.
   Neither had produced a result at the snapshot; both are excluded from this repository.

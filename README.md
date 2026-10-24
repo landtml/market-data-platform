@@ -1,13 +1,10 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="market-data-platform: point-in-time crypto futures data, with a manifest you can verify" width="100%">
+  <img src="assets/banner.svg" alt="market-data-platform" width="100%">
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img alt="Licence: MIT" src="https://img.shields.io/badge/licence-MIT-2dd4bf?style=flat-square"></a>
-  <img alt="Python 3.10+" src="https://img.shields.io/badge/python-3.10%2B-38bdf8?style=flat-square">
-  <img alt="Offline verification: 5 checks" src="https://img.shields.io/badge/offline%20verification-5%20checks-818cf8?style=flat-square">
-  <img alt="Data: 2.16 billion rows" src="https://img.shields.io/badge/data-2.16B%20rows%20%C2%B7%2055%20GB-0f766e?style=flat-square">
-  <img alt="Data not included" src="https://img.shields.io/badge/data-not%20included-64748b?style=flat-square">
+  <a href="LICENSE"><img alt="Licence: MIT" src="https://img.shields.io/badge/licence-MIT-0b6e99?style=flat-square"></a>
+  <img alt="Python 3.10+" src="https://img.shields.io/badge/python-3.10%2B-0b6e99?style=flat-square">
 </p>
 
 <p align="center">
@@ -94,7 +91,7 @@ orchestration, the panel build in Polars, the quality scorecard and research glu
 ## Data inventory
 
 Per-symbol market-data partitions of the lake, from [manifest/manifest.json](manifest/manifest.json)
-(`python tools/verify.py --inventory`). Dates are UTC; the data runs to 2026-10-21.
+(`python tools/verify.py --inventory`). Dates are UTC.
 
 | Partition | Symbols | Files | Rows | GB | From | To |
 |---|---:|---:|---:|---:|---|---|
@@ -112,6 +109,14 @@ Per-symbol market-data partitions of the lake, from [manifest/manifest.json](man
 | `binance_um/rest/metrics` | 76 | 76 | 706 | 0.00 | 2026-09-24 | 2026-10-15 |
 | `binance_um/rest/premiumIndexKlines/5m` | 40 | 80 | 246,528 | 0.01 | 2021-01-25 | 2026-10-18 |
 | `okx/bars_5m` | 335 | 14,337 | 4,129,056 | 0.22 | 2021-10-01 | 2026-09-30 |
+
+<p align="center">
+  <img src="assets/rows-by-partition.svg" alt="Rows per partition" width="100%">
+</p>
+
+<p align="center">
+  <img src="assets/coverage.svg" alt="Time coverage per partition" width="100%">
+</p>
 
 | Scope | Files | Rows | GB |
 |---|---:|---:|---:|
@@ -161,19 +166,21 @@ Timeline: [docs/TIMELINE.md](docs/TIMELINE.md).
 - Not independently audited. No third party has reviewed the data or the code; only the manifest and the tools in
   `tools/` can be re-run from this repository.
 
-## Skills demonstrated
+## Where to start
 
-| Skill | Where to look |
+| If you want to | Open |
 |---|---|
-| Data engineering at scale (billions of rows, partitioned parquet, Rust + Python) | [manifest/manifest.json](manifest/manifest.json), [docs/DESIGN.md](docs/DESIGN.md) |
-| Point-in-time correctness and survivorship control | [method/point_in_time/panel_inputs.py](method/point_in_time/panel_inputs.py), [method/tests/bias_checks/](method/tests/bias_checks/) |
-| Validation discipline: rules, scorecard, equality tests against reference implementations | [method/quality/](method/quality/), [method/tests/equality/](method/tests/equality/) |
-| Reproducibility: manifests, hashes, tamper detection, pre-registration | [tools/verify.py](tools/verify.py), [docs/RESEARCH.md](docs/RESEARCH.md) |
-| Licence and compliance awareness | [docs/DATA_LICENSES.md](docs/DATA_LICENSES.md) |
+| Check the headline numbers | [manifest/manifest.json](manifest/manifest.json), then `tools/verify.py --sample` |
+| See how look-ahead is prevented | [method/point_in_time/panel_inputs.py](method/point_in_time/panel_inputs.py) and [method/tests/bias_checks/](method/tests/bias_checks/) |
+| See what "quality-checked" means in practice | [method/quality/](method/quality/) and [docs/quality_proofs.md](docs/quality_proofs.md) |
+| Understand the design decisions | [docs/DESIGN.md](docs/DESIGN.md) |
+| Read the research protocol and the null results | [docs/RESEARCH.md](docs/RESEARCH.md) |
+| Check what may be redistributed | [docs/DATA_LICENSES.md](docs/DATA_LICENSES.md) |
+| Read a one-page summary | [CONSULTANT_BRIEF.md](CONSULTANT_BRIEF.md) |
 
 ## How this was built
 
-The work ran from 2026-10-19 to 2026-10-24. I set the design, the rules (no look-ahead, point-in-time universe,
+I set the design, the rules (no look-ahead, point-in-time universe,
 sealed holdout, costs always on, public keyless sources only) and the acceptance checks, and I review the results
 against them. Every claim above points to a test, a check against the exchange's files or the manifest, so it can be
 rerun.

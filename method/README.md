@@ -2,7 +2,7 @@
 
 Read-only copies of a few source files from the private repository, kept to show how point-in-time correctness and
 data quality are enforced. They are not runnable here: they import the private packages and read the private data
-folder. The code is unchanged from the snapshot of 2026-10-24; in three files a header docstring or comment that
+folder. The code is unchanged from the snapshot; in three files a header docstring or comment that
 pointed to internal task notes was reworded. `finlab`, imported by `test_core_bars.py`, is an external research
 library and is not included.
 

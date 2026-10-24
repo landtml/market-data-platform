@@ -1,10 +1,10 @@
 # Data licences and terms: status per source
 
-> From the private research repository (snapshot 2026-10-24), edited for readers outside it: internal task references and process notes were removed and the wording was tightened. Licence terms, quotes and dates are unchanged. Paths such as `data/...` refer to that repository's data folder, which is not published here; the root README.md lists what this repository contains.
+> From the private research repository (snapshot), edited for readers outside it: internal task references and process notes were removed and the wording was tightened. Licence terms, quotes and dates are unchanged. Paths such as `data/...` refer to that repository's data folder, which is not published here; the root README.md lists what this repository contains.
 >
-> Status note (2026-10-24): this table was written on 2026-10-19. Since then the lake gained OKX 5m bars (`okx/bars_5m`) and Bybit funding and open interest (`bybit_deriv/`), used only to cross-check Binance prints and as panel columns. Their terms are still marked "unclear" below; no OKX, Bybit or other exchange data is included in this repository.
+> Status note: this table predates later additions. Since then the lake gained OKX 5m bars (`okx/bars_5m`) and Bybit funding and open interest (`bybit_deriv/`), used only to cross-check Binance prints and as panel columns. Their terms are still marked "unclear" below; no OKX, Bybit or other exchange data is included in this repository.
 
-Last updated: 2026-10-19. Terms were read from the saved pages under data/raw/_terms/ (clause files) and
+Terms were read from the saved pages under data/raw/_terms/ (clause files) and
 data/raw/dukascopy/_terms/. Quotes are verbatim; the full text is in each clause file.
 
 ## Scope
@@ -36,7 +36,7 @@ Status column: `used` = in a curated file or a live pipeline; `quarantined` = mo
 | FRED / ALFRED (St. Louis Fed) | used (context_daily: 10 FRED series incl. WALCL); ALFRED used for spot checks only (not in the build) | allowed-with-conditions | personal, non-commercial use; cite FRED and keep copyright notices; use the API, not scraping. Copyrighted series (notes contain "Copyright") are for personal use only; anything else needs the data owner's permission. Copyrighted series in use: SP500, NASDAQCOM, VIXCLS, BAMLH0A0HYM2. The FRED API needs a registered key (conflicts with the keyless rule; decision open) | "Source: Federal Reserve Bank of St. Louis, FRED; accessed via FRED", plus each series' copyright notice as printed | data/raw/_terms/fred_clauses.txt |
 | Dukascopy (historical tick and bar download) | not used (terms captured under data/raw/dukascopy/_terms; no data pulled) | forbidden-without-consent for automated access (as quoted) | "You shall not use or attempt to use any "scraper," "robot," "bot," "spider," "data mining" ... without the prior express written consent of DUKASCOPY." Downloads only for personal, non-commercial use; no recirculation or redistribution | none (not used) | data/raw/dukascopy/_terms/quoted_clauses.txt |
 
-## Open questions (as of 2026-10-19)
+## Open questions
 
 1. Binance API ToS: binance.com ToS and API terms return HTTP 202 with an empty body, so they have to be read in a browser; until then, REST calls stay few and within the weight limits.
 2. Bybit ToS: every URL returns HTTP 403. The page has to be saved from a browser into data/raw/_terms/.

@@ -1,8 +1,8 @@
 # Quality proofs: metrics proven unfixable from free sources
 
-> From the private research repository (snapshot 2026-10-24), edited for readers outside it: internal task references and process notes were removed and the wording was tightened. Rules, numbers and dates are unchanged. Paths such as `configs/...` and `data/...` refer to that repository and its data folder, which are not published here; the root README.md lists what this repository contains.
+> From the private research repository (snapshot), edited for readers outside it: internal task references and process notes were removed and the wording was tightened. Rules, numbers and dates are unchanged. Paths such as `configs/...` and `data/...` refer to that repository and its data folder, which are not published here; the root README.md lists what this repository contains.
 
-The quality target (set 2026-10-21): every scorecard metric is green, or proven unfixable from free sources with
+The quality target: every scorecard metric is green, or proven unfixable from free sources with
 evidence on disk. A proof is registered in `configs/quality_proofs.json` with the largest value it covers
 (`max_value`). `quant.data.quality.apply_proofs` shows such a metric as `proven` only while its value stays at or
 below `max_value` and this file exists. A regression reopens the metric.
@@ -10,7 +10,7 @@ below `max_value` and this file exists. A regression reopens the metric.
 ## M3a: 29 one-minute bars missing for AERGOUSDT on 2025-04-16
 
 Value proven: 29 missing 1m bars (hard rule `missing`), all AERGOUSDT 2025-04 (scorecard round 6,
-data/curated/quality/scorecard_20261022T181757Z.json, detail.top20_symbol_months).
+data/curated/quality/scorecard_<stamp>.json, detail.top20_symbol_months).
 
 Evidence, measured:
 - The monthly and daily archive (data.binance.vision) has no rows for AERGOUSDT 2025-04-16 00:00 to 10:59, 660 minutes
@@ -18,7 +18,7 @@ Evidence, measured:
 - The REST endpoint refuses the symbol: HTTP 400 `-1121 Invalid symbol` (gap-fill report, probe). The contract
   is delisted, so no REST source exists.
 - 631 of the 660 minutes were filled from AERGOUSDTSETTLED, whose series is identical where both exist
-  (2026-10-21, data/lake/binance_um/rest/klines/1m/AERGOUSDT/2025-04.parquet). The 29 remaining minutes are in
+  (data/lake/binance_um/rest/klines/1m/AERGOUSDT/2025-04.parquet). The 29 remaining minutes are in
   neither series.
 - The panel marks the affected window: AERGOUSDT:20240901 has a stale_run of 5,783 bars from 2025-03-27 to the
   2025-04-16 reopen, all untradable (panel_stats values).

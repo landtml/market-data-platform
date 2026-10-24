@@ -208,7 +208,6 @@ def build(root: Path, workers: int = 8, progress: bool = True, exclude: tuple[st
     sources = sorted({k.split("/")[0] for k in out_parts if "/" in k})
     manifest = {
         "format": "parquet-lake-manifest/1",
-        "generated_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "generator": "tools/build_manifest.py",
         "method": "parquet footers only (num_rows, schema, row-group min/max statistics); no data pages read",
         "pyarrow": __import__("pyarrow").__version__,

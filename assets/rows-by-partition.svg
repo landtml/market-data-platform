@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 408" width="1000" height="408" role="img" aria-label="Rows per partition">
+<rect width="1000" height="408" fill="#ffffff"/><rect x="0.5" y="0.5" width="999" height="407" fill="none" stroke="#d0d7de"/>
+<text x="24" y="34" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0f172a">Rows per partition (largest eight of fourteen)</text>
+<text x="24" y="54" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#57606a">Source: manifest/manifest.json. Linear scale; partitions not shown add 7.6 M rows.</text>
+<text x="278" y="89.68" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_um/klines/1m</text>
+<rect x="290" y="72" width="590.0" height="26" fill="#0b6e99"/>
+<text x="888.0" y="89.68" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#0f172a">1.04 B</text>
+<text x="278" y="127.68" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_um/klines/5m</text>
+<rect x="290" y="110" width="121.6" height="26" fill="#0b6e99"/>
+<text x="419.6" y="127.68" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#0f172a">214.7 M</text>
+<text x="278" y="165.68" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_um/markPriceKlines/5m</text>
+<rect x="290" y="148" width="108.4" height="26" fill="#0b6e99"/>
+<text x="406.4" y="165.68" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#0f172a">191.5 M</text>
+<text x="278" y="203.68" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_um/indexPriceKlines/5m</text>
+<rect x="290" y="186" width="104.5" height="26" fill="#0b6e99"/>
+<text x="402.5" y="203.68" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#0f172a">184.7 M</text>
+<text x="278" y="241.68" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_um/premiumIndexKlines/5m</text>
+<rect x="290" y="224" width="100.4" height="26" fill="#0b6e99"/>
+<text x="398.4" y="241.68" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#0f172a">177.3 M</text>
+<text x="278" y="279.68" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_um/metrics</text>
+<rect x="290" y="262" width="88.1" height="26" fill="#0b6e99"/>
+<text x="386.1" y="279.68" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#0f172a">155.7 M</text>
+<text x="278" y="317.68" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">binance_spot/klines_5m</text>
+<rect x="290" y="300" width="84.0" height="26" fill="#0b6e99"/>
+<text x="382.0" y="317.68" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#0f172a">148.4 M</text>
+<text x="278" y="355.68" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#0f172a">okx/bars_5m</text>
+<rect x="290" y="338" width="2.3" height="26" fill="#0b6e99"/>
+<text x="300.3" y="355.68" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#0f172a">4.1 M</text>
+<line x1="290" y1="64" x2="290" y2="374" stroke="#57606a"/></svg>
