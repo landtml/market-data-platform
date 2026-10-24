@@ -1,7 +1,8 @@
 """Tests for quant.core._qcore resample_bars / trade_bars / consensus (bars.rs).
 
 - resample_bars is checked against a pandas reference on random klines and on one real BTCUSDT 1m day.
-- trade_bars is checked against finlab-ml's dollar_bars / volume_bars / tick_bars on the same trades: same bar count,
+- trade_bars is checked against dollar_bars / volume_bars / tick_bars from finlab, an external research library
+  (not included), on the same trades: same bar count,
   same closes and volumes (exact), same bar-close labels.
 - consensus is checked on crafted venues with one bad print and with missing bars.
 

@@ -10,7 +10,7 @@ its files exist. Nothing under data/quarantine/ is read. A metric whose input is
 with the reason. Thresholds are provisional; each metric carries the rule it was judged against.
 
 The 3-venue consensus table (M7) is data/lake/verify_consensus.parquet, one row per suspicious window, with the
-consensus in {confirmed, refuted, disputed, undecided}. Licence and compliance (M14) is waived by owner rule
+consensus in {confirmed, refuted, disputed, undecided}. Licence and compliance (M14) is waived by decision
 (2026-10-20): the evidence is still computed and kept in the detail, the status is "waived".
 """
 

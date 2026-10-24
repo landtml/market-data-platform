@@ -5,7 +5,7 @@
 
 No exchange data is used or redistributed (docs/DATA_LICENSES.md): prices are a seeded random walk for three made-up
 tickers (SYNTHAUSDT, SYNTHBUSDT, SYNTHCUSDT). Each monthly file holds the first two days of its month so the sample
-stays under 1 MB. The column names and types match the real partitions exactly; tools/verify.py --sample checks that
+stays under 2 MB. The column names and types match the real partitions exactly; tools/verify.py --sample checks that
 against manifest/manifest.json.
 
 Planted defects (only in SYNTHCUSDT 1m, 2024-02), written to sample/EXPECTED_DEFECTS.json so the quality scan in

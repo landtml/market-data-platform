@@ -1,14 +1,15 @@
 # quant: design and interface
 
-> Copied unchanged from the private research repository (snapshot 2026-10-24), except this note. Paths such as `libs/...`, `data/...`, `infra/swarm/...` and `data/samples/...` refer to that repository and its data folder, which are not published here. What this repository does contain is listed in the root README.md.
+> From the private research repository (snapshot 2026-10-24), edited for readers outside it: internal task references and process notes were removed and the wording was tightened. Rules, numbers and dates are unchanged. Paths such as `libs/...`, `configs/...` and `data/...` refer to that repository and its data folder, which are not published here; the root README.md lists what this repository contains.
 
 Goal: a retail intraday ML test whose results survive survivorship, look-ahead, corporate-action/redenomination,
-bad-tick and cost biases. Most effort goes into the dataset. Evaluation uses finlab-ml (owner's library).
+bad-tick and cost biases. Most effort goes into the dataset. Evaluation uses an external research library (not
+included).
 
-Primary market: decided after the wave-0 survey (see the ledger `Ruling:` line). Working assumption: Binance USD-M
-perpetuals (free archive with delisted symbols, exact fees, funding, 24/7), cross-checked against other venues.
+Primary market: Binance USD-M perpetuals (free archive with delisted symbols, exact fees, funding, 24/7), chosen
+after a survey of free sources and cross-checked against other venues.
 
-## Language split (owner's rule: each language where it fits best)
+## Language split (each language where it fits best)
 
 | Job | Language | Why |
 |---|---|---|
@@ -18,9 +19,9 @@ perpetuals (free archive with delisted symbols, exact fees, funding, 24/7), cros
 | Bars from trades (dollar/volume/imbalance), resampling, cross-venue consensus | Rust | streaming, path-dependent loops |
 | Event-driven execution simulator (positions, fees, spread, slippage, funding accrual, delist exits) | Rust | sequential path-dependent state |
 | Fixed-shape panels [T, N] with masks: features, IC / alpha-decay curves over horizons, cost sweeps, bootstrap / Monte Carlo, many small models over CPCV folds x hyper-params via vmap | JAX on GPU (ROCm) | static shapes, vmap, jit |
-| Orchestration CLI, small REST sources (macro, sentiment), instrument master, finlab glue (labels, CPCV, DSR, PBO, trial registry), reports | Python | glue and the owner's library |
+| Orchestration CLI, small REST sources (macro, sentiment), instrument master, research-library glue (labels, CPCV, DSR, PBO, trial registry), reports | Python | glue code; the research library is Python |
 
-Small keyless REST backfills (Binance fapi public endpoints, a few thousand requests) use Python's stdlib `urllib` instead of the Rust layer: no Rust REST client exists and the volume does not justify one. Accepted by the lead on 2026-10-20 (quant.data.pipeline.rest_backfill).
+Small keyless REST backfills (Binance fapi public endpoints, a few thousand requests) use Python's stdlib `urllib` instead of the Rust layer: no Rust REST client exists and the volume does not justify one. Decided 2026-10-20 (code: quant.data.pipeline.rest_backfill).
 
 ## Layout
 
@@ -46,7 +47,7 @@ Test/
     catalog.py              instrument master, rename/redenomination chains, PIT universe
     costs.py                fee schedule history, spread model calibration (JAX)
     features.py             JAX panel features
-    research/               labels, cv, trials, report (finlab glue)
+    research/               labels, cv, trials, report (research-library glue)
   tests/                    pytest
   data/raw/ data/lake/ data/curated/ data/samples/
   WORKLOG.md DESIGN.md
@@ -83,7 +84,7 @@ validate_series(ts, x, expected_step_ns: int | None, stuck_limit: int, name: str
 
 resample_bars(ts, o, h, l, c, v, qv, n, tbv, tbqv, out_interval_ns) -> dict[str, np.ndarray]
 trade_bars(ts, price, qty, is_buyer_maker, kind: str, threshold: float) -> dict[str, np.ndarray]
-consensus(ts_list, close_list, max_dev_bps) -> dict   # robust cross-venue median, flags
+consensus(ts_list, close_list, max_dev_bps) -> dict   # cross-venue median, flags
 
 simulate_targets(target, open_, close, tradable, spread_bps, fee_bps, funding, settle, dollar_vol, sigma,
                  impact_k: float, max_participation: float, equity0: float = 1.0) -> dict
@@ -126,7 +127,7 @@ simulate_events(entries: [K] (t_idx, i_idx, side, size), close, open_, tradable,
   - `issues.parquet`: every validation issue, with the rule id from the pitfalls catalogue.
   - `MANIFEST.json`: sources, URLs, checksums, row counts, build time, code version.
 
-## Bias controls (every one is a check that runs, not a promise)
+## Bias controls (each one is a check that runs)
 
 1. Survivorship: universe from the full archive listing incl. delisted symbols; count of delisted in the universe is
    reported per year.
@@ -135,23 +136,23 @@ simulate_events(entries: [K] (t_idx, i_idx, side, size), close, open_, tradable,
    CALIBRATION (cost_model.json, configs/cost_era_mult.json) is fitted once on all spread observations, including later
    years, because costs are charged to results and never read by a signal; it measures what trading actually cost.
    A strategy that uses predicted cost to make decisions (cost-aware sizing or filtering) must use a point-in-time
-   fit instead (audit A, 2026-10-22).
+   fit instead (data audit, 2026-10-22).
 3. Redenomination/renames: explicit chains with ratios from the pitfalls catalogue; returns never cross a chain
    without the ratio.
 4. Delistings: exit at the last tradeable price after the announcement with a haircut; no trading after the
    announcement in the research.
-5. Bad ticks: last-price outliers vs mark/index and other venues are flagged, not silently dropped.
+5. Bad ticks: last-price outliers vs mark/index and other venues are flagged and kept in the data.
 6. Costs: point-in-time fee schedule, spread model calibrated on real quotes (bookTicker / free tick samples),
    funding accrued at actual funding times, slippage scaled by size vs volume.
-7. Overfitting: every configuration tried is registered in finlab's TrialRegistry; DSR, PBO (CSCV) and CPCV paths
-   reported; a final holdout period untouched until the end.
+7. Overfitting: every configuration tried is registered in the research library's TrialRegistry; DSR, PBO (CSCV)
+   and CPCV paths reported; a final holdout period untouched until the end.
 
-## Rules adopted from the owner's earlier vault (reports/v-lessons.md; strategy section not used)
+## Rules carried over from the lessons of an earlier project (its strategy section not used)
 
 Each becomes a test or a validator rule.
 
 - V1 Funding sign: a test asserts that a long perp pays when the funding rate is positive, checked against a hand
-  computed day; a flipped sign is not detectable from P&L alone (vault: ~10 pp CAGR).
+  computed day; a flipped sign is not detectable from P&L alone (earlier project: ~10 pp CAGR).
 - V2 Stuck feeds: a run of identical values longer than a per-dataset limit (funding, mark, OI, close) is an issue
   `stuck_feed`; the bar is flagged, never silently used as information.
 - V3 Gaps: never drop a symbol on a missing bar and never pass NaN into the simulator. Missing bar: price carried
@@ -170,24 +171,16 @@ Each becomes a test or a validator rule.
 - V10 Rebalance phase: results that depend on the bar phase are averaged over phases, not reported for the best start.
 - V11 DSR sanity: before trusting a DSR, run the same pipeline on N pure-noise trials; DSR of the best noise trial
   must be roughly uniform across seeds. Sharpe, its variance across trials, and n_obs are all in the same per-bar
-  units (vault saw DSR stuck at ~1.0 at 150 trials: a units or variance error).
+  units (the earlier project saw DSR stuck at ~1.0 at 150 trials: a units or variance error).
 - V12 Binance `metrics` (OI) archive starts 2020-09; it has duplicate and out-of-order rows: dedupe + sort, then
   count missing 5-min slots per day and drop days below a completeness threshold.
 
-## Parallel Rust work (build isolation)
+## Curated panel contract (2026-10-19; supersedes the bars_<interval> line above)
 
-Rust builders never build in the shared crate while another builder edits it. Each copies `libs/core/rust` to
-`data/samples/<ME>/qcore` (own `target/`), works and tests there, and only at the end, holding the `crate-merge`
-queue, copies its own module file(s) (+ its lib.rs registration line, + Cargo.toml dependency lines if it owns them)
-into `libs/core/rust`, runs cargo test + maturin develop + pytest on the shared crate, and posts `wrote`.
-Cargo.toml dependency additions: a builder adds only its own lines and re-reads the file under the lock.
-
-## Curated panel contract (lead, 2026-10-19 21:10 UTC; supersedes the bars_<interval> line above)
-
-Owner: `libs/data/quant/data/panel.py` (b-panel). Readers: features, research, cost fit.
+Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
 
 - `data/curated/bars_5m/<YYYY>.parquet`: long panel sorted by (ts, instrument_id), zstd, 25 columns. One instrument is
-  one listing (fix_contract F1): a ticker that Binance reused has one instrument per listing. An instrument's rows run
+  one listing (audit fix F1): a ticker that Binance reused has one instrument per listing. An instrument's rows run
   from the first source bar at or after its onboard (floored to 5m) to its end: `listed_end_ts` for an earlier listing
   of a reused ticker (`last_ts_source` = `last_traded_bar`; its last traded bar is `last_ts`), else settle_ts, else the
   5m bar holding the last non-zero-volume 1m bar. Never past the onboard of the next listing of the same symbol. Source
@@ -234,13 +227,13 @@ Owner: `libs/data/quant/data/panel.py` (b-panel). Readers: features, research, c
   eligible count per day (min/median/max), ever-eligible count, delisted-in-universe count per year. `build` holds
   `dead_period_rows`, `stale_run_rows`, `stale_runs`, `tradable_false_rows` (counted after every flag pass, F9),
   `tradable_false_by_bit` (tradable=False rows carrying each panel bit) and `bit_rows` (all rows carrying each bit).
-- Publishing (b-panel, 2026-10-20): every build and every flag pass writes to `<root>/.staging-<stamp>/`, validates it
+- Publishing (2026-10-20): every build and every flag pass writes to `<root>/.staging-<stamp>/`, validates it
   (schema, year coverage, row total against panel_stats, universe present), moves it to `<root>/versions/<stamp>/`,
   and publishes it with ONE atomic symlink swap of `<root>/current`. `bars_5m`, `universe_pit.parquet` and
   `panel_stats.json` are symlinks through `current`. `load_dense` and `iter_dense` resolve `current` once per call, so
   one read sees one version. Retention: after a successful swap, all versions except `current` and the newest other
   version are deleted (about 8.3 GB each); a failed validation changes nothing.
-- LIMITATION (documented, not solved): a process that opens the legacy symlinks file by file while a swap happens
+- Limitation (documented, unsolved): a process that opens the legacy symlinks file by file while a swap happens
   can still see two versions in one run. Readers that need one consistent set must call `load_dense` / `iter_dense`,
   or resolve `data/curated/current` once and read from that directory.
 - `tradable` is false on: filled bars; bars in a market-wide outage or flat window (`market_window`, `flat_market`);
@@ -249,7 +242,7 @@ Owner: `libs/data/quant/data/panel.py` (b-panel). Readers: features, research, c
   single-bar prints (`single_bar_print`) and stale runs (`stale_run`). A Kraken `refuted` verdict sets `kraken_refuted`
   as evidence and does not change `tradable`: the 3-venue consensus decides. Premium and mark holes (`premium_hole`,
   `mark_hole`) leave the value null and do not change tradability.
-- Single-bar print (`single_bar_print`, rule r5, redefined by fix wave F4 to the w-r5b2 definition; M6). Bar t is a
+- Single-bar print (`single_bar_print`, redefined by audit fix F4; scorecard metric M6). Bar t is a
   candidate when (1) it is off: a real bar (volume > 0, not filled) with a mark whose |close / mark_close - 1| is more
   than 50 bps; (2) it is a run of one: neither neighbour (t-5 min and t+5 min, same instrument) is off, so a neighbour
   without a mark is not off and does not block the print; (3) its close is not within 50 bps of either neighbour's mark
@@ -258,18 +251,19 @@ Owner: `libs/data/quant/data/panel.py` (b-panel). Readers: features, research, c
   flat_market, consensus_refuted and stale_run. A bar already untradable for another reason gets no single-print bit.
   A candidate inside a `confirmed` consensus window is exempt (another venue saw the move; switch
   `SINGLE_PRINT_CONFIRMED_EXEMPT`, on). A sustained divergence (two or more consecutive off bars) is not a candidate and stays tradable.
-  Calibration on the 2026-10-22 inputs, dev span (ts < 2025-10-01): 32,189 candidates under the w-r5b2 definition, the
-  same count as `data/samples/w-panel/f4_dev_count.json`; 25,721 with the exemption, which is the published rule.
+  Calibration on the 2026-10-22 inputs, dev span (ts < 2025-10-01): 32,189 candidates under the F4 definition before
+  the exemption, the same count a separate script produced when the rule was defined; 25,721 with the exemption, which
+  is the published rule.
   CAUSALITY: the rule reads bar t+5 min, so it is a DATA-CLEANING flag. It decides whether a fill at print t is
   believable; it is not a feature input. No feature may read `issue_flags` or `single_bar_print`
   (`tests/bias_checks/test_panel_rebuild_r5.py` enforces this by a source scan). A `disputed` window does not exempt a bar.
-- Stale run (`stale_run`, fix wave F, stale-run rule). A run of at least 288 consecutive 5m bars (one UTC day) of one
+- Stale run (`stale_run`, added by the audit fixes). A run of at least 288 consecutive 5m bars (one UTC day) of one
   instrument with volume 0 and an unchanged close (close equal to the previous bar's close) gets the bit and
   `tradable = false`. Prices are kept. Runs are found on each listing's grid before the span build; a gap row is a
   volume-0 bar carrying the previous close, so a run across a gap is one run. The frozen tails the audit found were the
   dead periods of earlier listings of reused tickers; with listing segments those rows are dead and dropped, so the bit
   covers the frozen stretches inside a live listing.
-- Zero open interest (zero-OI rule, r5). A zero `sum_open_interest` or `sum_open_interest_value` on a live perpetual
+- Zero open interest (zero-OI rule). A zero `sum_open_interest` or `sum_open_interest_value` on a live perpetual
   is a bad value, not a reading: that column is null on the bar (`panel_inputs.oi_rows`). A bar with no OI stamp is
   null as well.
 - Excluded instruments (`exclude_reason` in `instruments.parquet`, built by `quant.data.catalog`): the panel builds
@@ -293,7 +287,7 @@ Owner: `libs/data/quant/data/panel.py` (b-panel). Readers: features, research, c
   | `mark_hole` | 1<<21 | mark_close NaN on a live bar | unchanged |
   | `consensus_refuted` | 1<<22 | consensus 'refuted' window | false |
   | `consensus_disputed` | 1<<23 | consensus 'disputed' window (robustness mask) | unchanged |
-  | `single_bar_print` | 1<<24 | one-bar print > 50 bps from mark (w-r5b2 definition, see above; data-cleaning; reads t+5 min) | false |
+  | `single_bar_print` | 1<<24 | one-bar print > 50 bps from mark (F4 definition, see above; data-cleaning; reads t+5 min) | false |
   | `stale_run` | 1<<25 | >= 288 consecutive bars with volume 0 and an unchanged close (price kept) | false |
 
 - Consensus (`lake/verify_consensus.parquet`, built by `sources/bybit.py` `build_consensus`): each window's class from
@@ -312,25 +306,25 @@ Owner: `libs/data/quant/data/panel.py` (b-panel). Readers: features, research, c
 - `spike_window` and `mark_divergence_window` come from `quality/suspicious_windows.parquet`, the scorecard's review
   queue: the top `QUEUE_CAP` (2,000) windows by magnitude, rewritten on every scorecard run. They are review flags, not
   complete detectors, and their counts move between builds (round 4: 311 mark-divergence windows, round 5: 31).
-  Research must not filter on them. The tradable rule does not use them (wave R, 2026-10-22).
+  Research must not filter on them. The tradable rule does not use them (re-audit, 2026-10-22).
 - `aux/` (inside each version directory): `context_ext_daily.parquet` (`usable_from`), `tick_history.parquet`
   (`capture_ts`) and `announcements.parquet` (`release_ts`), copied unchanged. A row is usable at bar t only when its
   publish column is <= t (`panel_inputs.visible_rows`, `AUX_USABLE`). They are not per-bar columns.
 
-## Cost-model alignment (lead ruling 2026-10-20 ~22:20 UTC)
+## Cost-model alignment (2026-10-20)
 `simulate_targets` charges `spread_bps[t+1, i]/2` for the fill at open t+1 after a decision at close t. So the
 array passed as `spread_bps` must be execution-aligned: row k is predicted from bars <= k-1 only.
 `quant.simulation.costmodel.predict_spread_bps(dense)` returns it already aligned that way (row 0 = the conservative cap), and
 callers never shift it again. Size multipliers are keyed by a point-in-time band of `median_qv_30d` from
 universe_pit (built from data up to D-1), never by a symbol list, so every instrument gets a fitted multiplier.
 
-## Full-span scaling and smoke-run fixes (lead ruling 2026-10-20 ~23:15 UTC, from reports/b-smoke.md)
+## Full-span scaling and smoke-run fixes (2026-10-20, from the blinded smoke run)
 Full 2020-2025 dense arrays do not fit 6 GB even for 20 names, so research streams by time chunk:
 - `quant.data.panel.iter_dense(start, end, fields, chunk="year", halo_bars=8640, ids=None) -> Iterator[Dense]`: yields
   calendar-year chunks; each carries `halo_bars` real bars before its first owned bar (marked `owned=False` via a new
   `Dense.owned bool[T]`), same padded fixed shapes, the same id axis `ids` for all chunks (union of instruments
   present in [start,end) unless ids is given). Padded rows: present=False, and their ts repeat the last real ts, so
-  ts never crosses `end` (fixes BUG-2). `Dense.n_t` = number of real rows.
+  ts never crosses `end` (fixes a smoke-run bug). `Dense.n_t` = number of real rows.
 - Features/decay/models compute on each chunk and keep only owned rows. Models train on sampled decision rows
   collected across chunks (small), then predict chunk by chunk.
 - `simulate_targets` / `simulate_events` gain optional state carry: `pos0` (f64[N] initial positions in units,

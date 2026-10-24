@@ -1,5 +1,5 @@
-"""Fix wave F panel rules (infra/swarm/briefs/fix_contract.md): stale runs, index and spot at the month boundary,
-single-bar print as defined by w-r5b2, and the panel_stats counts.
+"""Panel rules from the audit fixes: stale runs, index and spot at the month boundary, the single-bar print
+definition (fix F4), and the panel_stats counts.
 
 Each rule has a test that fails on the pre-fix code. The F1 segment tests are in tests/unit/test_panel.py.
 """
@@ -244,13 +244,13 @@ def test_flag_pass_refreshes_tradable_false_rows(built, tmp_path):
     assert st["build"]["tradable_false_by_bit"]["stale_run"] == 300
 
 
-# ---------------------------------------------------------------- F4: single_bar_print as w-r5b2 defines it
+# ---------------------------------------------------------------- F4: the single_bar_print definition
 #
-# w-r5b2 (infra/swarm/reports/w-r5b2.md; data/samples/w-r5b2/analyze.py, kind=single_bar, and the 32,189 count
-# reproduced in data/samples/a-spike/dev_rules.py): a bar is a single-bar print when
+# The F4 definition (its dev-span count of 32,189 was reproduced by a second, separate script): a bar is a
+# single-bar print when
 #   real (volume > 0, not filled), has a mark, |close / mark - 1| > 50 bps (off), and it is a run of one off bar
 #   (neither contiguous neighbour is off), and its close is NOT within 50 bps of the mark of either neighbour
-#   (mark-lag explained), and no other untradable bit is set (the base condition; a-spike found it undocumented).
+#   (mark-lag explained), and no other untradable bit is set (the base condition; the audit found it undocumented).
 # The confirmed-window exemption is applied on top (see DESIGN.md).
 
 def _stage_rows(root: Path, rows: list[dict], consensus_rows: list[dict] = ()) -> tuple[Path, Path, Path]:
@@ -319,7 +319,7 @@ def test_bar_with_another_untradable_bit_gets_no_single_bit(tmp_path):
 
 
 def _reference_single_print(bars: dict) -> set:
-    """Pure-python w-r5b2 definition over contiguous per-symbol series. bars[sym] = list of dicts in time order."""
+    """Pure-python F4 definition over contiguous per-symbol series. bars[sym] = list of dicts in time order."""
     hits = set()
     for sym, seq in bars.items():
         n = len(seq)

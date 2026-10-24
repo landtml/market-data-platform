@@ -50,6 +50,6 @@ the exchange counts once here.
 | Whole `data/` folder, sealed results excluded | 160,770 | 2,537,964,196 |
 
 The figure "about 2.5 billion rows in 160,000+ files" matches the whole `data/` folder. That count includes the previous
-version of the curated panel, kept for rollback (173.6M rows, same row count as the current one), about 3,300 scratch files of the build workers
-(26.9M rows) and the intermediate copies above. The defensible figure for the data lake is **2.16 billion rows in
-154,690 parquet files**, of which 2.12 billion rows are per-symbol market data.
+version of the curated panel, kept for rollback (173.6M rows, same row count as the current one), about 3,300 build
+scratch files (26.9M rows) and the intermediate copies above. The figure for the data lake itself is 2.16 billion
+rows in 154,690 parquet files, of which 2.12 billion rows are per-symbol market data.

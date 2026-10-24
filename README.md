@@ -1,10 +1,11 @@
 # market-data-platform
 
 A private, point-in-time data lake of crypto futures market data (Binance USD-M, cross-checked against OKX, Bybit
-and Kraken): **2.16 billion rows in 154,690 parquet files**, built and quality-checked so that a backtest on it
-cannot see the future, cannot drop delisted coins, and matches the exchange's own records. This repository is the
-evidence for that claim: a machine-generated manifest of the lake, the tools that produce and check it, the design
-and audit documents, and the key tests, without the 55 GB of data, which is not redistributable.
+and Kraken): 2.16 billion rows in 154,690 parquet files. It is built so that a backtest reads no value before its
+publication time and keeps delisted coins, and its sampled bars equal the exchange's own files. This repository
+holds the evidence: a machine-generated manifest of the lake, the tools that produce and check it, the design and
+audit documents, and the tests that enforce the bias rules. The 55 GB of data is not included because it is not
+redistributable.
 
 ## Verify it yourself in 60 seconds
 
@@ -34,12 +35,12 @@ nothing else; (5) 5-minute bars are rebuilt from 1-minute bars with the exchange
 
 What you cannot check without the data: that the manifest describes a lake that exists. Two ways to close that gap:
 
-- **Spot-check one file against the public source.** `manifest/manifest_files.tsv.gz` lists every file with its row
+- Spot-check one file against the public source. `manifest/manifest_files.tsv.gz` lists every file with its row
   count. For example `binance_um/klines/1m/BTCUSDT/2024-02.parquet` has 41,760 rows (29 days x 1,440 minutes);
   download the public file `BTCUSDT-1m-2024-02.zip` (USD-M futures, monthly klines) from data.binance.vision and
   count its data rows. Other Binance symbol-months can be checked the same way; a month that was gap-filled from
   the daily archive (for example SANDUSDT 2022-02) has more rows than its short monthly zip.
-- **Ask for a live run.** On the machine that holds the lake, `python tools/verify.py <lake>` recomputes all
+- Ask for a live run. On the machine that holds the lake, `python tools/verify.py <lake>` recomputes all
   154,690 footers in about 15 seconds and compares them with the committed manifest, down to a sha256 over every
   file path and size (`58a72a8c...`). Any added, removed or resized file fails it.
 
@@ -102,7 +103,7 @@ a rollback copy of the panel and build scratch; [manifest/README.md](manifest/RE
 | Point-in-time universe from data up to the previous day; delisted coins stay in | `test_universe_lookahead` in [test_panel.py](method/tests/bias_checks/test_panel.py) |
 | One instrument per listing when the exchange reuses a ticker (a survivorship and fake-jump error the audit found) | [docs/DATA_REPORT_2026-10-22.md](docs/DATA_REPORT_2026-10-22.md) (fix F1), listing tests in [test_panel.py](method/tests/bias_checks/test_panel.py) |
 | Bars match the exchange: 17,280 of 17,280 sampled 5m bars and 2,574 of 2,574 funding settlements equal the exchange's own files | re-audit in [docs/DATA_REPORT_2026-10-22.md](docs/DATA_REPORT_2026-10-22.md); rule tested in [test_resample_traded.py](method/tests/equality/test_resample_traded.py) |
-| Bad prints are flagged, not silently dropped; data-cleaning flags that look one bar ahead are never read by features | [test_panel_rebuild_r5.py](method/tests/bias_checks/test_panel_rebuild_r5.py) (source scan) |
+| Bad prints are flagged and kept in the data; data-cleaning flags that look one bar ahead are never read by features | [test_panel_rebuild_r5.py](method/tests/bias_checks/test_panel_rebuild_r5.py) (source scan) |
 | Every scorecard metric green or proven unfixable from free sources; a regression reopens it | [docs/quality_proofs.md](docs/quality_proofs.md), [method/quality/](method/quality/) |
 | Fast Rust code equals its slower reference | [test_core_bars.py](method/tests/equality/test_core_bars.py), [test_bookticker_rust.py](method/tests/equality/test_bookticker_rust.py) |
 | Research is pre-registered: rules, trial budget and success criteria fixed before results, holdout sealed | [docs/RESEARCH.md](docs/RESEARCH.md) |
@@ -112,19 +113,19 @@ The audit numbers come from the private repository's reports and were not re-run
 
 ## What was learned
 
-- **The data work was the hard part, and audits pay.** A seven-agent audit of an apparently finished dataset found
-  twelve defects, the worst being exchange-reused tickers that silently stitched a dead coin's history onto a new
-  one. After fixes and an independent re-audit, sampled bars equal the exchange's files exactly.
-- **A momentum strategy that looked good elsewhere does not survive here.** Rebuilt on this data with funding,
-  delisted coins and realistic costs: out-of-sample Sharpe -0.12 to -0.91, probability of backtest overfitting
-  0.94. Null result. The earlier positive result came from a fixed list of surviving coins, no funding costs and a
-  reused holdout.
-- **Funding carry is real but small and fading.** An exploratory, unregistered test of a hedged funding-carry trade
+- Most of the work was in the data. An audit of the dataset after it looked finished found twelve defects. The
+  worst: tickers the exchange reused for a new coin silently stitched a dead coin's history onto the new one. After
+  the fixes, a re-audit on a new random sample found panel bars equal to the exchange's files on 17,280 of 17,280
+  bars.
+- A momentum strategy from an earlier project does not survive on this data. Rebuilt with funding, delisted coins
+  and realistic costs: out-of-sample Sharpe -0.12 to -0.91, probability of backtest overfitting 0.94. Null result.
+  The earlier positive result came from a fixed list of surviving coins, no funding costs and a reused holdout.
+- Funding carry is real but small and fading. An exploratory, unregistered test of a hedged funding-carry trade
   earned most of its return in 2021 (+25.7% of capital), then +0.3% to +9.1% a year, +1.4% for 2025 to September;
   exchange-failure and auto-deleveraging risks are not priced. Not claimed as an edge.
-- **The pre-registered main study has not been run.** There is no registered result yet.
+- The pre-registered main study has not been run. There is no registered result yet.
 
-Timeline: [docs/WORKLOG_EXCERPT.md](docs/WORKLOG_EXCERPT.md).
+Timeline: [docs/TIMELINE.md](docs/TIMELINE.md).
 
 ## What this is not
 
@@ -133,7 +134,7 @@ Timeline: [docs/WORKLOG_EXCERPT.md](docs/WORKLOG_EXCERPT.md).
   terms are unclear or restrictive ([docs/DATA_LICENSES.md](docs/DATA_LICENSES.md)). The sample here is synthetic.
 - Not a runnable copy of the platform. The files in [method/](method/) are read-only excerpts that import private
   packages; the runnable parts here are the three tools in `tools/`.
-- Not independently audited. The audits were run by AI agents inside the private repository; their headline
+- Not independently audited. The audits were run within the project, inside the private repository; their headline
   numbers are quoted from those reports, and only the manifest was regenerated for this repository.
 
 ## Skills demonstrated
@@ -148,12 +149,10 @@ Timeline: [docs/WORKLOG_EXCERPT.md](docs/WORKLOG_EXCERPT.md).
 
 ## How this was built
 
-The project was built in about five days (2026-10-19 to 2026-10-24) with AI coding agents working under the owner's
-direction: a lead agent that planned and reviewed, and worker agents that wrote most of the code, ran the downloads
-and wrote the audit reports. The owner set the goal, the stack, the hard rules (no look-ahead, point-in-time
-universe, sealed holdout, costs always on, public keyless sources only) and the pre-registration, and took the
-decisions recorded as owner rulings. The claims rest on checks a machine can rerun (tests, audits against the
-exchange's files, the manifest), not on anyone's word, including the agents'.
+The work ran from 2026-10-19 to 2026-10-24. I set the design, the rules (no look-ahead, point-in-time universe,
+sealed holdout, costs always on, public keyless sources only) and the acceptance checks, and I review the results
+against them. Every claim above points to a test, an audit against the exchange's files or the manifest, so it can be
+rerun.
 
 ## Repository layout
 
@@ -163,12 +162,11 @@ CONSULTANT_BRIEF.md     one-page summary for a non-specialist
 manifest/               lake, panel and data-folder manifests (+ how they were produced)
 tools/                  build_manifest.py, verify.py, make_synthetic_sample.py
 sample/                 synthetic lake (1.8 MB), its manifest, the planted defects
-method/                 read-only source excerpts: point-in-time rules, quality checks, key tests
-docs/                   design, pre-registration, licences, quality proofs, audit report, work-log excerpt
+method/                 read-only source excerpts: point-in-time rules, quality checks, bias and equality tests
+docs/                   design, pre-registration, licences, quality proofs, audit report, timeline
 ```
 
 ## Licence
 
-Not chosen yet. MIT is proposed for the code and documents; the owner adds a LICENSE file before publishing. No
-market data is included. Data credit for the private lake: "Data: Binance Vision (data.binance.vision),
+No licence has been chosen yet, and there is no LICENSE file. No market data is included. Data credit for the private lake: "Data: Binance Vision (data.binance.vision),
 CC BY-NC-SA 4.0."

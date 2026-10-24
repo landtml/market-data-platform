@@ -1,6 +1,6 @@
 # Pre-registration: retail intraday ML test on Binance USD-M perpetuals
 
-> Copied unchanged from the private research repository (snapshot 2026-10-24), except this note. Paths such as `libs/...`, `data/...`, `infra/swarm/...` and `data/samples/...` refer to that repository and its data folder, which are not published here. What this repository does contain is listed in the root README.md.
+> From the private research repository (snapshot 2026-10-24), edited for readers outside it: internal task references and process notes were removed and the wording was tightened. Rules, numbers and dates are unchanged. Paths such as `configs/...` and `data/...` refer to that repository and its data folder, which are not published here; the root README.md lists what this repository contains.
 
 Written 2026-10-19, before any research data was loaded. Changes after this point are logged at the bottom with the
 reason, so the number of decisions made after seeing results stays visible.
@@ -67,7 +67,7 @@ rolling VWAP; residual return after BTC beta; Amihud illiquidity; time of day / 
 ## Overfitting controls
 
 - CPCV: 10 groups, 2 test groups (45 splits, 9 paths), purge by each label's end time t1, embargo of 1 day.
-- Every configuration evaluated goes into finlab's TrialRegistry. DSR uses the effective number of trials from ONC
+- Every configuration evaluated goes into the TrialRegistry of an external research library (not included). DSR uses the effective number of trials from ONC
   clustering of the trial return series. PBO by CSCV over the trial matrix.
 - A pure-noise run with the same pipeline and trial count first (V11): the best noise trial's DSR must look uniform.
 - Controls: a gross-matched cash control (V7) and equal-weight buy-and-hold of the universe.
@@ -136,7 +136,7 @@ Everything else is reported as "no edge at retail cost", with the gap in bps per
   gate is conservative (false-positive rate below nominal); power at a planted net Sharpe of 2/yr is ~46-48%. The gate
   stays as registered. In addition, every reported configuration gets an empirical p-value against the V11 noise
   distribution at the same K and shapes (share of noise seeds whose best-of-K DSR is at least the configuration's).
-- 2026-10-21 10:50 UTC (before any Stage 1 or Stage 2 result was seen; owner decision, retail shape): rebalancing
+- 2026-10-21 10:50 UTC (before any Stage 1 or Stage 2 result was seen; my decision, for a retail account): rebalancing
   cadence variants. Besides "rebalanced at the horizon", the cross-sectional portfolio is also run at a fixed cadence
   c in {1h, 4h, 1d} for every c >= h, holding the mean of the predictions made since the last rebalance (no new
   forecasts, no refit). Scope: the all-families feature set and, per model, the two horizons that Stage 2 already
@@ -149,14 +149,14 @@ Everything else is reported as "no edge at retail cost", with the gap in bps per
   doubled to full-spread units; calibrated on 2023-06 and 2024-02, Spearman 0.83-0.89 in the bands below 500M USD)
   the fit3 model covers the actual spread in only 35% / 55% / 61% of 5m buckets in 2020 / 2021 / 2022, below the
   registered 65%. So the charged spread is fit3 x m_b x e_{year,b}, with e from the same 65% rule in both directions
-  of an odd/even-month split (data/samples/w-refit-ay/era_mult.json): 50m-500m 1.63 / 1.35 / 1.19 / 1.08 for
+  of an odd/even-month split (era_mult.json): 50m-500m 1.63 / 1.35 / 1.19 / 1.08 for
   2020-2023, 10m-50m 2.20 / 1.62 / 1.07 / 1.29, lt10m 1.18 in 2023; e = 1 for 2024-2025 and for the >= 500M band.
   A band with no proxy rows in a year (lt10m 2020-2022, 2025) takes the largest e of that year. fit3 itself is
   unchanged (refits fit4 and fit-ay failed the out-of-sample gate). The proxy reads harsher than quoted in 2023 (fit3
   coverage 0.61 vs 0.70), so the error is on the conservative side. Reason: costs must meet the registered coverage
   in every year the research uses, not only in the years the quotes cover.
-- 2026-10-22 18:30 UTC (before any Stage 1 or Stage 2 result was seen; from data audit A): data version and cost
-  refit. The research runs on the panel version published after audit A's fixes (listing segments for reused
+- 2026-10-22 18:30 UTC (before any Stage 1 or Stage 2 result was seen; from the data audit): data version and cost
+  refit. The research runs on the panel version published after the audit's fixes (listing segments for reused
   tickers, OHLC from traded minutes, index month boundary, single-bar print with mark-lag exclusion and confirmed-window
   exemption, stale_run, delist-notice mapping); its version stamp is recorded with every trial. fit3's input file no
   longer exists, so the spread model is refitted with the fit3 procedure on the current spread_obs_5m.parquet and the
@@ -166,11 +166,11 @@ Everything else is reported as "no edge at retail cost", with the gap in bps per
   2023-06-22 (the earliest date the evidence allows; measured by 2024-02-20). Reason: every cost and data input must be
   rebuildable from files on disk.
 - 2026-10-22 20:40 UTC (before any Stage 1 or Stage 2 result was seen): outcome of the entry above. Data version
-  20261022T174452075435Z (after audit A, wave R re-audit and wave U). Spread refit (fit3 procedure, current
-  spread_obs_5m.parquet, sha256 in data/samples/w-cost2/refit_inputs.sha256): gate part (a), coverage after scaling
+  20261022T174452075435Z (after the audit, the re-audit and the closure of the remaining scorecard metrics). Spread
+  refit (fit3 procedure, current spread_obs_5m.parquet, input sha256 recorded in refit_inputs.sha256): gate part (a), coverage after scaling
   >= 0.65 in every band and both directions, PASS (min 0.650005); part (b), overall out-of-sample median log error no
   worse than fit3, FAIL (forward 0.4291 -> 0.4603, reverse 0.3790 -> 0.3821; same cause as fit4: ETH and SOL 2024-02
   joined the evaluation set). As registered, fit3's parameters stay (data/curated/cost_model.json unchanged). Era
   multipliers were re-derived with the 65% rule on the new panel; the largest change is 0.003
-  (configs/cost_era_mult.json; previous table in data/samples/w-cost2/cost_era_mult_prev.json). The refit stays staged
-  as data/samples/w-cost2/cost_model_refit.json, the model rebuildable from files on disk; fit3 itself is not.
+  (configs/cost_era_mult.json; the previous table is kept as cost_era_mult_prev.json). The refit stays staged as
+  cost_model_refit.json, the model rebuildable from files on disk; fit3 itself is not.

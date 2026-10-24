@@ -2,7 +2,9 @@
 
 Read-only copies of a few source files from the private repository, kept to show how point-in-time correctness and
 data quality are enforced. They are not runnable here: they import the private packages and read the private data
-folder. Each file is unchanged from the snapshot of 2026-10-24.
+folder. The code is unchanged from the snapshot of 2026-10-24; in three files a header docstring or comment that
+pointed to internal task notes was reworded. `finlab`, imported by `test_core_bars.py`, is an external research
+library and is not included.
 
 | File | Why it is here |
 |---|---|
@@ -14,7 +16,7 @@ folder. Each file is unchanged from the snapshot of 2026-10-24.
 | `tests/bias_checks/test_context.py` | Look-ahead tests for macro and sentiment context: each column is shifted by its publication lag; a shortened lag or a future peek fails. |
 | `tests/bias_checks/test_panel_rebuild_bybit.py` | Perturbing a Bybit event published after t never changes bar t. |
 | `tests/bias_checks/test_panel_rebuild_r5.py` | The single-bar print rule, and a source scan asserting no feature module reads the data-cleaning bit (it looks one bar ahead). |
-| `tests/bias_checks/test_panel_rebuild_f.py` | Stale-run, month-boundary and delist-notice rules from the audit fixes (F-wave). |
-| `tests/equality/test_resample_traded.py` | 5m bars take open/high/low/close from traded minutes only, the exchange's own rule (the defect found by the audit). |
-| `tests/equality/test_core_bars.py` | Rust resampling equals a pandas reference; Rust trade bars equal the owner's library bar for bar. |
+| `tests/bias_checks/test_panel_rebuild_f.py` | Stale-run, month-boundary and delist-notice rules from the audit fixes (see `docs/DATA_REPORT_2026-10-22.md`). |
+| `tests/equality/test_resample_traded.py` | 5m bars take open/high/low/close from traded minutes only, the exchange's own rule (audit fix F2). |
+| `tests/equality/test_core_bars.py` | Rust resampling equals a pandas reference; Rust trade bars equal an external research library's bars, bar for bar. |
 | `tests/equality/test_bookticker_rust.py` | The Rust quote reducer (43x faster) produces the same output as the Python reference. |
