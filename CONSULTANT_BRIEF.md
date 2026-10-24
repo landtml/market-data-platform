@@ -12,21 +12,19 @@ I built a private store of crypto futures market data from the exchange's free p
 price bars for about 1,000 Binance contracts from 2020 to October 2026, including the ones that were later delisted,
 plus funding payments, reference prices and open interest. Prices were cross-checked against three other exchanges.
 Every value carries the time it became knowable, and the research code may only read it after that time. A
-rule-based quality scorecard grades the data, and an audit compares samples with the exchange's own files.
+rule-based quality scorecard grades the data, and a comparison against the exchange's own files checks samples.
 
 ### Evidence
 
 The store holds 2.16 billion rows in 154,690 files (55 GB). The repository does not ship the data, because the
 exchanges' terms limit redistribution. It ships a manifest generated from the files' metadata that pins every file
 name, size and row count with a fingerprint, plus a tool that recomputes it and fails on any change. A synthetic
-sample lets anyone run the tools in under a minute. On a random re-audit sample, 17,280 of 17,280 five-minute bars and
-2,574 of 2,574 funding payments equalled the exchange's records exactly.
+sample lets anyone run the tools in under a minute.
 
 ### Limits
 
 The data is private, so an outside reader can verify the method and the manifest, and spot-check single files against
-the public archive, but not the whole store. The audits were run within the project and are quoted from their
-reports; no third party has audited the data. The planned research study has not been run, and there is no claim of a profitable strategy: the
+the public archive, but not the whole store. No third party has audited the data. The planned research study has not been run, and there is no claim of a profitable strategy: the
 one momentum strategy tested lost money out of sample after costs.
 
 ## Five likely questions
@@ -34,7 +32,7 @@ one momentum strategy tested lost money out of sample after costs.
 1. "What did you design, and how do you check it?" I set the goal, the stack (Rust for row-level work, Python for
    orchestration), the hard rules (no look-ahead, delisted coins kept, a sealed holdout, costs always on) and the
    pre-registration, and I decided the open questions. The checks: equality tests of the fast Rust code against
-   slower references, bias tests that change future data, audits against the exchange's files, and the manifest.
+   slower references, bias tests that change future data, checks against the exchange's files, and the manifest.
    (docs/DESIGN.md, docs/RESEARCH.md, method/tests/, manifest/; docs/TIMELINE.md.)
 
 2. "How do I know the 2 billion rows exist?" The manifest pins every file path, size and row count, with a sha256 over
@@ -43,9 +41,9 @@ one momentum strategy tested lost money out of sample after costs.
    including a rollback copy and scratch files; the lake itself is 2.16 billion. (manifest/README.md.)
 
 3. "What was the hardest data problem?" Binance reuses ticker names for new coins. The first build stitched an old,
-   dead coin's history onto the new coin under one ID, which hid a delisting and created fake price jumps. The audit
-   caught it; the fix is one instrument per listing, and a re-audit confirmed it. (docs/DATA_REPORT_2026-10-22.md,
-   F1.)
+   dead coin's history onto the new coin under one ID, which hid a delisting and created fake price jumps. Comparing
+   the data with the exchange's files caught it; the fix is one instrument per listing, covered by listing tests.
+   (method/tests/bias_checks/test_panel.py, docs/DESIGN.md.)
 
 4. "Did you find a profitable strategy?" No. A momentum strategy that looked good in an older project lost money out
    of sample here (Sharpe -0.12 to -0.91) once delisted coins, funding and costs were included. A hedged funding-carry

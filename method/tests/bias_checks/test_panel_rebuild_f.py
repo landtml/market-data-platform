@@ -1,7 +1,7 @@
 """Panel rules from the audit fixes: stale runs, index and spot at the month boundary, the single-bar print
-definition (fix F4), and the panel_stats counts.
+definition , and the panel_stats counts.
 
-Each rule has a test that fails on the pre-fix code. The F1 segment tests are in tests/unit/test_panel.py.
+Each rule has a test that fails on the pre-fix code. The listing-segment tests are in tests/unit/test_panel.py.
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ T0 = int(dt.datetime(2024, 1, 1, tzinfo=dt.UTC).timestamp()) * 1_000_000_000
 FEB1 = int(dt.datetime(2024, 2, 1, tzinfo=dt.UTC).timestamp()) * 1_000_000_000
 N_BARS = 40 * 288  # 40 days from 2024-01-01: January and February 2024 (Feb 1 is bar 31 * 288)
 JAN_LAST = (FEB1 - BAR_NS - T0) // BAR_NS  # index of the 2024-01-31 23:55 bar
-STALE = PANEL_BITS.get("stale_run", 1 << 25)  # the new bit (fix wave F): red before the fix
+STALE = PANEL_BITS.get("stale_run", 1 << 25)  # the new bit : red before the fix
 SP = PANEL_BITS["single_bar_print"]
 THR = SINGLE_PRINT_BPS / 1e4
 DEV = 1 + 2 * THR  # a close 100 bps off its mark
@@ -244,9 +244,9 @@ def test_flag_pass_refreshes_tradable_false_rows(built, tmp_path):
     assert st["build"]["tradable_false_by_bit"]["stale_run"] == 300
 
 
-# ---------------------------------------------------------------- F4: the single_bar_print definition
+# ---------------------------------------------------------------- the single_bar_print definition
 #
-# The F4 definition (its dev-span count of 32,189 was reproduced by a second, separate script): a bar is a
+# The definition (its dev-span count of 32,189 was reproduced by a second, separate script): a bar is a
 # single-bar print when
 #   real (volume > 0, not filled), has a mark, |close / mark - 1| > 50 bps (off), and it is a run of one off bar
 #   (neither contiguous neighbour is off), and its close is NOT within 50 bps of the mark of either neighbour
@@ -319,7 +319,7 @@ def test_bar_with_another_untradable_bit_gets_no_single_bit(tmp_path):
 
 
 def _reference_single_print(bars: dict) -> set:
-    """Pure-python F4 definition over contiguous per-symbol series. bars[sym] = list of dicts in time order."""
+    """Pure-python definition over contiguous per-symbol series. bars[sym] = list of dicts in time order."""
     hits = set()
     for sym, seq in bars.items():
         n = len(seq)

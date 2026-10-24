@@ -54,7 +54,7 @@ flowchart LR
   X["OKX, Bybit, Kraken<br/>(cross-venue checks)"] --> V["Suspicious-window verdicts<br/>3-venue consensus"]
   L --> P["Curated 5m panel<br/>170M rows, 696 instruments,<br/>point-in-time universe"]
   V --> P
-  P --> Q["Quality scorecard M1-M16<br/>audit + re-audit vs exchange"]
+  P --> Q["Quality scorecard M1-M16<br/>checks vs exchange files"]
   P --> S["Research harness<br/>(costs, CPCV, deflated Sharpe)"]
   L -. "footers only" .-> M["manifest/ (this repo)"]
 ```
@@ -101,22 +101,18 @@ a rollback copy of the panel and build scratch; [manifest/README.md](manifest/RE
 |---|---|
 | No look-ahead: a value is used only after its publication time | [method/point_in_time/panel_inputs.py](method/point_in_time/panel_inputs.py) (`visible_rows`), perturbation tests in [test_panel_rebuild_bybit.py](method/tests/bias_checks/test_panel_rebuild_bybit.py) and [test_context.py](method/tests/bias_checks/test_context.py) |
 | Point-in-time universe from data up to the previous day; delisted coins stay in | `test_universe_lookahead` in [test_panel.py](method/tests/bias_checks/test_panel.py) |
-| One instrument per listing when the exchange reuses a ticker (a survivorship and fake-jump error the audit found) | [docs/DATA_REPORT_2026-10-22.md](docs/DATA_REPORT_2026-10-22.md) (fix F1), listing tests in [test_panel.py](method/tests/bias_checks/test_panel.py) |
-| Bars match the exchange: 17,280 of 17,280 sampled 5m bars and 2,574 of 2,574 funding settlements equal the exchange's own files | re-audit in [docs/DATA_REPORT_2026-10-22.md](docs/DATA_REPORT_2026-10-22.md); rule tested in [test_resample_traded.py](method/tests/equality/test_resample_traded.py) |
+| One instrument per listing when the exchange reuses a ticker (a survivorship and fake-jump error found while checking the data) | listing tests in [test_panel.py](method/tests/bias_checks/test_panel.py) |
+| Resampled bars follow the exchange's own rule (traded minutes only) | [test_resample_traded.py](method/tests/equality/test_resample_traded.py) |
 | Bad prints are flagged and kept in the data; data-cleaning flags that look one bar ahead are never read by features | [test_panel_rebuild_r5.py](method/tests/bias_checks/test_panel_rebuild_r5.py) (source scan) |
 | Every scorecard metric green or proven unfixable from free sources; a regression reopens it | [docs/quality_proofs.md](docs/quality_proofs.md), [method/quality/](method/quality/) |
 | Fast Rust code equals its slower reference | [test_core_bars.py](method/tests/equality/test_core_bars.py), [test_bookticker_rust.py](method/tests/equality/test_bookticker_rust.py) |
 | Research is pre-registered: rules, trial budget and success criteria fixed before results, holdout sealed | [docs/RESEARCH.md](docs/RESEARCH.md) |
 
-The audit numbers come from the private repository's reports and were not re-run for this repository (see
-"What this is not").
-
 ## What was learned
 
-- Most of the work was in the data. An audit of the dataset after it looked finished found twelve defects. The
-  worst: tickers the exchange reused for a new coin silently stitched a dead coin's history onto the new one. After
-  the fixes, a re-audit on a new random sample found panel bars equal to the exchange's files on 17,280 of 17,280
-  bars.
+- Most of the work was in the data. Checking the finished-looking dataset against the exchange's own files turned up
+  defects, the worst being tickers the exchange reused for a new coin: they silently stitched a dead coin's history
+  onto the new one. The fix is one instrument per listing, covered by tests.
 - A momentum strategy from an earlier project does not survive on this data. Rebuilt with funding, delisted coins
   and realistic costs: out-of-sample Sharpe -0.12 to -0.91, probability of backtest overfitting 0.94. Null result.
   The earlier positive result came from a fixed list of surviving coins, no funding costs and a reused holdout.
@@ -134,8 +130,8 @@ Timeline: [docs/TIMELINE.md](docs/TIMELINE.md).
   terms are unclear or restrictive ([docs/DATA_LICENSES.md](docs/DATA_LICENSES.md)). The sample here is synthetic.
 - Not a runnable copy of the platform. The files in [method/](method/) are read-only excerpts that import private
   packages; the runnable parts here are the three tools in `tools/`.
-- Not independently audited. The audits were run within the project, inside the private repository; their headline
-  numbers are quoted from those reports, and only the manifest was regenerated for this repository.
+- Not independently audited. No third party has reviewed the data or the code; only the manifest and the tools in
+  `tools/` can be re-run from this repository.
 
 ## Skills demonstrated
 
@@ -143,7 +139,7 @@ Timeline: [docs/TIMELINE.md](docs/TIMELINE.md).
 |---|---|
 | Data engineering at scale (billions of rows, partitioned parquet, Rust + Python) | [manifest/manifest.json](manifest/manifest.json), [docs/DESIGN.md](docs/DESIGN.md) |
 | Point-in-time correctness and survivorship control | [method/point_in_time/panel_inputs.py](method/point_in_time/panel_inputs.py), [method/tests/bias_checks/](method/tests/bias_checks/) |
-| Validation discipline: rules, scorecard, audit, re-audit against ground truth | [method/quality/](method/quality/), [docs/DATA_REPORT_2026-10-22.md](docs/DATA_REPORT_2026-10-22.md) |
+| Validation discipline: rules, scorecard, equality tests against reference implementations | [method/quality/](method/quality/), [method/tests/equality/](method/tests/equality/) |
 | Reproducibility: manifests, hashes, tamper detection, pre-registration | [tools/verify.py](tools/verify.py), [docs/RESEARCH.md](docs/RESEARCH.md) |
 | Licence and compliance awareness | [docs/DATA_LICENSES.md](docs/DATA_LICENSES.md) |
 
@@ -151,7 +147,7 @@ Timeline: [docs/TIMELINE.md](docs/TIMELINE.md).
 
 The work ran from 2026-10-19 to 2026-10-24. I set the design, the rules (no look-ahead, point-in-time universe,
 sealed holdout, costs always on, public keyless sources only) and the acceptance checks, and I review the results
-against them. Every claim above points to a test, an audit against the exchange's files or the manifest, so it can be
+against them. Every claim above points to a test, a check against the exchange's files or the manifest, so it can be
 rerun.
 
 ## Repository layout
@@ -163,7 +159,7 @@ manifest/               lake, panel and data-folder manifests (+ how they were p
 tools/                  build_manifest.py, verify.py, make_synthetic_sample.py
 sample/                 synthetic lake (1.8 MB), its manifest, the planted defects
 method/                 read-only source excerpts: point-in-time rules, quality checks, bias and equality tests
-docs/                   design, pre-registration, licences, quality proofs, audit report, timeline
+docs/                   design, pre-registration, licences, quality proofs, timeline
 ```
 
 ## Licence

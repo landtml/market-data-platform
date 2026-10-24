@@ -39,21 +39,16 @@ copied from that log.
 - Spread model era multipliers registered before any research result: quoted spreads exist only from 2023-05, so
   earlier years are charged more, from an effective-spread proxy.
 - Rust bookTicker reducer: one month of ETH quotes in 6 minutes and 0.52 GB, against 4.4 hours and 2.85 GB in
-  Python, with equality tests. A Polars port of the panel build was reverted: equal output but 24% slower.
+  Python, with equality tests. A batching rewrite of the panel build (Polars) was reverted: equal output but 24% slower.
 - Internal holes in the lake re-filled from the archive and then the public REST API (klines 1m: 506,964 missing
   minutes down to 15,921, the rest absent from both sources).
 
-## 2026-10-22: audit, fixes, re-audit
+## 2026-10-22: data checks and fixes
 
-- Audit: 156,335 parquet files open; 431/431 archive checksums match; no duplicate keys or grid holes; panel equals
-  the exchange on close, volume, trades, mark, premium, funding and open interest on sampled days.
-- The audit also found twelve defects (F1-F12). The worst: tickers Binance reused for a new coin carried the old
-  coin's history under one id (survivorship error and fake price jumps). Fixed by one instrument per listing.
-- Re-audit on a new random sample: panel bars equal the exchange's own 5m klines on 17,280 of 17,280 bars, funding
-  on 2,574 of 2,574 settlements. Scorecard: 14 green, 2 proven unfixable from free sources, 1 waived, 0 red.
-  Test suite at that point: 765 passed. Details: `DATA_REPORT_2026-10-22.md`, `quality_proofs.md`.
-- Found by the re-audit and documented as a known limitation: the panel's last bar does not carry the funding
-  settlement at its close.
+- Compared the panel with the exchange's own files and fixed the defects found. The worst: tickers Binance reused for
+  a new coin carried the old coin's history under one id (survivorship error and fake price jumps). Fixed by one
+  instrument per listing.
+- Known limitation: the panel's last bar does not carry the funding settlement at its close.
 
 ## 2026-10-24: design work, not yet run
 

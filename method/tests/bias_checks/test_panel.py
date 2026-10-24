@@ -396,7 +396,7 @@ def test_schema_and_sort_order(built):
 
 
 def test_margin_exception_admits_only_bases_without_usdt_perp(tmp_path):
-    """Lead ruling: margin_* perps are out unless their base never had a USDT PERPETUAL (1000x prefix normalised)."""
+    """Rule: margin_* perps are out unless their base never had a USDT PERPETUAL (1000x prefix normalised)."""
     rows = [
         # (instrument_id, symbol, base, quote, contract_type, exclude_reason)
         ("binance_um:AAAUSDT:20231201", "AAAUSDT", "AAA", "USDT", "PERPETUAL", None),
@@ -406,7 +406,7 @@ def test_margin_exception_admits_only_bases_without_usdt_perp(tmp_path):
         ("binance_um:1000QQQUSDC:20231201", "1000QQQUSDC", "1000QQQ", "USDC", "PERPETUAL", "margin_usdc"),
         ("binance_um:WWWUSDC:20231201", "WWWUSDC", "WWW", "USDC", "PERPETUAL", "margin_usdc"),
         ("binance_um:WWWQ:20231201", "WWWQ", "WWW", "QUARTER", "QUARTERLY:2024-12-27", "quarterly"),
-        ("binance_um:UUUU:20231201", "UUUU", "UUU", "U", "PERPETUAL", "margin_u"),  # never admitted (lead ruling)
+        ("binance_um:UUUU:20231201", "UUUU", "UUU", "U", "PERPETUAL", "margin_u"),  # never admitted
     ]
     cat = pl.DataFrame({
         "instrument_id": [r[0] for r in rows], "symbol": [r[1] for r in rows], "base": [r[2] for r in rows],
@@ -705,7 +705,7 @@ def test_prune_keeps_previous_when_root_is_relative(tmp_path, monkeypatch):
     assert sorted(d.name for d in (root / "versions").iterdir()) == ["20260102T000000000000Z", "20260103T000000000000Z"]
 
 
-# ---------------------------------------------------------------- F1: listing segments (fix_contract F1)
+# ---------------------------------------------------------------- listing segments
 #
 # XYZUSDT is one ticker with two listings. The earlier listing traded D0 .. D0+10d and was then left alone; the
 # dead period D0+10d .. D0+20d is zero volume in the lake; the new listing onboards at D0+20d. Each listing is its
@@ -778,7 +778,7 @@ def test_dead_period_rows_are_dropped_and_counted(reused):
 
 
 def test_earlier_listing_never_runs_past_the_next_onboard(tmp_path):
-    """A listing end later than the next listing's onboard is cut at that onboard (fix_contract F1)."""
+    """A listing end later than the next listing's onboard is cut at that onboard."""
     inputs = _write_reused_lake(tmp_path)
     inst = pl.read_parquet(inputs["instruments"])
     inst = inst.with_columns(pl.when(pl.col("instrument_id") == REUSE_A)
@@ -806,7 +806,7 @@ def test_funding_rest_tail_after_archive(tmp_path):
 
 
 def test_mark_rest_overlay_fills_archive_holes_only(tmp_path):
-    # wave R: the archive has no daily mark zip for some symbols on 2026-10-18; lake/rest/markPriceKlines fills it.
+    # the archive has no daily mark zip for some symbols on 2026-10-18; lake/rest/markPriceKlines fills it.
     # Archive rows win where both exist; REST adds only the missing keys.
     ts = _ns(2024, 1, 2) + BAR_NS * np.arange(6)
     _write_series(tmp_path, "markPriceKlines/5m", "AAAUSDT", ts[[0, 1, 4, 5]], np.array([1.0, 1.0, 1.0, 1.0]))

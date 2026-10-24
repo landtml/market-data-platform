@@ -16,7 +16,7 @@ library and is not included.
 | `tests/bias_checks/test_context.py` | Look-ahead tests for macro and sentiment context: each column is shifted by its publication lag; a shortened lag or a future peek fails. |
 | `tests/bias_checks/test_panel_rebuild_bybit.py` | Perturbing a Bybit event published after t never changes bar t. |
 | `tests/bias_checks/test_panel_rebuild_r5.py` | The single-bar print rule, and a source scan asserting no feature module reads the data-cleaning bit (it looks one bar ahead). |
-| `tests/bias_checks/test_panel_rebuild_f.py` | Stale-run, month-boundary and delist-notice rules from the audit fixes (see `docs/DATA_REPORT_2026-10-22.md`). |
-| `tests/equality/test_resample_traded.py` | 5m bars take open/high/low/close from traded minutes only, the exchange's own rule (audit fix F2). |
+| `tests/bias_checks/test_panel_rebuild_f.py` | Stale-run, month-boundary and delist-notice rules from the data fixes. |
+| `tests/equality/test_resample_traded.py` | 5m bars take open/high/low/close from traded minutes only, the exchange's own rule. |
 | `tests/equality/test_core_bars.py` | Rust resampling equals a pandas reference; Rust trade bars equal an external research library's bars, bar for bar. |
-| `tests/equality/test_bookticker_rust.py` | The Rust quote reducer (43x faster) produces the same output as the Python reference. |
+| `tests/equality/test_bookticker_rust.py` | The Rust quote reducer (about 44x faster: 6 minutes against 4.4 hours) produces the same output as the Python reference. |

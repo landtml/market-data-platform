@@ -136,7 +136,7 @@ simulate_events(entries: [K] (t_idx, i_idx, side, size), close, open_, tradable,
    CALIBRATION (cost_model.json, configs/cost_era_mult.json) is fitted once on all spread observations, including later
    years, because costs are charged to results and never read by a signal; it measures what trading actually cost.
    A strategy that uses predicted cost to make decisions (cost-aware sizing or filtering) must use a point-in-time
-   fit instead (data audit, 2026-10-22).
+   fit instead.
 3. Redenomination/renames: explicit chains with ratios from the pitfalls catalogue; returns never cross a chain
    without the ratio.
 4. Delistings: exit at the last tradeable price after the announcement with a haircut; no trading after the
@@ -180,7 +180,7 @@ Each becomes a test or a validator rule.
 Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
 
 - `data/curated/bars_5m/<YYYY>.parquet`: long panel sorted by (ts, instrument_id), zstd, 25 columns. One instrument is
-  one listing (audit fix F1): a ticker that Binance reused has one instrument per listing. An instrument's rows run
+  one listing: a ticker that Binance reused has one instrument per listing. An instrument's rows run
   from the first source bar at or after its onboard (floored to 5m) to its end: `listed_end_ts` for an earlier listing
   of a reused ticker (`last_ts_source` = `last_traded_bar`; its last traded bar is `last_ts`), else settle_ts, else the
   5m bar holding the last non-zero-volume 1m bar. Never past the onboard of the next listing of the same symbol. Source
@@ -225,7 +225,7 @@ Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
   `pad` (default 64) with present=False. This is the only entry point research code uses.
 - Summary `data/curated/panel_stats.json`: rows per year, instruments per year, delisted instruments per year,
   eligible count per day (min/median/max), ever-eligible count, delisted-in-universe count per year. `build` holds
-  `dead_period_rows`, `stale_run_rows`, `stale_runs`, `tradable_false_rows` (counted after every flag pass, F9),
+  `dead_period_rows`, `stale_run_rows`, `stale_runs`, `tradable_false_rows` (counted after every flag pass),
   `tradable_false_by_bit` (tradable=False rows carrying each panel bit) and `bit_rows` (all rows carrying each bit).
 - Publishing (2026-10-20): every build and every flag pass writes to `<root>/.staging-<stamp>/`, validates it
   (schema, year coverage, row total against panel_stats, universe present), moves it to `<root>/versions/<stamp>/`,
@@ -242,7 +242,7 @@ Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
   single-bar prints (`single_bar_print`) and stale runs (`stale_run`). A Kraken `refuted` verdict sets `kraken_refuted`
   as evidence and does not change `tradable`: the 3-venue consensus decides. Premium and mark holes (`premium_hole`,
   `mark_hole`) leave the value null and do not change tradability.
-- Single-bar print (`single_bar_print`, redefined by audit fix F4; scorecard metric M6). Bar t is a
+- Single-bar print (`single_bar_print`, redefined; scorecard metric M6). Bar t is a
   candidate when (1) it is off: a real bar (volume > 0, not filled) with a mark whose |close / mark_close - 1| is more
   than 50 bps; (2) it is a run of one: neither neighbour (t-5 min and t+5 min, same instrument) is off, so a neighbour
   without a mark is not off and does not block the print; (3) its close is not within 50 bps of either neighbour's mark
@@ -251,13 +251,13 @@ Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
   flat_market, consensus_refuted and stale_run. A bar already untradable for another reason gets no single-print bit.
   A candidate inside a `confirmed` consensus window is exempt (another venue saw the move; switch
   `SINGLE_PRINT_CONFIRMED_EXEMPT`, on). A sustained divergence (two or more consecutive off bars) is not a candidate and stays tradable.
-  Calibration on the 2026-10-22 inputs, dev span (ts < 2025-10-01): 32,189 candidates under the F4 definition before
+  Calibration on the 2026-10-22 inputs, dev span (ts < 2025-10-01): 32,189 candidates under the current definition before
   the exemption, the same count a separate script produced when the rule was defined; 25,721 with the exemption, which
   is the published rule.
   CAUSALITY: the rule reads bar t+5 min, so it is a DATA-CLEANING flag. It decides whether a fill at print t is
   believable; it is not a feature input. No feature may read `issue_flags` or `single_bar_print`
   (`tests/bias_checks/test_panel_rebuild_r5.py` enforces this by a source scan). A `disputed` window does not exempt a bar.
-- Stale run (`stale_run`, added by the audit fixes). A run of at least 288 consecutive 5m bars (one UTC day) of one
+- Stale run (`stale_run`, added with the data fixes). A run of at least 288 consecutive 5m bars (one UTC day) of one
   instrument with volume 0 and an unchanged close (close equal to the previous bar's close) gets the bit and
   `tradable = false`. Prices are kept. Runs are found on each listing's grid before the span build; a gap row is a
   volume-0 bar carrying the previous close, so a run across a gap is one run. The frozen tails the audit found were the
@@ -287,7 +287,7 @@ Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
   | `mark_hole` | 1<<21 | mark_close NaN on a live bar | unchanged |
   | `consensus_refuted` | 1<<22 | consensus 'refuted' window | false |
   | `consensus_disputed` | 1<<23 | consensus 'disputed' window (robustness mask) | unchanged |
-  | `single_bar_print` | 1<<24 | one-bar print > 50 bps from mark (F4 definition, see above; data-cleaning; reads t+5 min) | false |
+  | `single_bar_print` | 1<<24 | one-bar print > 50 bps from mark (definition above; data-cleaning; reads t+5 min) | false |
   | `stale_run` | 1<<25 | >= 288 consecutive bars with volume 0 and an unchanged close (price kept) | false |
 
 - Consensus (`lake/verify_consensus.parquet`, built by `sources/bybit.py` `build_consensus`): each window's class from
@@ -306,7 +306,7 @@ Code: `libs/data/quant/data/panel.py`. Readers: features, research, cost fit.
 - `spike_window` and `mark_divergence_window` come from `quality/suspicious_windows.parquet`, the scorecard's review
   queue: the top `QUEUE_CAP` (2,000) windows by magnitude, rewritten on every scorecard run. They are review flags, not
   complete detectors, and their counts move between builds (round 4: 311 mark-divergence windows, round 5: 31).
-  Research must not filter on them. The tradable rule does not use them (re-audit, 2026-10-22).
+  Research must not filter on them. The tradable rule does not use them.
 - `aux/` (inside each version directory): `context_ext_daily.parquet` (`usable_from`), `tick_history.parquet`
   (`capture_ts`) and `announcements.parquet` (`release_ts`), copied unchanged. A row is usable at bar t only when its
   publish column is <= t (`panel_inputs.visible_rows`, `AUX_USABLE`). They are not per-bar columns.

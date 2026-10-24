@@ -21,7 +21,7 @@ Evidence, measured:
   (2026-10-21, data/lake/binance_um/rest/klines/1m/AERGOUSDT/2025-04.parquet). The 29 remaining minutes are in
   neither series.
 - The panel marks the affected window: AERGOUSDT:20240901 has a stale_run of 5,783 bars from 2025-03-27 to the
-  2025-04-16 reopen, all untradable (panel_stats, re-audit values).
+  2025-04-16 reopen, all untradable (panel_stats values).
 
 No other free source carries Binance USD-M 1m bars for a delisted contract. Effect on research: none, because the bars
 are inside an untradable stale run.
@@ -33,8 +33,7 @@ Value proven: 9,800 per 1M bars (zero_vol 5,954, stuck 134, spike 3,712; round 6
 These counts measure market states in the exchange's own 1m archive:
 - zero_vol is a minute with no trade, stuck is 30 or more identical closes in a row, and spike is the validator's
   heuristic flag.
-- The lake 1m is the archive itself: 431 of 431 archive files match their sha256 checksums (audit). Panel bars equal
-  the exchange's 5m klines on 17,280 of 17,280 sampled bars (re-audit), holdout included.
+- The lake 1m is the exchange's archive itself, so these counts describe the market, not a processing error.
 - "Fixing" them would mean changing true exchange data. The panel handles them instead:
   - stale_run makes frozen runs untradable;
   - single_bar_print and the 3-venue consensus bits handle isolated prints;

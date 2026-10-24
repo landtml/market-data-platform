@@ -166,7 +166,7 @@ Everything else is reported as "no edge at retail cost", with the gap in bps per
   2023-06-22 (the earliest date the evidence allows; measured by 2024-02-20). Reason: every cost and data input must be
   rebuildable from files on disk.
 - 2026-10-22 20:40 UTC (before any Stage 1 or Stage 2 result was seen): outcome of the entry above. Data version
-  20261022T174452075435Z (after the audit, the re-audit and the closure of the remaining scorecard metrics). Spread
+  20261022T174452075435Z (after the data fixes and the closure of the remaining scorecard metrics). Spread
   refit (fit3 procedure, current spread_obs_5m.parquet, input sha256 recorded in refit_inputs.sha256): gate part (a), coverage after scaling
   >= 0.65 in every band and both directions, PASS (min 0.650005); part (b), overall out-of-sample median log error no
   worse than fit3, FAIL (forward 0.4291 -> 0.4603, reverse 0.3790 -> 0.3821; same cause as fit4: ETH and SOL 2024-02

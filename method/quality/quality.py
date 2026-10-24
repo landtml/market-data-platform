@@ -59,7 +59,7 @@ TARGETS = {
     "M12": "cost calibration: every (year, size band) cell of 2020-2025 with eff data has charged spread coverage "
            ">= 0.65 on the eff proxy (coverage after era multipliers); green when all cells meet it, amber otherwise",
     "M13": "context cells older than the source cadence: green <= 1%, amber <= 5%, red > 5%",
-    "M14": "compliance: waived by owner rule 2026-10-20 (terms and licences are not weighed for local research); "
+    "M14": "compliance: waived by project rule 2026-10-20 (terms and licences are not weighed for local research); "
            "the feed-by-feed evidence is kept in the detail and does not enter the counts or the worst items",
     "M15": "mark 5m coverage: internal holes / grid slots (leading and trailing reported, not scored): "
            "green = 0, amber <= 0.1%, red > 0.1%",
@@ -98,7 +98,7 @@ LICENSE_ALIASES = {"binance_um": ["binance"], "fred": ["fred", "st. louis", "st 
 IMPACT = {"M11": 0, "M14": 0, "M1": 1, "M2": 1, "M3a": 1, "M3b": 2, "M4": 1, "M5": 1, "M6": 1, "M7": 1,
           "M10": 1, "M15": 1, "M8": 2, "M16": 2, "M12": 3, "M9": 4, "M13": 4}
 
-FIXABLE_ORDER = {"free-source": 0, "code": 1, "owner-decision": 2, "paid-only": 3}
+FIXABLE_ORDER = {"free-source": 0, "code": 1, "decision-needed": 2, "paid-only": 3}
 STATUS_ORDER = {"red": 0, "not_measured": 1, "amber": 2, "green": 3, "proven": 4, "waived": 5}
 WAIVED = "waived"
 # proven: red/amber, but shown unfixable from free sources by evidence on disk (configs/quality_proofs.json). A proof
@@ -1437,7 +1437,7 @@ def _m9_rest_overlay(src: Sources, d: pl.DataFrame) -> tuple[pl.DataFrame, int]:
 
 def _m9_listed_days(src: Sources, d: pl.DataFrame) -> tuple[pl.DataFrame, int]:
     """Keep the OI days that overlap a listing of the symbol ([onboard_ts, listed_end_ts) of any instruments row): days
-    before the onboard, after the end and in a reused ticker's dead period are not scored (wave U, u-m9: 33,693 of
+    before the onboard, after the end and in a reused ticker's dead period are not scored (33,693 of
     37,036 low days were outside every listing). Returns (scored days, days dropped)."""
     if "day" not in d.columns or not src.instruments.exists():
         return d, 0
@@ -1563,9 +1563,9 @@ def m12_spread(src: Sources) -> Metric:
     status = "green" if not failing else "amber"
     fix = ("" if not failing else
            f"{len(failing)} cell(s) under {M12_COVERAGE} after era multipliers, lowest {low['year']} {low['band']} "
-           f"at {low['coverage_after']}: a registered multiplier change needs an owner decision")
+           f"at {low['coverage_after']}: a registered multiplier change needs a decision")
     return _metric("M12", name, low["coverage_after"], "min coverage over cells", status, ev,
-                   "owner-decision" if failing else "code", fix=fix,
+                   "decision-needed" if failing else "code", fix=fix,
                    detail={"cells": cells, "cells_scored": len(cells), "cells_failing": len(failing),
                            "cells_without_data": no_data, "target": M12_COVERAGE,
                            "lowest_cell": low, "config": "configs/cost_era_mult.json",
@@ -1706,13 +1706,13 @@ def _m14_evidence(src: Sources) -> Metric:
             elif not row["status"].startswith("used"):
                 gaps.append({"file": fname, "source": s, "why": f"status {row['status']!r}, not used"})
     status = "red" if red else "amber" if (unclear or gaps) else "green"
-    fixable = "owner-decision" if red or (unclear and not gaps) else "code"
+    fixable = "decision-needed" if red or (unclear and not gaps) else "code"
     parts = []
     if red:
         parts.append(f"remove or re-licence {len(red)} forbidden/quarantined feed(s): "
                      + ", ".join(sorted({r['source'] for r in red})))
     if unclear:
-        parts.append(f"owner decision on {len(unclear)} unclear verdict(s): "
+        parts.append(f"decision needed on {len(unclear)} unclear verdict(s): "
                      + ", ".join(sorted({r['source'] for r in unclear})))
     if gaps:
         parts.append(f"resolve {len(gaps)} licence gap(s) in DATA_LICENSES.md")
@@ -1722,11 +1722,11 @@ def _m14_evidence(src: Sources) -> Metric:
 
 
 def m14_compliance(src: Sources) -> Metric:
-    """Waived by owner rule (2026-10-20): terms and licences are not weighed for this local research. The evidence
+    """Waived by project rule (2026-10-20): terms and licences are not weighed for this local research. The evidence
     is computed as before and kept in the detail; the status is "waived" and it is outside the counts and the
     worst items."""
     m = _m14_evidence(src)
-    return replace(m, status=WAIVED, reason="waived by owner rule 2026-10-20: terms and licences are not weighed "
+    return replace(m, status=WAIVED, reason="waived by project rule 2026-10-20: terms and licences are not weighed "
                                             "for local research",
                    detail={**m.detail, "computed_status": m.status, "computed_fix": m.fix})
 
@@ -2081,13 +2081,13 @@ def gap_classes(src: Sources) -> dict | None:
 
 # ---------------------------------------------------------------- assembly
 
-OWNER_FIXABLE = ("owner-decision", "paid-only")
+DECISION_FIXABLE = ("decision-needed", "paid-only")
 ROUND1_ALIAS = {"M3a": "M3", "M3b": "M3"}  # round 1 scored hard and soft rules together
 
 
 def fix_class(m: Metric) -> str:
-    """free-data: a free source or a code change fixes it. owner/paid: needs the owner or a paid source."""
-    return "free-data" if m.fixable_by in ("free-source", "code") else "owner/paid"
+    """free-data: a free source or a code change fixes it. decision/paid: needs a decision or a paid source."""
+    return "free-data" if m.fixable_by in ("free-source", "code") else "decision/paid"
 
 
 def status_counts(metrics: list[Metric]) -> dict[str, int]:
@@ -2109,26 +2109,26 @@ def apply_proofs(metrics: list[Metric], path: Path, root: Path = paths.ROOT) -> 
         p = proofs.get(m.id)
         if (p and m.status in ("red", "amber") and m.value is not None and m.value <= p["max_value"]
                 and (root / p["evidence"]).exists()):
-            m = replace(m, status=PROVEN, reason=f"proven unfixable from free sources: {p['ruling']}",
+            m = replace(m, status=PROVEN, reason=f"proven unfixable from free sources: {p['finding']}",
                         detail={**m.detail, "computed_status": m.status, "proof": p})
         out.append(m)
     return out
 
 
 def _worst_items(metrics: list[Metric]) -> list[dict]:
-    """Top five open items an automated loop can act on (owner and paid items are listed apart)."""
-    open_ = [m for m in metrics if m.status not in ("green", WAIVED, PROVEN) and m.fixable_by not in OWNER_FIXABLE]
+    """Top five open items an automated loop can act on (decision and paid items are listed apart)."""
+    open_ = [m for m in metrics if m.status not in ("green", WAIVED, PROVEN) and m.fixable_by not in DECISION_FIXABLE]
     open_.sort(key=lambda m: (IMPACT.get(m.id, 9), FIXABLE_ORDER.get(m.fixable_by, 9),
                               STATUS_ORDER.get(m.status, 9), m.id))
     return [{"id": m.id, "name": m.name, "status": m.status, "impact": IMPACT.get(m.id, 9),
              "fixable_by": m.fixable_by, "fix_class": fix_class(m), "fix": m.fix} for m in open_[:5]]
 
 
-def _owner_list(metrics: list[Metric]) -> list[dict]:
-    items = [m for m in metrics if m.status not in ("green", WAIVED, PROVEN) and m.fixable_by in OWNER_FIXABLE]
+def _decision_list(metrics: list[Metric]) -> list[dict]:
+    items = [m for m in metrics if m.status not in ("green", WAIVED, PROVEN) and m.fixable_by in DECISION_FIXABLE]
     items.sort(key=lambda m: (IMPACT.get(m.id, 9), m.id))
     return [{"id": m.id, "name": m.name, "status": m.status, "fixable_by": m.fixable_by,
-             "fix_class": "owner/paid", "fix": m.fix} for m in items]
+             "fix_class": "decision/paid", "fix": m.fix} for m in items]
 
 
 def diff_rows(base_card: dict, metrics: list[Metric]) -> list[dict]:
@@ -2236,7 +2236,7 @@ def run(src: Sources, baseline: Path | None = None, label: str = "") -> tuple[di
                                "by_reason": dict(zip(*queue.group_by("reason").len().to_dict(as_series=False)
                                                      .values())) if queue.height else {}},
         "worst_items": _worst_items(metrics),
-        "owner_list": _owner_list(metrics),
+        "decision_list": _decision_list(metrics),
         "metrics": [asdict(m) for m in metrics],
     }
     if baseline is not None:
@@ -2264,12 +2264,12 @@ def render_md(card: dict) -> str:
     for m in card["metrics"]:
         lines.append(f"| {m['id']} | {m['name']} | {_fmt(m['value'])} | {m['unit']} | {m['status']} | "
                      f"{m['fixable_by']} |")
-    lines += ["", "## Worst items (top 5, not owner or paid)", "",
+    lines += ["", "## Worst items (top 5, not decision or paid)", "",
               "| # | id | status | fix class | proposed fix |", "|---|---|---|---|---|"]
     lines += [f"| {i} | {w['id']} | {w['status']} | {w['fix_class']} | {w['fix']} |"
               for i, w in enumerate(card["worst_items"], 1)]
-    lines += ["", "## Owner or paid list (not in worst items)", ""]
-    lines += [f"- {w['id']} ({w['status']}, {w['fix_class']}): {w['fix']}" for w in card["owner_list"]]
+    lines += ["", "## Decision or paid list (not in worst items)", ""]
+    lines += [f"- {w['id']} ({w['status']}, {w['fix_class']}): {w['fix']}" for w in card["decision_list"]]
     if card.get("diff_vs_baseline"):
         lines += ["", f"## Diff vs baseline ({card.get('baseline', '')})", "",
                   "| id | metric | round 1 | status | round 2 | status | change | note |",

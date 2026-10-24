@@ -98,14 +98,14 @@ def test_neighbour_outside_threshold_is_not_a_single_print(tmp_path):
 
 
 def test_missing_neighbour_mark_does_not_block_the_rule(tmp_path):
-    # fix wave F (w-r5b2 definition): a neighbour counts against the print only when it is itself off (> 50 bps from
+    # definition: a neighbour counts against the print only when it is itself off (> 50 bps from
     # its own mark). A neighbour with no mark is not off, so bar 10 is a single-bar print.
     df = _run(tmp_path, {("AAAUSDT", 10): {"close": DEV}, ("AAAUSDT", 11): {"mark_close": None}})
     assert _at(df, "AAAUSDT", 10)["tradable"] is False
 
 
 def test_confirmed_window_exempts_the_print(tmp_path):
-    # lead ruling 2026-10-22: the exemption is on (the published rule)
+    # rule of 2026-10-22: the exemption is on (the published rule)
     rows = [{"symbol": "AAAUSDT", "start_ts": T0 + 9 * BAR, "end_ts": T0 + 11 * BAR, "consensus": "confirmed"}]
     df = _run(tmp_path / "c", {("AAAUSDT", 10): {"close": DEV}}, rows)
     assert _at(df, "AAAUSDT", 10)["tradable"] is True and _at(df, "AAAUSDT", 10)["issue_flags"] & SP == 0
